@@ -1,0 +1,39 @@
+<div *ngIf="router.url !== '/login'" class="_navbar-icon-menu">
+  <ul class="_navbar-icon-menu-ul">
+    <li>
+        <a routerLink="/more">
+            <img routerLink="/more" class="icon-more" src ="../assets/icons/more.svg">
+        </a>
+    </li>
+    <li>
+        <a routerLink="/profile">
+            <img routerLink="/profile" class="icon-profile" src ="../assets/icons/profile_men_menu.svg">
+            <h6 class="label-menu">Perfil</h6>
+        </a>
+    </li>
+    <li>
+        <a routerLink="/home">
+            <button routerLink="/home" class="btn-radius-circular"></button>
+                <h6 class="label-home">Inicio</h6>
+        </a>
+    </li>
+    <li>
+        <a routerLink="/notifications">
+            <img class="icon-notification" routerLink="/notications" class="icon-notification" src ="../assets/icons/notificationActive.svg">
+        </a>
+    </li>
+    <li class="list-menu-admin">
+        <a routerLink="/admin">
+            <h6 class="label-menu">Administativo</h6>
+        </a>
+    </li>
+    <li>
+        <a routerLink="/calendar">
+            <img routerLink="/calendar" class="icon-calendar" src ="../assets/icons/calendar.svg">
+            <h6 class="label-menu">Calendario</h6>
+        </a>
+    </li>
+  </ul>
+</div>
+
+  

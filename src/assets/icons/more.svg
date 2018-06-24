@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>glyph/library/more</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Brand" stroke="none" stroke-width="1" fill="#A7A7A7" fill-rule="evenodd">
+        <g id="Icons" transform="translate(-698.000000, -338.000000)">
+            <g id="glyph/library/more" transform="translate(699.000000, 339.000000)">
+                <g id="more" stroke-width="1" transform="translate(8.000000, 12.000000)" stroke="#A7A7A7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M0.5,1.5 L27.5185122,1.5" id="Line" stroke-width="2"></path>
+                    <path d="M0.5,10.5 L27.5185122,10.5" id="Line-Copy" stroke-width="2"></path>
+                    <path d="M10,20 L28.0200195,20" id="Line-Copy-2" stroke-width="2"></path>
+                </g>
+                <rect id="Rectangle-Copy-7" fill-opacity="0" fill="#A7A7A7" x="0" y="0" width="44" height="44"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
