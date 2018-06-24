@@ -1,4 +1,5 @@
 
+
 @media (max-width: 2046px) and (min-width: 1023px) {
   .container {
     padding-top: 220px;
@@ -34,8 +35,7 @@
     padding-top: 50px;
   }
 }
-
-  .profile-userpic img {
+.profile-userpic img {
     float: none;
     width: 30%;
     height: 30%;
