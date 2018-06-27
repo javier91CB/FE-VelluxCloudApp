@@ -25,7 +25,7 @@
 
 @media (max-width: 2046px) and (min-width: 1023px) {
     .container {
-      padding-top: 90px;
+      padding-top: 120px;
       width: 65%;
     }
     .logo-login{
@@ -45,7 +45,7 @@
 
   @media (max-width: 1022px) and (min-width: 631px) {
   .container {
-    padding-top: 120px;
+    padding-top: 150px;
     width: 65%;
   }
   .logo-login{

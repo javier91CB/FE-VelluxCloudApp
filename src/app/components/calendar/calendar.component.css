@@ -10,7 +10,7 @@
   @media (max-width: 2046px) and (min-width: 1023px) {
       .container {
         padding-top: 120px;
-        width: 100%;
+        width: 65%;
       }
       .list-group{
         width: 40%;
@@ -22,12 +22,12 @@
     @media (max-width: 1022px) and (min-width: 631px) {
     .container {
       padding-top: 150px;
-      width: 100%;
+      width: 65%;
       }
       .list-group{
-        width: 45%;
+        width: 40%;
         position: absolute;
-        left: 5%;
+        left: 10%;
       }
     }
     @media (max-width: 320px) and (min-width: 120px) {
@@ -55,4 +55,3 @@
         padding-top: 50px;
       }
     }
-    

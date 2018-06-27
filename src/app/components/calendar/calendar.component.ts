@@ -48,7 +48,6 @@ export class CalendarComponent implements OnInit {
         end: model.event.end,
         title: model.event.title,
         allDay: model.event.allDay
-        // other params
       },
       duration: {}
     };

@@ -5,7 +5,7 @@
 
 @media (max-width: 2046px) and (min-width: 1023px) {
   .container {
-    padding-top: 90px;
+    padding-top: 120px;
     width: 65%;
   }
   .profile-userpic img {
@@ -19,7 +19,7 @@
   }
 @media (max-width: 1022px) and (min-width: 631px) {
 .container {
-  padding-top: 120px;
+  padding-top: 150px;
   width: 65%;
 }
 .profile-userpic img {
@@ -33,7 +33,7 @@
 }
 @media (max-width: 320px) and (min-width: 120px) {
   .container {
-    padding-top: 10px;
+    padding-top: 15px;
   }
   .profile-userpic img {
     float: none;
@@ -46,7 +46,7 @@
 }
 @media (max-width: 374px) and (min-width: 321px) {
   .container {
-    padding-top: 15px;
+    padding-top: 25px;
   }
   .profile-userpic img {
     float: none;
@@ -59,7 +59,7 @@
 }
 @media (max-width: 400px) and (min-width: 375px) {
   .container {
-    padding-top: 30px;
+    padding-top: 70px;
   }
   .profile-userpic img {
     float: none;
