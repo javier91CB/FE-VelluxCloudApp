@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {Ng2CarouselamosModule} from 'ng2-carouselamos';
 
 import { AppComponent } from './app.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
@@ -17,6 +18,8 @@ import { MessengerComponent } from './components/messenger/messenger.component';
 import { NewsComponent } from './components/news/news.component';
 import { ReleasesComponent } from './components/releases/releases.component';
 import { AppRoutingModule } from 'src/app/app-routong.module';
+import { FullCalendarModule } from 'ng-fullcalendar';
+import { EventSesrvice } from './services/calendar/event.service';
 
 @NgModule({
   declarations: [
@@ -38,9 +41,13 @@ import { AppRoutingModule } from 'src/app/app-routong.module';
     HttpModule,
     ChartsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    Ng2CarouselamosModule,
+    FullCalendarModule
   ],
-  providers: [],
+  providers: [
+    EventSesrvice
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

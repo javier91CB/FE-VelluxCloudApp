@@ -1,36 +1,155 @@
+.card-body{
+  background-color: transparent;
+}
+
+.list-group-item{
+  box-shadow: 0px 0px 10px 0px #888888;
+  border-radius: 12px !important;
+}
+
+.carousel-size{
+  height: calc(320px);
+}
+
+.carousel-inner{
+  height: calc(320px);
+}
+
+.item img{
+  height: calc(320px);
+}
+
+.card-body-explain{
+  height: calc(320px);
+}
+
 @media (max-width: 2046px) and (min-width: 1023px) {
     .container {
-      padding-top: 220px;
+      padding-top: 90px;
+      width: 65%;
     }
+    .logo-login{
+      width: 15%;
     }
+    .welcome-user{
+      width: calc(80%);
+      position: absolute;
+      top: 35%;
+      left: 10%;
+      text-align: center;
+    }
+    /* .mySlides {display:none} */
+    .w3-left, .w3-right, .w3-badge {cursor:pointer}
+    .w3-badge {height:13px;width:13px;padding:0}
+  }
+
   @media (max-width: 1022px) and (min-width: 631px) {
   .container {
     padding-top: 120px;
+    width: 65%;
   }
+  .logo-login{
+    width: 30%;
+  }
+  .welcome-user{
+    width: calc(80%);
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    text-align: center;
+  }
+  /* .mySlides {display:none} */
+    .w3-left, .w3-right, .w3-badge {cursor:pointer}
+    .w3-badge {height:13px;width:13px;padding:0}
   }
   @media (max-width: 320px) and (min-width: 120px) {
     .container {
       padding-top: 15px;
     }
+    .logo-login{
+      width: 30%;
+    }
+    .welcome-user{
+      width: calc(80%);
+      position: absolute;
+      top: 35%;
+      left: 20%;
+      text-align: center;
+    }
+    /* .mySlides {display:none} */
+    .w3-left, .w3-right, .w3-badge {cursor:pointer}
+    .w3-badge {height:13px;width:13px;padding:0}
   }
   @media (max-width: 374px) and (min-width: 321px) {
     .container {
       padding-top: 25px;
     }
+    .logo-login{
+      width: 30%;
+    }
+    .welcome-user{
+      width: calc(80%);
+      position: absolute;
+      top: 35%;
+      left: Calc(40% - 80px);
+      text-align: center;
+    }
+    /* .mySlides {display:none} */
+    .w3-left, .w3-right, .w3-badge {cursor:pointer}
+    .w3-badge {height:13px;width:13px;padding:0}
   }
   @media (max-width: 400px) and (min-width: 375px) {
     .container {
-      padding-top: 30px;
+      padding-top: 70px;
     }
+    .logo-login{
+      width: 30%;
+    }
+    .welcome-user{
+      width: calc(80%);
+      position: absolute;
+      top: 35%;
+      left: Calc(40% - 80px);
+      text-align: center;
+    }
+    /* .mySlides {display:none} */
+    .w3-left, .w3-right, .w3-badge {cursor:pointer}
+    .w3-badge {height:13px;width:13px;padding:0}
   }
   @media (max-width: 500px) and (min-width: 401px) {
     .container {
       padding-top: 40px;
     }
+    .logo-login{
+      width: 30%;
+    }
+    .welcome-user{
+      width: calc(80%);
+      position: absolute;
+      top: 35%;
+      left: Calc(40% - 80px);
+      text-align: center;
+    }
+    /* .mySlides {display:none} */
+    .w3-left, .w3-right, .w3-badge {cursor:pointer}
+    .w3-badge {height:13px;width:13px;padding:0}
   }
   @media (max-width: 630px) and (min-width: 501px) {
     .container {
       padding-top: 50px;
     }
+    .logo-login{
+      width: 30%;
+    }
+    .welcome-user{
+      width: calc(80%);
+      position: absolute;
+      top: 35%;
+      left: Calc(40% - 80px);
+      text-align: center;
+    }
+    /* .mySlides {display:none} */
+    .w3-left, .w3-right, .w3-badge {cursor:pointer}
+    .w3-badge {height:13px;width:13px;padding:0}
   }
   

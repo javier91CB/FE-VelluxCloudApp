@@ -1,0 +1,58 @@
+.card-body{
+    background-color: transparent;
+  }
+
+  .list-group-item{
+    box-shadow: 0px 0px 10px 0px #888888;
+    border-radius: 12px !important;
+  }
+
+  @media (max-width: 2046px) and (min-width: 1023px) {
+      .container {
+        padding-top: 120px;
+        width: 100%;
+      }
+      .list-group{
+        width: 40%;
+        position: absolute;
+        left: 10%;
+      }
+    }
+  
+    @media (max-width: 1022px) and (min-width: 631px) {
+    .container {
+      padding-top: 150px;
+      width: 100%;
+      }
+      .list-group{
+        width: 45%;
+        position: absolute;
+        left: 5%;
+      }
+    }
+    @media (max-width: 320px) and (min-width: 120px) {
+      .container {
+        padding-top: 15px;
+      }
+    }
+    @media (max-width: 374px) and (min-width: 321px) {
+      .container {
+        padding-top: 25px;
+      }
+    }
+    @media (max-width: 400px) and (min-width: 375px) {
+      .container {
+        padding-top: 70px;
+      }
+    }
+    @media (max-width: 500px) and (min-width: 401px) {
+      .container {
+        padding-top: 40px;
+      }
+    }
+    @media (max-width: 630px) and (min-width: 501px) {
+      .container {
+        padding-top: 50px;
+      }
+    }
+    

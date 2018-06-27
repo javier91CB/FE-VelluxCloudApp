@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'home', component: HomeComponent},
     { path: 'menu', component: MenuComponent},
-    { path: 'calendar', component: CalendarComponent},
+    { path: 'full-calendar', component: CalendarComponent},
     { path: 'profile', component: ProfileComponent},
     { path: 'notifications', component: NotificationsComponent},
     { path: 'admin', component: AdminComponent},

@@ -1,9 +1,13 @@
 <div *ngIf="router.url !== '/login'" class="_navbar-icon-menu">
   <ul class="_navbar-icon-menu-ul">
     <li>
-        <a routerLink="/more">
-            <img routerLink="/more" class="icon-more" src ="../assets/icons/more.svg">
+        <a>
+                <img class="icon-more" src ="../assets/icons/more.svg">
         </a>
+        <!-- <ul>
+                <li><a tabindex="-1" href="#">HTML</a></li>
+                <li><a tabindex="-1" href="#">CSS</a></li>
+        </ul> -->
     </li>
     <li>
         <a routerLink="/profile">
@@ -19,7 +23,7 @@
     </li>
     <li>
         <a routerLink="/notifications">
-            <img class="icon-notification" routerLink="/notications" class="icon-notification" src ="../assets/icons/notificationActive.svg">
+            <img class="icon-notification" routerLink="/notifications" class="icon-notification" src ="../assets/icons/notificationActive.svg">
         </a>
     </li>
     <li class="list-menu-admin">
@@ -28,8 +32,8 @@
         </a>
     </li>
     <li>
-        <a routerLink="/calendar">
-            <img routerLink="/calendar" class="icon-calendar" src ="../assets/icons/calendar.svg">
+        <a routerLink="/full-calendar">
+            <img routerLink="/full-calendar" class="icon-calendar" src ="../assets/icons/calendar.svg">
             <h6 class="label-menu">Calendario</h6>
         </a>
     </li>

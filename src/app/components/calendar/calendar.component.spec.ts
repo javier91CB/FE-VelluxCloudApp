@@ -3,23 +3,27 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CalendarComponent } from './calendar.component';
 
 describe('CalendarComponent', () => {
-  let component: CalendarComponent;
-  let fixture: ComponentFixture<CalendarComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CalendarComponent ]
-    })
-    .compileComponents();
+      declarations: [
+        CalendarComponent
+      ],
+    }).compileComponents();
   }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CalendarComponent);
-    component = fixture.componentInstance;
+  it('should create the app', async(() => {
+    const fixture = TestBed.createComponent(CalendarComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  }));
+  it(`should have as title 'app'`, async(() => {
+    const fixture = TestBed.createComponent(CalendarComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('app');
+  }));
+  it('should render title in a h1 tag', async(() => {
+    const fixture = TestBed.createComponent(CalendarComponent);
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
+  }));
 });
