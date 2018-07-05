@@ -2,56 +2,432 @@
     background-color: transparent;
   }
 
-  .list-group-item{
-    box-shadow: 0px 0px 10px 0px #888888;
-    border-radius: 12px !important;
-  }
+.simple-information{
+  position: absolute;
+  top: 0;
+  left: 29%;
+}
+.icon-card{
+  width: 100%;
+}
+.icon-card img{
+  width: 65%;
+}
+.state-card{
+  position: absolute;
+  top: calc(70%);
+  right: 5%;
+  width: 60px;
+  height: 20px;
+  border: 2px solid green;
+  font-size: 10px;
+  text-align: center;
+  color: green;
+  padding: 0px;
+  border-radius: 10px !important;
+}
+.timeline-card{
+  position: absolute;
+  top: 100%;
+}
+  /* @media (max-width: 2046px) and (min-width: 1447px) {
+      
+      .list-group{
+        width: 45%;
+        position: relative;
+        left: 0;
+      }
+      .title-day-selected{
+        position: relative;
+        left: 17px;
+        background-color: rgb(57, 89, 160);
+        width: calc(365px);
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 10px !important;
+      }
+      .title-day-selected > h6{
+        font-size: 15px;
+        font: bold;
+        color: aliceblue;
+      }
+      .cards-itmes{
+        position: absolute;
+       left: 50%;
+      }
+      .assignaments-title{
+        position: absolute;
+        background-color: rgb(57, 89, 160);
+        padding: 5px;
+        color: aliceblue;
+        width: 120px;
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 12px 12px 0px 0px !important;
+      }
+      .list-group-item{
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 5px !important;
+      }
+    
+      .title-day-selected{
+        text-align: center;
+        font-size: 15px;
+      }
+      .state-card{
+        position: absolute;
+        top: 55%;
+        right: 5%;
+        width: 60px;
+        height: 20px;
+        border: 2px solid green;
+        font-size: 10px;
+        text-align: center;
+        color: green;
+        padding: 0px;
+        border-radius: 10px !important;
+      }
+      .logo-card{
+        width: 25%;
+        height: 100px;
+        border-right: 2px solid rgb(57, 89, 160);
+        text-align: center;
+      }
+    }
+   */
+    /* @media (max-width: 1446px) and (min-width: 1023px) {
+      .list-group{
+        width: 35%;
+        position: absolute;
+        left: 10%;
+      }
+      .title-day-selected{
+        position: absolute;
+        left: calc(74%);
+        background-color: rgb(57, 89, 160);
+        width: calc(39%);
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 10px !important;
+      }
+      .title-day-selected > h6{
+        font-size: 15px;
+        font: bold;
+        color: aliceblue;
+      }
+      .cards-itmes{
+        position: absolute;
+       left: 50%;
+      }
+      .assignaments-title{
+        position: absolute;
+        background-color: rgb(57, 89, 160);
+        padding: 5px;
+        color: aliceblue;
+        width: 120px;
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 12px 12px 0px 0px !important;
+      }
+      .list-group-item{
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 5px !important;
+      }
+    
+      .title-day-selected{
+        text-align: center;
+        font-size: 15px;
+      }
+      .state-card{
+        position: absolute;
+        top: 55%;
+        right: 5%;
+        width: 60px;
+        height: 20px;
+        border: 2px solid green;
+        font-size: 10px;
+        text-align: center;
+        color: green;
+        padding: 0px;
+        border-radius: 10px !important;
+      }
+      .logo-card{
+        width: 25%;
+        height: 100px;
+        border-right: 2px solid rgb(57, 89, 160);
+        text-align: center;
+      }
+    } */
 
-  @media (max-width: 2046px) and (min-width: 1023px) {
+    @media (max-width: 1022px) and (min-width: 631px) {
       .container {
-        padding-top: 120px;
+        padding-top: 150px;
         width: 65%;
       }
       .list-group{
-        width: 40%;
-        position: absolute;
-        left: 10%;
+        width: 45%;
+        position: relative;
       }
-    }
-  
-    @media (max-width: 1022px) and (min-width: 631px) {
-    .container {
-      padding-top: 150px;
-      width: 65%;
+      .title-day-selected{
+        position: relative;
+        left: calc(54%);
+        background-color: rgb(57, 89, 160);
+        width: calc(39%);
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 10px !important;
       }
-      .list-group{
-        width: 40%;
+      .title-day-selected > h6{
+        font-size: 15px;
+        font: bold;
+        color: aliceblue;
+      }
+      .cards-itmes{
+        position: relative;
+       left: 53%;
+      }
+      .assignaments-title{
+        position: relative;
+        background-color: rgb(57, 89, 160);
+        padding: 5px;
+        color: aliceblue;
+        width: calc(50%);
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 12px 12px 0px 0px !important;
+      }
+      .list-group-item{
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 5px !important;
+      }
+    
+      .title-day-selected{
+        text-align: center;
+        font-size: 15px;
+      }
+      .state-card{
         position: absolute;
-        left: 10%;
+        top: 55%;
+        right: 5%;
+        width: 60px;
+        height: 20px;
+        border: 2px solid green;
+        font-size: 10px;
+        text-align: center;
+        color: green;
+        padding: 0px;
+        border-radius: 10px !important;
+      }
+      .logo-card{
+        width: 25%;
+        height: 100px;
+        border-right: 2px solid rgb(57, 89, 160);
+        text-align: center;
       }
     }
     @media (max-width: 320px) and (min-width: 120px) {
       .container {
         padding-top: 15px;
       }
+      .assignaments-title{
+        position: relative;
+        background-color: rgb(57, 89, 160);
+        padding: 5px;
+        color: aliceblue;
+        width: 120px;
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 12px 12px 0px 0px !important;
+      }
+      .list-group-item{
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 5px !important;
+      }
+    
+      .title-day-selected{
+        position: relative;
+        left: 0px;
+        background-color: rgb(57, 89, 160);
+        width: 100%;
+        padding: 2px;
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 10px !important;
+      }
+      .title-day-selected > h6{
+        font-size: 15px;
+        font: bold;
+        color: aliceblue;
+      }
+      .logo-card{
+        width: 25%;
+        height: 100px;
+        border-right: 2px solid rgb(57, 89, 160);
+        text-align: center;
+      }
     }
     @media (max-width: 374px) and (min-width: 321px) {
       .container {
-        padding-top: 25px;
+        padding-top: 15px;
+      }
+      .assignaments-title{
+        position: relative;
+        background-color: rgb(57, 89, 160);
+        padding: 5px;
+        color: aliceblue;
+        width: 120px;
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 12px 12px 0px 0px !important;
+      }
+      .list-group-item{
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 5px !important;
+      }
+    
+      .title-day-selected{
+        position: relative;
+        left: 0px;
+        background-color: rgb(57, 89, 160);
+        width: 100%;
+        padding: 2px;
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 10px !important;
+      }
+      .title-day-selected > h6{
+        font-size: 15px;
+        font: bold;
+        color: aliceblue;
+      }
+      .logo-card{
+        width: 25%;
+        height: 100px;
+        border-right: 2px solid rgb(57, 89, 160);
+        text-align: center;
       }
     }
     @media (max-width: 400px) and (min-width: 375px) {
       .container {
-        padding-top: 70px;
+        padding-top: 15px;
+      }
+      .assignaments-title{
+        position: relative;
+        background-color: rgb(57, 89, 160);
+        padding: 5px;
+        color: aliceblue;
+        width: 120px;
+        left: calc(1%);
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 12px 12px 0px 0px !important;
+      }
+      .list-group-item{
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 5px !important;
+      }
+    
+      .title-day-selected{
+        position: relative;
+        left: 0px;
+        background-color: rgb(57, 89, 160);
+        width: 100%;
+        padding: 2px;
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 10px !important;
+      }
+      .title-day-selected > h6{
+        font-size: 15px;
+        font: bold;
+        color: aliceblue;
+      }
+      .logo-card{
+        width: 25%;
+        height: 100px;
+        border-right: 2px solid rgb(57, 89, 160);
+        text-align: center;
       }
     }
     @media (max-width: 500px) and (min-width: 401px) {
       .container {
-        padding-top: 40px;
+        padding-top: 15px;
+      }
+      .assignaments-title{
+        position: relative;
+        background-color: rgb(57, 89, 160);
+        padding: 5px;
+        color: aliceblue;
+        width: 120px;
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 12px 12px 0px 0px !important;
+      }
+      .list-group-item{
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 5px !important;
+      }
+    
+      .title-day-selected{
+        position: relative;
+        left: 0px;
+        background-color: rgb(57, 89, 160);
+        width: 100%;
+        padding: 2px;
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 10px !important;
+      }
+      .title-day-selected > h6{
+        font-size: 15px;
+        font: bold;
+        color: aliceblue;
+      }
+      .logo-card{
+        width: 25%;
+        height: 100px;
+        border-right: 2px solid rgb(57, 89, 160);
+        text-align: center;
       }
     }
     @media (max-width: 630px) and (min-width: 501px) {
       .container {
-        padding-top: 50px;
+        padding-top: 15px;
+      }
+      .assignaments-title{
+        position: relative;
+        background-color: rgb(57, 89, 160);
+        padding: 5px;
+        color: aliceblue;
+        width: 120px;
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 12px 12px 0px 0px !important;
+      }
+      .list-group-item{
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 5px !important;
+      }
+    
+      .title-day-selected{
+        position: relative;
+        left: 0px;
+        background-color: rgb(57, 89, 160);
+        width: 100%;
+        padding: 2px;
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 10px !important;
+      }
+      .title-day-selected > h6{
+        font-size: 15px;
+        font: bold;
+        color: aliceblue;
+      }
+      .logo-card{
+        width: 25%;
+        height: 100px;
+        border-right: 2px solid rgb(57, 89, 160);
+        text-align: center;
       }
     }

@@ -3,7 +3,6 @@ import { FullCalendarModule } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
 import { EventSesrvice } from '../../services/calendar/event.service';
 
-
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -19,19 +18,29 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     this.calendarOptions = {
+      locale: 'Es',
       editable: true,
       eventLimit: false,
       header: {
-        left: 'prev,next',
+        left: 'prev',
         center: 'title',
-        right: ''
+        right: 'next'
       },
-      events: []
+      events: [],
+      themeSystem: 'bootstrap3',
+      contentHeight: 'auto',
+      views: {
+        month: {
+          titleFormat: 'MMMM YYYY'
+        }
+      },
+      fixedWeekCount: false
     };
+    this.loadevents();
   }
   loadevents() {
     this.eventService.getEvents().subscribe(data => {
-      this.events = data;
+      this.calendarOptions.events = data;
     });
   }
   clickButton(model: any) {
@@ -60,7 +69,6 @@ export class CalendarComponent implements OnInit {
         start: model.event.start,
         end: model.event.end,
         title: model.event.title
-        // other params
       },
       duration: {
         _data: model.duration._data
@@ -68,5 +76,4 @@ export class CalendarComponent implements OnInit {
     };
     this.displayEvent = model;
   }
-
 }

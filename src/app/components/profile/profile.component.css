@@ -1,6 +1,6 @@
 .list-group-item{
   box-shadow: 0px 0px 10px 0px #888888;
-  border-radius: 12px !important;
+  border-radius: 5px !important;
 }
 
 @media (max-width: 2046px) and (min-width: 1023px) {
@@ -46,7 +46,7 @@
 }
 @media (max-width: 374px) and (min-width: 321px) {
   .container {
-    padding-top: 25px;
+    padding-top: 15px;
   }
   .profile-userpic img {
     float: none;
@@ -59,7 +59,7 @@
 }
 @media (max-width: 400px) and (min-width: 375px) {
   .container {
-    padding-top: 70px;
+    padding-top: 15px;
   }
   .profile-userpic img {
     float: none;
@@ -72,7 +72,7 @@
 }
 @media (max-width: 500px) and (min-width: 401px) {
   .container {
-    padding-top: 40px;
+    padding-top: 15px;
   }
   .profile-userpic img {
     float: none;
@@ -85,7 +85,7 @@
 }
 @media (max-width: 630px) and (min-width: 501px) {
   .container {
-    padding-top: 50px;
+    padding-top: 15px;
   }
 
   .profile-userpic img {

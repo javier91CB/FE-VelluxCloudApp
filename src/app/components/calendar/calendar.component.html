@@ -1,21 +1,23 @@
 
     <div class="container">
         <div>
-
+            <div class="assignaments-title">
+                Asignaciones
+            </div>
         <ul class="list-group">
           <li class="list-group-item ">
                 <div class="card-body">
                         <div>
-                                <a (click)="loadevents()"> loadevents</a>
                                 <div *ngIf="calendarOptions">
-                                    <ng-fullcalendar 
+                                    <ng-fullcalendar
                                     #ucCalendar [options]="calendarOptions" 
                                     (eventClick)="eventClick($event.detail)" 
                                     (eventDrop)="updateEvent($event.detail)"
                                     (eventResize)="updateEvent($event.detail)" 
                                     (dayClick)="dayClick($event.detail)" 
                                     (clickButton)="clickButton($event.detail)" 
-                                    [(eventsModel)]="events">
+                                    [(eventsModel)]="events"
+                                    >
                                     </ng-fullcalendar>
                                 </div>
                         </div>
@@ -23,6 +25,100 @@
           </li>
         </ul>
     </div>
-
+    <div class="title-day-selected">
+           <h6>28/06/2018</h6>
     </div>
+    <br>
+    <br>
+    <br>
+    <div class="cards-itmes">
+            <ul class="list-group">
+                    <li class="list-group-item ">
+                            <div class="card-body">
+                                    <div align="center" >
+                                            <div class="profile-content center-block" align="left" >
+                                                   <div class="logo-card">
+                                                        <h5>08:30</h5>
+                                                        <div class="icon-card">
+                                                                <img src="../../../assets/icons/cards/health.png">
+                                                        </div>
+                                                   </div>
+                                                   <div class="simple-information">
+                                                        <h4>
+                                                                CineColombia Gran Estación
+                                                        </h4>
+                                                        <small>
+                                                            <i class="glyphicon glyphicon-map-marker">
+                                                            </i>
+                                                            <cite title="San Francisco, USA">&nbsp;&nbsp;Bogotá, Colombia 
+                                                            </cite>
+                                                        </small>
+                                                        <div class="state-card">
+                                                            Aprobado
+                                                        </div>
+                                                        <div class="schedule-card">
+                                                                <i class="glyphicon glyphicon-header">
+                                                                </i>
+                                                                <span> 
+                                                                  Incapacidad
+                                                                </span>
+                                                        </div>
+                                                        <br>
+                                                        <div class="timeline-card">
+                                                             <i class="glyphicon glyphicon-time">
+                                                             </i>
+                                                             08:30 ---------------------------- 12:30
+                                                        </div>
+                                                   </div>
+                                                   
+                                            </div>
+                            </div>
+                            </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item ">
+                        <div class="card-body">
+                                <div align="center" >
+                                        <div class="profile-content center-block" align="left" >
+                                               <div class="logo-card">
+                                                    <h5>12:30</h5>
+                                                    <div class="icon-card">
+                                                            <img src="../../../assets/icons/cards/schedule.png">
+                                                    </div>
+                                               </div>
+                                               <div class="simple-information">
+                                                    <h4>
+                                                            CineColombia Gran Estación
+                                                    </h4>
+                                                    <small>
+                                                        <i class="glyphicon glyphicon-map-marker">
+                                                        </i>
+                                                        <cite title="San Francisco, USA">&nbsp;&nbsp;Bogotá, Colombia 
+                                                        </cite>
+                                                    </small>
+                                                    <div class="state-card">
+                                                        En curso
+                                                    </div>
+                                                    <div class="schedule-card">
+                                                        <i class="glyphicon glyphicon-book">
+                                                        </i>
+                                                        <span> 
+                                                          Turno 1
+                                                        </span>
+                                                   </div>
+                                                   <br>
+                                                   <div class="timeline-card">
+                                                        <i class="glyphicon glyphicon-time">
+                                                        </i>
+                                                        12:30 ---------------------------- 17:30
+                                                   </div>
+                                               </div>
+                                        </div>
+                        </div>
+                        </div>
+                </li>
+            </ul>
+    </div>
+    </div>
+    <br><br><br>
     

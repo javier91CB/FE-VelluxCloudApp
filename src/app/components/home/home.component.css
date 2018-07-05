@@ -4,7 +4,7 @@
 
 .list-group-item{
   box-shadow: 0px 0px 10px 0px #888888;
-  border-radius: 12px !important;
+  border-radius: 5px !important;
 }
 
 .carousel-size{
@@ -30,6 +30,7 @@
     }
     .logo-login{
       width: 15%;
+      left: 10%;
     }
     .welcome-user{
       width: calc(80%);
@@ -50,6 +51,7 @@
   }
   .logo-login{
     width: 30%;
+    left: 10%;
   }
   .welcome-user{
     width: calc(80%);
@@ -82,7 +84,7 @@
   }
   @media (max-width: 374px) and (min-width: 321px) {
     .container {
-      padding-top: 25px;
+      padding-top: 15px;
     }
     .logo-login{
       width: 30%;
@@ -100,7 +102,7 @@
   }
   @media (max-width: 400px) and (min-width: 375px) {
     .container {
-      padding-top: 70px;
+      padding-top: 15px;
     }
     .logo-login{
       width: 30%;
@@ -118,7 +120,7 @@
   }
   @media (max-width: 500px) and (min-width: 401px) {
     .container {
-      padding-top: 40px;
+      padding-top: 15px;
     }
     .logo-login{
       width: 30%;
@@ -136,7 +138,7 @@
   }
   @media (max-width: 630px) and (min-width: 501px) {
     .container {
-      padding-top: 50px;
+      padding-top: 15px;
     }
     .logo-login{
       width: 30%;

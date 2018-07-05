@@ -10,8 +10,10 @@ debuger;
         const dateObj = new Date();
         const yearMonth = dateObj.getUTCFullYear() + '-' + (dateObj.getUTCMonth() + 1);
         const data: any = [{
-            title: 'All Day Event',
-            start: yearMonth + '-01'
+            title: 'schedule',
+            start: new Date(),
+            end: new Date(),
+            schedule: 'Turno 1'
         },
         {
             title: 'Long Event',
