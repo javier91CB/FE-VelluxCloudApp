@@ -1,0 +1,89 @@
+
+@media (max-width: 1000px) and (min-width: 0px) {
+  .container {
+    padding-top: 10px;
+  }
+  table {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    text-align: center;
+    background-color: white;
+    font-size: 10px;
+  }
+}
+@media (max-width: 2046px) and (min-width: 1447px) {
+  .container {
+    padding-top: 100px;
+  }
+  table {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    text-align: center;
+    background-color: white;
+    font-size: 20px;
+  }
+}
+@media (max-width: 1446px) and (min-width: 760px) {
+  .container {
+    padding-top: 100px;
+  }
+  table {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    text-align: center;
+    background-color: whites;
+    font-size: 15px;
+  }
+}
+
+th{
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+tr{
+  border-bottom: 1px solid #ddd;
+  line-height: 18px;
+}
+.card-body{
+  background-color: transparent;
+}
+.list-group-item{
+  box-shadow: 0px 0px 10px 0px #888888;
+  border-radius: 5px !important;
+}
+
+.center {
+  text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+  position: relative;
+  left: 0px;
+  right: 0px;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 5px 10px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+}
+
+.pagination a.active {
+  background-color: rgb(57, 89, 160);
+  color: white;
+  border: 1px solid  rgb(57, 89, 160);
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+  

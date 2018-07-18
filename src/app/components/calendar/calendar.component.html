@@ -4,121 +4,88 @@
             <div class="assignaments-title">
                 Asignaciones
             </div>
-        <ul class="list-group">
-          <li class="list-group-item ">
-                <div class="card-body">
-                        <div>
-                                <div *ngIf="calendarOptions">
-                                    <ng-fullcalendar
-                                    #ucCalendar [options]="calendarOptions" 
-                                    (eventClick)="eventClick($event.detail)" 
-                                    (eventDrop)="updateEvent($event.detail)"
-                                    (eventResize)="updateEvent($event.detail)" 
-                                    (dayClick)="dayClick($event.detail)" 
-                                    (clickButton)="clickButton($event.detail)" 
-                                    [(eventsModel)]="events"
-                                    >
-                                    </ng-fullcalendar>
-                                </div>
-                        </div>
-                </div>
-          </li>
-        </ul>
+        <div class="cards-itmes-calendar">
+                <ul class="list-group">
+                        <li class="list-group-item ">
+                              <div class="card-body">
+                                      <div>
+                                              <div *ngIf="calendarOptions">
+                                                  <ng-fullcalendar class="calendar-card"
+                                                  #ucCalendar [options]="calendarOptions" 
+                                                  (eventResize)="updateEvent($event.detail)" 
+                                                  (dayClick)="dayClick($event.detail)" 
+                                                  (clickButton)="clickButton($event.detail)" 
+                                                  [(eventsModel)]="events"
+                                                  >
+                                                  </ng-fullcalendar>
+                                              </div>
+                                      </div>
+                              </div>
+                        </li>
+                </ul>
+        </div>
+    </div> 
+    <div class="title-day-selected" *ngIf="dateSelected != null">
+           <h6>{{dateSelected}}</h6>
     </div>
-    <div class="title-day-selected">
-           <h6>28/06/2018</h6>
-    </div>
     <br>
-    <br>
-    <br>
-    <div class="cards-itmes">
+    <div class="cards-itmes" *ngIf="dateSelected != null">
             <ul class="list-group">
-                    <li class="list-group-item ">
+                    <li class="list-group-item" *ngFor = "let card of infoCards">
                             <div class="card-body">
                                     <div align="center" >
                                             <div class="profile-content center-block" align="left" >
                                                    <div class="logo-card">
-                                                        <h5>08:30</h5>
+                                                        <h5>{{card.startDateTimeLocal}}</h5>
                                                         <div class="icon-card">
-                                                                <img src="../../../assets/icons/cards/health.png">
+                                                                <img src= {{card.image}}>
                                                         </div>
                                                    </div>
                                                    <div class="simple-information">
                                                         <h4>
-                                                                CineColombia Gran Estación
+                                                                {{card.site}}
                                                         </h4>
                                                         <small>
                                                             <i class="glyphicon glyphicon-map-marker">
                                                             </i>
-                                                            <cite title="San Francisco, USA">&nbsp;&nbsp;Bogotá, Colombia 
+                                                            <cite title="San Francisco, USA">&nbsp;&nbsp;{{card.location}}
                                                             </cite>
                                                         </small>
-                                                        <div class="state-card">
-                                                            Aprobado
+                                                        <div class="state-card" 
+                                                             [style.color] = "card.status == 'Aprobado' ? 'Green' : card.status == 'Pendiente' ? 'rgb(123, 106, 85)' : card.status == 'Rechazado' ? 'rgb(173, 2, 2)' : card.status == 'En curso' ? 'rgb(57, 89, 160)' : ''"
+                                                             [style.border-color] = "card.status == 'Aprobado' ? 'Green' : card.status == 'Pendiente' ? 'rgb(123, 106, 85)' : card.status == 'Rechazado' ? 'rgb(173, 2, 2)' : card.status == 'En curso' ? 'rgb(57, 89, 160)' : ''"
+                                                        >
+                                                            {{card.status}}
                                                         </div>
                                                         <div class="schedule-card">
-                                                                <i class="glyphicon glyphicon-header">
+                                                                <i class="glyphicon glyphicon-list-alt">
                                                                 </i>
                                                                 <span> 
-                                                                  Incapacidad
+                                                                {{card.typeCard}}
                                                                 </span>
                                                         </div>
-                                                        <br>
+                                                        <div *ngIf="card.place != null" class="schedule-card">
+                                                                <i class="glyphicon glyphicon-flag">
+                                                                </i>
+                                                                <span> 
+                                                                {{card.place}}
+                                                                </span>
+                                                        </div>
+                                                        <div *ngIf="card.place === null">
+                                                                <p></p>
+                                                        </div>
                                                         <div class="timeline-card">
                                                              <i class="glyphicon glyphicon-time">
                                                              </i>
-                                                             08:30 ---------------------------- 12:30
+                                                             {{card.startDateTimeLocal}} - {{card.endDateTimeLocal}}
                                                         </div>
-                                                   </div>
-                                                   
-                                            </div>
-                            </div>
-                            </div>
-                    </li>
-                    <br>
-                    <li class="list-group-item ">
-                        <div class="card-body">
-                                <div align="center" >
-                                        <div class="profile-content center-block" align="left" >
-                                               <div class="logo-card">
-                                                    <h5>12:30</h5>
-                                                    <div class="icon-card">
-                                                            <img src="../../../assets/icons/cards/schedule.png">
-                                                    </div>
-                                               </div>
-                                               <div class="simple-information">
-                                                    <h4>
-                                                            CineColombia Gran Estación
-                                                    </h4>
-                                                    <small>
-                                                        <i class="glyphicon glyphicon-map-marker">
-                                                        </i>
-                                                        <cite title="San Francisco, USA">&nbsp;&nbsp;Bogotá, Colombia 
-                                                        </cite>
-                                                    </small>
-                                                    <div class="state-card">
-                                                        En curso
-                                                    </div>
-                                                    <div class="schedule-card">
-                                                        <i class="glyphicon glyphicon-book">
-                                                        </i>
-                                                        <span> 
-                                                          Turno 1
-                                                        </span>
-                                                   </div>
-                                                   <br>
-                                                   <div class="timeline-card">
-                                                        <i class="glyphicon glyphicon-time">
-                                                        </i>
-                                                        12:30 ---------------------------- 17:30
-                                                   </div>
-                                               </div>
+                                                </div>
                                         </div>
-                        </div>
-                        </div>
-                </li>
+                                </div>
+                         </div>
+                    </li>
             </ul>
     </div>
     </div>
-    <br><br><br>
+    <br><br>
     

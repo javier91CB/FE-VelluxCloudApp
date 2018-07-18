@@ -9,61 +9,48 @@ debuger;
     public getEvents(): Observable<any> {
         const dateObj = new Date();
         const yearMonth = dateObj.getUTCFullYear() + '-' + (dateObj.getUTCMonth() + 1);
-        const data: any = [{
-            title: 'schedule',
+        const data: any = [
+        {
+            start: new Date().setDate(10),
+            end: new Date().setDate(10),
+            allDay: false,
+            description: 'Turno 1'
+        },
+        {
             start: new Date(),
             end: new Date(),
-            schedule: 'Turno 1'
+            allDay: false,
+            description: 'Turno 1'
         },
         {
-            title: 'Long Event',
-            start: yearMonth + '-07',
-            end: yearMonth + '-10'
+            start: new Date().setDate(7),
+            end: new Date().setDate(7),
+            allDay: false,
+            description: 'Turno 1'
         },
         {
-            id: 999,
-            title: 'Repeating Event',
-            start: yearMonth + '-09T16:00:00'
+            start: new Date().setDate(6),
+            end: new Date().setDate(6),
+            allDay: false,
+            description: 'Turno 1'
         },
         {
-            id: 999,
-            title: 'Repeating Event',
-            start: yearMonth + '-16T16:00:00'
+            start: new Date().setDate(5),
+            end: new Date().setDate(5),
+            allDay: false,
+            description: 'Turno 1'
         },
         {
-            title: 'Conference',
-            start: yearMonth + '-11',
-            end: yearMonth + '-13'
+            start: new Date().setDate(4),
+            end: new Date().setDate(4),
+            allDay: false,
+            description: 'Turno 1'
         },
         {
-            title: 'Meeting',
-            start: yearMonth + '-12T10:30:00',
-            end: yearMonth + '-12T12:30:00'
-        },
-        {
-            title: 'Lunch',
-            start: yearMonth + '-12T12:00:00'
-        },
-        {
-            title: 'Meeting',
-            start: yearMonth + '-12T14:30:00'
-        },
-        {
-            title: 'Happy Hour',
-            start: yearMonth + '-12T17:30:00'
-        },
-        {
-            title: 'Dinner',
-            start: yearMonth + '-12T20:00:00'
-        },
-        {
-            title: 'Birthday Party',
-            start: yearMonth + '-13T07:00:00'
-        },
-        {
-            title: 'Click for Google',
-            url: 'http://google.com/',
-            start: yearMonth + '-28'
+            start: new Date().setDate(3),
+            end: new Date().setDate(3),
+            allDay: false,
+            description: 'Turno 1'
         }];
         return of(data);
     }

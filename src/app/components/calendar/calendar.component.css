@@ -11,7 +11,7 @@
   width: 100%;
 }
 .icon-card img{
-  width: 65%;
+  width: 75%;
 }
 .state-card{
   position: absolute;
@@ -30,10 +30,34 @@
   position: absolute;
   top: 100%;
 }
-  /* @media (max-width: 2046px) and (min-width: 1447px) {
-      
+
+.list-group-item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.fc-day:first-child > div:first-child {
+  position: relative;
+}
+
+.fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
+  float: right;
+  width: 100%;
+  text-align: center;
+}
+
+.cards-itmes-calendar {
+  width: 100%;
+  position: relative;
+  left: 0;
+}
+
+@media (max-width: 2046px) and (min-width: 1447px) {
+    .container {
+      padding-top: 150px;
+      width: 100%;
+    }
       .list-group{
-        width: 45%;
+        width: 55%;
         position: relative;
         left: 0;
       }
@@ -54,6 +78,7 @@
       .cards-itmes{
         position: absolute;
        left: 50%;
+       width:100%;
       }
       .assignaments-title{
         position: absolute;
@@ -69,7 +94,11 @@
         box-shadow: 0px 0px 10px 0px #888888;
         border-radius: 5px !important;
       }
-    
+      .list-group{
+        width: 40%;
+        position: relative;
+        left: 0;
+      }
       .title-day-selected{
         text-align: center;
         font-size: 15px;
@@ -93,11 +122,14 @@
         border-right: 2px solid rgb(57, 89, 160);
         text-align: center;
       }
+   }
+   @media (max-width: 1446px) and (min-width: 1023px) {
+    .container {
+      padding-top: 150px;
+      width: 100%;
     }
-   */
-    /* @media (max-width: 1446px) and (min-width: 1023px) {
       .list-group{
-        width: 35%;
+        width: 40%;
         position: absolute;
         left: 10%;
       }
@@ -157,22 +189,22 @@
         border-right: 2px solid rgb(57, 89, 160);
         text-align: center;
       }
-    } */
+    }
 
     @media (max-width: 1022px) and (min-width: 631px) {
       .container {
         padding-top: 150px;
-        width: 65%;
+        width: 100%;
       }
       .list-group{
-        width: 45%;
-        position: relative;
+        width: 40%;
+        position: absolute;
       }
       .title-day-selected{
-        position: relative;
+        position: absolute;
         left: calc(54%);
         background-color: rgb(57, 89, 160);
-        width: calc(39%);
+        width: calc(40%);
         text-align: center;
         box-shadow: 0px 0px 10px 0px #888888;
         border-radius: 10px !important;
@@ -183,7 +215,7 @@
         color: aliceblue;
       }
       .cards-itmes{
-        position: relative;
+       position: absolute;
        left: 53%;
       }
       .assignaments-title{
@@ -191,7 +223,7 @@
         background-color: rgb(57, 89, 160);
         padding: 5px;
         color: aliceblue;
-        width: calc(50%);
+        width: calc(20%);
         text-align: center;
         box-shadow: 0px 0px 10px 0px #888888;
         border-radius: 12px 12px 0px 0px !important;
@@ -204,6 +236,12 @@
       .title-day-selected{
         text-align: center;
         font-size: 15px;
+      }
+      .simple-information{
+        position: absolute;
+        top: 20px;
+        left: 29%;
+        width: calc(200px);
       }
       .state-card{
         position: absolute;

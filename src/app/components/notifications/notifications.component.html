@@ -1,3 +1,56 @@
 <div class="container">
-        <p> jdhjslhhasdasd</p>
+  <ul class="list-group">
+      <li class="list-group-item ">
+            <div class="card-body">
+  <table id="myTable" datatable class="row-border hover">
+    <thead>
+      <tr>
+        <th onclick="sortTable(0)">Servicio</th>
+        <th onclick="sortTable(1)">Responsable</th>
+        <th onclick="sortTable(2)">Llamados</th>
+        <th onclick="sortTable(3)">Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let register of registerServices">
+        <td>{{register.Service}}</td>
+        <td>{{register.Owner}}</td>
+        <td>
+          <table>
+            <thead>
+              <th [style.border] = "register.serviceCall != null ? 'none':''" ><i class="glyphicon glyphicon-edit"></i></th>
+              <th [style.border] = "register.serviceBill != null ? 'none':''"><i class="glyphicon glyphicon-usd"></i></th>
+            </thead>
+              <tbody>
+                <tr [style.border] = "register.serviceCall != null || register.serviceBill != null ? 'none':''">
+                  <td>{{register.serviceCall}}</td>
+                  <td>{{register.serviceBill}}</td>
+                </tr>
+              </tbody>
+          </table>
+        </td>
+        <td>
+          <div>
+              {{register.Timer}}
+                <i [ngClass]="
+                   register.Status === 1 ? 'glyphicon glyphicon-ok-circle' : register.Status === 2 ? 'glyphicon glyphicon-exclamation-sign' :  register.Status === 3 ? 'glyphicon glyphicon-remove-circle' : ''"
+                   [style.color] = "register.Status === 1 ? 'Green' : register.Status === 2 ? '#FAD201' :  register.Status === 3 ? 'rgb(173, 2, 2)' : ''"
+                >
+                </i>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="paginator" class="center">
+      <div class="pagination">
+          <a href="#">❮</a>
+          <a href="#" class="active">1</a>
+          <a href="#">2</a>
+          <a href="#">❯</a>
+      </div>
+  </div>
+</div>
+</li>
+</ul>
 </div>

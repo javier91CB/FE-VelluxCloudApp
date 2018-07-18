@@ -19,13 +19,15 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/velluxicon.ico",
+              "src/assets",
+			        "src/web.config"
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
@@ -74,10 +76,13 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+             
+            ],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/velluxicon.ico",
+              "src/assets",
+			  "web.config"
             ]
           }
         },

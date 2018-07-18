@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {Ng2CarouselamosModule} from 'ng2-carouselamos';
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppComponent } from './app.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
@@ -43,7 +44,8 @@ import { EventSesrvice } from './services/calendar/event.service';
     HttpClientModule,
     AppRoutingModule,
     Ng2CarouselamosModule,
-    FullCalendarModule
+    FullCalendarModule,
+    DataTablesModule
   ],
   providers: [
     EventSesrvice

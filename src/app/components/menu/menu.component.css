@@ -32,6 +32,10 @@
     
 }
 
+.center {
+    text-align: center;
+}
+
 @media (max-width: 320px) and (min-width: 120px) {
     ._navbar-icon-menu-ul li {
         width: 60px;
@@ -47,10 +51,13 @@
 
     .btn-radius-circular{
         display:block;
+        position: relative;
         height: 50px;
         width: 50px;
         border-radius: 50%;
-        background-color: rgb(57, 89, 160);
+        background-color: rgb(57, 89, 160);/*rgb(57, 89, 160);*/
+        border-color: transparent;
+        /*background-image: url('../../../assets/icons/home1.png'); */
     }
     .list-menu-admin{
         display: none;
@@ -81,6 +88,9 @@
         width: 50px;
         border-radius: 50%;
         background-color: rgb(57, 89, 160);
+        border-color: transparent;
+        /*background-image: url('../../../assets/icons/home1.png'); */
+        align-items: center;
     }
     .list-menu-admin{
         display: none;
@@ -111,6 +121,8 @@
         width: 50px;
         border-radius: 50%;
         background-color: rgb(57, 89, 160);
+        border-color: transparent;
+        /*background-image: url('../../../assets/icons/home1.png'); */
     }
     .list-menu-admin{
         display: none;
@@ -140,6 +152,8 @@
         width: 50px;
         border-radius: 50%;
         background-color: rgb(57, 89, 160);
+        border-color: transparent;
+        /*background-image: url('../../../assets/icons/home1.png'); */
     }
     .list-menu-admin{
         display: none;
@@ -169,6 +183,8 @@
         width: 50px;
         border-radius: 50%;
         background-color: rgb(57, 89, 160);
+        border-color: transparent;
+        /*background-image: url('../../../assets/icons/home1.png'); */
     }  
     .list-menu-admin{
         display: none;
