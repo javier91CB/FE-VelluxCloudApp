@@ -156,7 +156,9 @@ hr.fc-divider {
     margin: 0;
     padding: 0 0 2px;
     border-width: 1px 0;
+
 }
+
 .fc-bg table, .fc-row .fc-bgevent-skeleton table, .fc-row .fc-highlight-skeleton table {
     height: calc(50px);
 }
@@ -174,6 +176,16 @@ hr.fc-divider {
 @media (max-width: 400px) and (min-width: 375px) {
   .fc-bg table, .fc-row .fc-bgevent-skeleton table, .fc-row .fc-highlight-skeleton table {
     height: calc(45px);
+  }
+}
+@media (max-width: 648px) and (min-width: 401px) {
+  .fc-bg table, .fc-row .fc-bgevent-skeleton table, .fc-row .fc-highlight-skeleton table {
+    height: calc(50px);
+  }
+}
+@media (max-width: 786px) and (min-width: 649px) {
+  .fc-bg table, .fc-row .fc-bgevent-skeleton table, .fc-row .fc-highlight-skeleton table {
+    height: calc(38px);
   }
 }
 .fc-clear {
@@ -596,7 +608,7 @@ a.fc-more:hover {
     padding-bottom: 0.5em;
 }
 .fc-basic-view .fc-body .fc-row {
-    min-height: 4em;
+    min-height: 3em;
 }
 .fc-row.fc-rigid .fc-content-skeleton {
     position: absolute;
