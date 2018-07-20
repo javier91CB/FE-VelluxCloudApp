@@ -50,82 +50,113 @@
   left: 0;
 }
 
-@media (max-width: 2046px) and (min-width: 1447px) {
+@media (min-width: 1247px) {
     .container {
       padding-top: 150px;
+      width: 60%;
+    }
+    .list-group{
+      width: 40%;
+      position: absolute;
+      left: 10%;
+    }
+    .title-day-selected{
+      position: absolute;
+      left: calc(55%);
+      background-color: rgb(57, 89, 160);
+      width: calc(24%);
+      text-align: center;
+      box-shadow: 0px 0px 10px 0px #888888;
+      border-radius: 10px !important;
+    }
+    .title-day-selected > h6{
+      font-size: 15px;
+      font: bold;
+      color: aliceblue;
+    }
+    .cards-itmes{
+      position: absolute;
+      left: 55%;
+    }
+    .assignaments-title{
+      position: absolute;
+      background-color: rgb(57, 89, 160);
+      padding: 5px;
+      color: aliceblue;
+      width: 120px;
+      left: 27%;
+      text-align: center;
+      box-shadow: 0px 0px 10px 0px #888888;
+      border-radius: 12px 12px 0px 0px !important;
+    }
+    .list-group-item{
+      width: 340px;
+      box-shadow: 0px 0px 10px 0px #888888;
+      border-radius: 5px !important;
+      top: 30px;
+    }
+  
+    .title-day-selected{
+      text-align: center;
+      font-size: 15px;
+    }
+    .state-card{
+      position: absolute;
+      top: 55%;
+      right: 5%;
+      width: 60px;
+      height: 20px;
+      border: 2px solid green;
+      font-size: 10px;
+      text-align: center;
+      color: green;
+      padding: 0px;
+      border-radius: 10px !important;
+    }
+    .logo-card{
+      width: 25%;
+      height: 100px;
+      border-right: 2px solid rgb(57, 89, 160);
+      text-align: center;
+    }
+    .simple-information{
+      position: absolute;
+      top: 0;
+      left: 29%;
+    }
+    .icon-card{
       width: 100%;
     }
-      .list-group{
-        width: 55%;
-        position: relative;
-        left: 0;
-      }
-      .title-day-selected{
-        position: relative;
-        left: 17px;
-        background-color: rgb(57, 89, 160);
-        width: calc(365px);
-        text-align: center;
-        box-shadow: 0px 0px 10px 0px #888888;
-        border-radius: 10px !important;
-      }
-      .title-day-selected > h6{
-        font-size: 15px;
-        font: bold;
-        color: aliceblue;
-      }
-      .cards-itmes{
-        position: absolute;
-       left: 50%;
-       width:100%;
-      }
-      .assignaments-title{
-        position: absolute;
-        background-color: rgb(57, 89, 160);
-        padding: 5px;
-        color: aliceblue;
-        width: 120px;
-        text-align: center;
-        box-shadow: 0px 0px 10px 0px #888888;
-        border-radius: 12px 12px 0px 0px !important;
-      }
-      .list-group-item{
-        box-shadow: 0px 0px 10px 0px #888888;
-        border-radius: 5px !important;
-      }
-      .list-group{
-        width: 40%;
-        position: relative;
-        left: 0;
-      }
-      .title-day-selected{
-        text-align: center;
-        font-size: 15px;
-      }
-      .state-card{
-        position: absolute;
-        top: 55%;
-        right: 5%;
-        width: 60px;
-        height: 20px;
-        border: 2px solid green;
-        font-size: 10px;
-        text-align: center;
-        color: green;
-        padding: 0px;
-        border-radius: 10px !important;
-      }
-      .logo-card{
-        width: 25%;
-        height: 100px;
-        border-right: 2px solid rgb(57, 89, 160);
-        text-align: center;
-      }
+    .icon-card img{
+      width: 75%;
+    }
+    .state-card{
+      position: absolute;
+      top: calc(70%);
+      right: 5%;
+      width: 60px;
+      height: 20px;
+      border: 2px solid green;
+      font-size: 10px;
+      text-align: center;
+      color: green;
+      padding: 0px;
+      border-radius: 10px !important;
+    }
+    .timeline-card{
+      position: absolute;
+      top: 100%;
+    }
+    .cards-itmes-calendar {
+      width: 100%;
+      position: relative;
+      left: 0;
+    }
    }
-   @media (max-width: 1446px) and (min-width: 1023px) {
+   @media (max-width: 1246px) and (min-width: 1023px) {
     .container {
       padding-top: 150px;
-      width: 100%;
+      width: 80%;
     }
       .list-group{
         width: 40%;
@@ -134,9 +165,9 @@
       }
       .title-day-selected{
         position: absolute;
-        left: calc(54%);
+        left: calc(55%);
         background-color: rgb(57, 89, 160);
-        width: calc(39%);
+        width: calc(34%);
         text-align: center;
         box-shadow: 0px 0px 10px 0px #888888;
         border-radius: 10px !important;
@@ -148,7 +179,7 @@
       }
       .cards-itmes{
         position: absolute;
-       left: 50%;
+        left: 55%;
       }
       .assignaments-title{
         position: absolute;
@@ -156,6 +187,7 @@
         padding: 5px;
         color: aliceblue;
         width: 120px;
+        left: 20%;
         text-align: center;
         box-shadow: 0px 0px 10px 0px #888888;
         border-radius: 12px 12px 0px 0px !important;
@@ -226,7 +258,7 @@
       
     }
 
-    @media (max-width: 1022px) and (min-width: 631px) {
+    @media (max-width: 1022px) and (min-width: 769px) {
       .container {
         padding-top: 150px;
         width: 100%;
@@ -306,6 +338,88 @@
         left: 0;
       }
     }
+
+    @media (max-width: 768px) and (min-width: 501px) {
+      .container {
+        padding-top: 150px;
+        width: 100%;
+      }
+      .list-group{
+        width: 40%;
+        position: absolute;
+      }
+      .title-day-selected{
+        position: absolute;
+        left: calc(54%);
+        background-color: rgb(57, 89, 160);
+        width: calc(40%);
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 10px !important;
+      }
+      .title-day-selected > h6{
+        font-size: 15px;
+        font: bold;
+        color: aliceblue;
+      }
+      .cards-itmes{
+       position: absolute;
+       left: 53%;
+      }
+      .assignaments-title{
+        position: absolute;
+        background-color: rgb(57, 89, 160);
+        padding: 5px;
+        color: aliceblue;
+        width: calc(20%);
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 12px 12px 0px 0px !important;
+      }
+      
+      .list-group-item{
+        width: 340px;
+        box-shadow: 0px 0px 10px 0px #888888;
+        border-radius: 5px !important;
+        top: 30px;
+      }
+    
+      .title-day-selected{
+        text-align: center;
+        font-size: 15px;
+      }
+      .simple-information{
+        position: absolute;
+        top: px;
+        left: 29%;
+        width: 80%;
+      }
+      .state-card{
+        position: absolute;
+        top: 55%;
+        right: 20%;
+        width: 60px;
+        height: 20px;
+        border: 2px solid green;
+        font-size: 10px;
+        text-align: center;
+        color: green;
+        padding: 0px;
+        border-radius: 10px !important;
+      }
+      .logo-card{
+        width: 25%;
+        height: 100px;
+        border-right: 2px solid rgb(57, 89, 160);
+        text-align: center;
+      }
+      .cards-itmes-calendar {
+        width: 100%;
+        position: relative;
+        left: 0;
+      }
+    }
+
     @media (max-width: 320px) and (min-width: 120px) {
       .container {
         padding-top: 15px;
@@ -471,44 +585,4 @@
         text-align: center;
       }
     }
-    @media (max-width: 630px) and (min-width: 501px) {
-      .container {
-        padding-top: 15px;
-      }
-      .assignaments-title{
-        position: relative;
-        background-color: rgb(57, 89, 160);
-        padding: 5px;
-        color: aliceblue;
-        width: 120px;
-        text-align: center;
-        box-shadow: 0px 0px 10px 0px #888888;
-        border-radius: 12px 12px 0px 0px !important;
-      }
-      .list-group-item{
-        box-shadow: 0px 0px 10px 0px #888888;
-        border-radius: 5px !important;
-      }
-    
-      .title-day-selected{
-        position: relative;
-        left: 0px;
-        background-color: rgb(57, 89, 160);
-        width: 100%;
-        padding: 2px;
-        text-align: center;
-        box-shadow: 0px 0px 10px 0px #888888;
-        border-radius: 10px !important;
-      }
-      .title-day-selected > h6{
-        font-size: 15px;
-        font: bold;
-        color: aliceblue;
-      }
-      .logo-card{
-        width: 25%;
-        height: 100px;
-        border-right: 2px solid rgb(57, 89, 160);
-        text-align: center;
-      }
-    }
+   
