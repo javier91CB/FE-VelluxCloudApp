@@ -382,7 +382,6 @@
     }
 
     ._navbar-icon-menu-admin-ul {
-        list-style-type: none;
         margin: 0;
         padding-top: 0px;
         padding-right: 10px;
@@ -484,6 +483,10 @@
 
     ._navbar-icon-menu-admin-ul > li > a > ul > li {
         text-align: left;
+    }
+
+    ._navbar-icon-menu-admin-ul > li > a > ul > li > a {
+        list-style-type: circle;
     }
     
     ._navbar-icon-menu-admin-ul li{
