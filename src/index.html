@@ -188,6 +188,11 @@ hr.fc-divider {
     height: calc(38px);
   }
 }
+@media (min-width: 1247px) {
+    .fc-bg table, .fc-row .fc-bgevent-skeleton table, .fc-row .fc-highlight-skeleton table {
+    height: calc(42px);
+  } 
+}
 .fc-clear {
     clear: both;
 }
@@ -269,7 +274,8 @@ a[data-goto]:hover {
     border-top: 1;
 }
 .fc-scroller {
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: unset;
+    /* -webkit-overflow-scrolling: touch; */
 }
 .fc-icon, .fc-row.fc-rigid, .fc-time-grid-event {
     overflow: hidden;
@@ -608,7 +614,7 @@ a.fc-more:hover {
     padding-bottom: 0.5em;
 }
 .fc-basic-view .fc-body .fc-row {
-    min-height: 3em;
+    min-height: 2.5em;
 }
 .fc-row.fc-rigid .fc-content-skeleton {
     position: absolute;

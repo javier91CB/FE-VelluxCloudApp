@@ -63,9 +63,8 @@
 }
 @media (max-width: 1446px) and (min-width: 1024px) {
   .container {
-    width: 80%;
-    height: 100%;
-    padding-top: 100px;
+    padding-top: 120px;
+    width: 65%;
   }
   table {
     width: 100%;

@@ -6,9 +6,18 @@
         </a>
     </li>
     <li>
-        <a routerLink="/profile">
+        <a routerLink="/profile" ng-click="" >
             <img routerLink="/profile" class="icon-profile" src ="../assets/icons/profile_men_menu.svg">
             <h6 class="label-menu">Perfil</h6>
+                <div class="_navbar-icon-menu-more-container">
+                        <ul class="_navbar-icon-menu-more-ul">
+                                <li class="_navbar-quite"><a>Salir</a></li>
+                                <li><a>Noticias y comunicados</a></li>
+                                <li><a>Mis horas de labor</a></li>
+                                <li><a>Enlaces</a></li>
+                                <li><a>Mis mensajes</a></li>
+                            </ul>
+                </div>
         </a>
     </li>
     <li>
@@ -26,9 +35,34 @@
         </a>
     </li>
     <li class="list-menu-admin">
-        <a routerLink="/admin">
+        <a>
             <h6 class="label-menu">Administativo</h6>
         </a>
+        <div class="_navbar-icon-menu-admin-container">
+            <ul class="_navbar-icon-menu-admin-ul">
+                    <li><a>Cuentas
+                        <ul>  
+                            <li><a>Usuarios</a></li>
+                            <li><a>Perfiles</a></li>
+                        </ul>
+                        </a>
+                    </li>
+                    <li><a>Integración
+                        <ul>
+                            <li><a>Asignaciones</a></li>
+                        </ul>
+                        </a>
+                    </li>
+                    <li><a>Contenido
+                        <ul>
+                            <li><a>Comunicados</a></li>
+                            <li><a>Noticias</a></li>
+                            <li><a>Enlaces de interes</a></li>
+                        </ul>
+                        </a>
+                    </li>
+                </ul>
+       </div>
     </li>
     <li>
         <a routerLink="/full-calendar">
