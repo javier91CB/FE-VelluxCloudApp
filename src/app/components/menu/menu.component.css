@@ -301,7 +301,7 @@
     
 }
 
-@media (max-width: 1048px) and (min-width: 748px) {
+@media (max-width: 1048px) and (min-width: 749px) {
     ._navbar-icon-menu
     {
        display: inline-block;
@@ -351,7 +351,99 @@
         position: relative;
         top: -12px;
     }
+    ._navbar-icon-menu-more-container {
+        color: white;
+        display: block;
+    }
     
+    ._navbar-icon-menu-admin-container {
+        width: 100%;
+    }
+
+    ._navbar-icon-menu-admin-ul {
+        margin: 0;
+        padding-top: 0px;
+        padding-right: 10px;
+        padding-bottom: 0px;
+        padding-left: 10px;
+        overflow: hidden;
+        width: auto;
+        display: inline-block;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color:rgb(57, 89, 160);
+        position: fixed;
+        height: 115px;
+        text-align: center;
+        color: white;
+    }
+
+    ._navbar-icon-menu-more-ul {
+        list-style-type: none;
+        margin: 0;
+        padding-top: 0px;
+        padding-right: 10px;
+        padding-bottom: 0px;
+        padding-left: 10px;
+        overflow: hidden;
+        width: auto;
+        display: inline-block;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color:rgb(57, 89, 160);
+        position: fixed;
+        height: 80px;
+        text-align: center;
+        color: white;
+    }
+
+    ._navbar-icon-menu-admin-ul > li {
+        position: relative;
+        right: 33%;
+     }
+
+     ._navbar-icon-menu-admin-ul li {
+        width: 85px;
+        float: right;
+        align-items: stretch;
+        text-align: center;
+     }
+    ._navbar-icon-menu-ul li {
+        width: 85px;
+        float: right;
+        align-items: stretch;
+        text-align: center;
+        padding: 20px Calc(10px);
+    }  
+    
+    ._navbar-icon-menu-ul li a {
+        display: inline-block;
+        color:#5c5b5b;
+        text-decoration: none;  
+        size: 25px;
+        text-align: center;
+    }
+    
+    ._navbar-icon-menu-admin-ul li a ul li {
+        display: inline-block;
+        color:white;
+        font-size: 10px;
+        height: 0px;
+        padding: 10px 0px;
+    }
+
+    ._navbar-icon-menu-admin-ul > li > a > ul > li {
+        text-align: start;
+    }
+    
+    ._navbar-icon-menu-admin-ul li{
+        display: inline-block;
+        color:white;
+        height: 0px;
+        padding: 10px 0px;
+    }
 }
 
 @media (max-width: 2048px) and (min-width: 1049px) {
@@ -372,6 +464,28 @@
         width: 85%;
     } 
     
+   
+    .icon-notification{
+        width: 32px;
+        top: -10px;
+    }
+    .icon-calendar{
+        display: none;
+    }
+
+    .icon-profile{
+        display: none;
+    }
+
+    .btn-radius-circular{
+        display: none;
+    }
+
+    .icon-more{
+        position: relative;
+        top: -12px;
+    }
+
     ._navbar-icon-menu-more-container {
         color: white;
         display: block;
@@ -427,7 +541,7 @@
 
     ._navbar-icon-menu-admin-ul > li {
         position: relative;
-        right: 34%;
+        right: 33%;
      }
 
      ._navbar-icon-menu-admin-ul li {
@@ -452,27 +566,6 @@
         text-align: center;
     }
     
-    .icon-notification{
-        width: 32px;
-        top: -10px;
-    }
-    .icon-calendar{
-        display: none;
-    }
-
-    .icon-profile{
-        display: none;
-    }
-
-    .btn-radius-circular{
-        display: none;
-    }
-
-    .icon-more{
-        position: relative;
-        top: -12px;
-    }
-
     ._navbar-icon-menu-admin-ul li a ul li {
         display: inline-block;
         color:white;
@@ -482,17 +575,12 @@
     }
 
     ._navbar-icon-menu-admin-ul > li > a > ul > li {
-        text-align: left;
-    }
-
-    ._navbar-icon-menu-admin-ul > li > a > ul > li > a {
-        list-style-type: circle;
+        text-align: start;
     }
     
     ._navbar-icon-menu-admin-ul li{
         display: inline-block;
         color:white;
-        font-size: 15px;
         height: 0px;
         padding: 10px 0px;
     }
