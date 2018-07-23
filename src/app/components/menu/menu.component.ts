@@ -10,16 +10,26 @@ import { debug } from 'util';
 export class MenuComponent implements OnInit {
   showMoreSubmenu: boolean;
   showAdminSubmenu: boolean;
+  showAdminClaim: boolean;
 
   constructor(public router: Router) {}
 
   ngOnInit() {
-    this.showMoreSubmenu = true;
-    this.showAdminSubmenu = true;
+    this.showMoreSubmenu = false;
+    this.showAdminSubmenu = false;
+    this.showAdminClaim = false;
   }
 
   activeMenuMore() {
-    this.showMoreSubmenu = false;
+    if (!this.showMoreSubmenu) {
+      this.showMoreSubmenu = true;
+      if (this.showAdminClaim) {
+        this.showAdminSubmenu = true;
+      }
+    } else {
+      this.showMoreSubmenu = false;
+      this.showAdminSubmenu = false;
+    }
   }
 
   activeMenuMoreLeave() {
@@ -27,7 +37,11 @@ export class MenuComponent implements OnInit {
   }
 
   activeMenuAdmin() {
-    this.showAdminSubmenu = false;
+    if (!this.showAdminSubmenu) {
+      this.showAdminSubmenu = true;
+    } else {
+      this.showAdminSubmenu = false;
+    }
   }
 
   activeMenuAdminLeave() {

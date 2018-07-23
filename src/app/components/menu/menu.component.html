@@ -2,18 +2,8 @@
   <ul class="_navbar-icon-menu-ul">
     <li>
         <a>
-                <img class="icon-more" src ="../assets/icons/more.svg" (click)="activeMenuMore()" (mouseleave)="activeMenuMoreLeave()">
+                <img class="icon-more" src ="../assets/icons/more.svg" (click)="activeMenuMore()">
         </a>
-        <div class="_navbar-icon-menu-more-container"
-        [style.visibility]="(showMoreSubmenu == true) ? 'hidden' : 'visible' ">
-                <ul class="_navbar-icon-menu-more-ul">
-                        <li class="_navbar-quite"><a>Salir</a></li>
-                        <li><a>Noticias y comunicados</a></li>
-                        <li><a>Mis horas de labor</a></li>
-                        <li><a>Enlaces</a></li>
-                        <li><a>Mis mensajes</a></li>
-                    </ul>
-        </div>
     </li>
     <li>
         <a routerLink="/profile" ng-click="" >
@@ -35,36 +25,11 @@
             <img class="icon-notification" routerLink="/notifications" class="icon-notification" src ="../assets/icons/notificationActive.svg">
         </a>
     </li>
-    <li (click)="activeMenuAdmin()" (mouseleave)="activeMenuAdminLeave()" class="list-menu-admin">
+    <li (click)="activeMenuAdmin()" class="list-menu-admin">
         <a>
             <h6 class="label-menu">Administativo</h6>
         </a>
-        <div class="_navbar-icon-menu-admin-container"
-        [style.visibility]="(showAdminSubmenu == true) ? 'hidden' : 'visible' ">
-            <ul class="_navbar-icon-menu-admin-ul">
-                    <li><a>Cuentas
-                        <ul>  
-                            <li><a>&#9678; Usuarios</a></li>
-                            <li><a>&#9678; Perfiles</a></li>
-                        </ul>
-                        </a>
-                    </li>
-                    <li><a>Integración
-                        <ul>
-                            <li><a>&#9678; Asignaciones</a></li>
-                        </ul>
-                        </a>
-                    </li>
-                    <li><a>Contenido
-                        <ul>
-                            <li><a>&#9678; Comunicados</a></li>
-                            <li><a>&#9678; Noticias</a></li>
-                            <li><a>&#9678; Enlaces de <p>interes</p></a></li>
-                        </ul>
-                        </a>
-                    </li>
-                </ul>
-       </div>
+       
     </li>
     <li>
         <a routerLink="/full-calendar">
@@ -74,6 +39,39 @@
     </li>
   </ul>
 </div>
-
-
-  
+<div class="_navbar-icon-menu-more-container"
+[style.visibility]="(showMoreSubmenu == true) ? 'visible' : 'hidden' ">
+        <ul class="_navbar-icon-menu-more-ul">
+                <li><a>Noticias y comunicados</a></li>
+                <li><a>Mis horas de labor</a></li>
+                <li><a>Enlaces</a></li>
+                <li><a>Mis mensajes</a></li>
+                <li class="_navbar-quite"><a>Salir</a></li>
+            </ul>
+</div>
+<div class="_navbar-icon-menu-admin-container"
+[style.visibility]="(showAdminSubmenu == true) ? 'visible' : 'hidden' ">
+    <ul class="_navbar-icon-menu-admin-ul">
+            <li><a>Cuentas
+                <ul>  
+                    <li><a>&#9678; Usuarios</a></li>
+                    <li><a>&#9678; Perfiles</a></li>
+                </ul>
+                </a>
+            </li>
+            <li><a>Integración
+                <ul>
+                    <li><a>&#9678; Asignaciones</a></li>
+                </ul>
+                </a>
+            </li>
+            <li><a>Contenido
+                <ul>
+                    <li><a>&#9678; Comunicados</a></li>
+                    <li><a>&#9678; Noticias</a></li>
+                    <li><a>&#9678; Enlaces de <p>interes</p></a></li>
+                </ul>
+                </a>
+            </li>
+        </ul>
+</div>  
