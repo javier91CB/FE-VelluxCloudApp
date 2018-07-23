@@ -25,7 +25,7 @@
             <img class="icon-notification" routerLink="/notifications" class="icon-notification" src ="../assets/icons/notificationActive.svg">
         </a>
     </li>
-    <li (click)="activeMenuAdmin()" class="list-menu-admin">
+    <li *ngIf="showAdminClaim" (click)="activeMenuAdmin()" class="list-menu-admin">
         <a>
             <h6 class="label-menu">Administativo</h6>
         </a>
@@ -62,6 +62,7 @@
             <li><a>Integración
                 <ul>
                     <li><a>&#9678; Asignaciones</a></li>
+                    <li><a>&#9678; Reportes</a></li>
                 </ul>
                 </a>
             </li>

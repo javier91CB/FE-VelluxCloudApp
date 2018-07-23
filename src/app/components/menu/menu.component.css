@@ -465,6 +465,15 @@
         color: white;
         z-index: 1001;
     }
+    ._navbar-icon-menu-more-ul  li {
+        position: relative;
+        width: 85px;
+        float: left;
+        align-items: stretch;
+        text-align: center;
+        padding: 20px Calc(0px);
+        left: 35%;
+     }
 
     ._navbar-icon-menu-admin-ul > li {
         position: relative;
@@ -616,6 +625,16 @@
         z-index: 1001;
     }
 
+    ._navbar-icon-menu-more-ul  li {
+        position: relative;
+        width: 85px;
+        float: left;
+        align-items: stretch;
+        text-align: center;
+        padding: 20px Calc(0px);
+        left: 43%;
+     }
+
     ._navbar-icon-menu-admin-ul > li {
         position: relative;
         right: 33%;
@@ -755,9 +774,14 @@
         z-index: 1001;
     }
 
-    ._navbar-icon-menu-more-ul > li {
+    ._navbar-icon-menu-more-ul  li {
        position: relative;
-       right: 15%;
+       width: 85px;
+       float: left;
+       align-items: stretch;
+       text-align: center;
+       padding: 20px Calc(0px);
+       left: 53%;
     }
 
     ._navbar-icon-menu-admin-ul > li {

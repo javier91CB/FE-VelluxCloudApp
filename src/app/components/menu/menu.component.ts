@@ -17,15 +17,15 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.showMoreSubmenu = false;
     this.showAdminSubmenu = false;
-    this.showAdminClaim = false;
+    this.showAdminClaim = true;
   }
 
   activeMenuMore() {
     if (!this.showMoreSubmenu) {
-      this.showMoreSubmenu = true;
-      if (this.showAdminClaim) {
+      if (this.showAdminClaim && window.screen.width <= 414) {
         this.showAdminSubmenu = true;
       }
+      this.showMoreSubmenu = true;
     } else {
       this.showMoreSubmenu = false;
       this.showAdminSubmenu = false;
@@ -38,8 +38,9 @@ export class MenuComponent implements OnInit {
 
   activeMenuAdmin() {
     if (!this.showAdminSubmenu) {
-      this.showAdminSubmenu = true;
+        this.showAdminSubmenu = true;
     } else {
+      this.showMoreSubmenu = false;
       this.showAdminSubmenu = false;
     }
   }
