@@ -7,7 +7,7 @@
     background-color:white;
     position: fixed;
     box-shadow: 0px 0px 10px 0px #888888;
-    z-index: 99;
+    z-index: 1003;
 }
 
 .dropdown-submenu {
@@ -68,7 +68,138 @@
     .label-menu{
         display: none;
     }
+    ._navbar-icon-menu-more-admin-container { 
+        background-color: rgb(57, 89, 160);
+        width: 50%;
+        top:0px;
+        bottom:0px;
+        right: 0px;
+        z-index: 100;
+        position: fixed;
+    }
+
+   ._navbar-icon-menu-more-container {
+     color: white;
+     display: block;
+     width: 100%;
+   }
+
+._navbar-icon-menu-admin-container {
+     color: white;
+     display: block;
+     width: 100%;
+}
+
+._navbar-icon-menu-admin-ul {
+    overflow: hidden;
+    display: block;
+    background-color:rgb(57, 89, 160);
+    position: fixed;
+    bottom: 30%;
+    text-align: left;
+    color: white;
+}
+
+._navbar-icon-menu-admin-ul  {
+    padding-top: 10px;
+    padding-right: 1px;
+    padding-bottom: 10px;
+    padding-left: 1px;
+    overflow: hidden;
+    display: block;
+    background-color:rgb(57, 89, 160);
+    position: fixed;
+    bottom: 40%;
+    text-align: left;
+    color: white;
+    width: 100%;
+}
+
+._navbar-icon-menu-more-ul {
+    list-style-type: none;
+    padding-top: 10px;
+    padding-right: 1px;
+    padding-bottom: 10px;
+    padding-left: 1px;
+    overflow: hidden;
+    bottom: 10%;
+    display: block;
+    background-color:rgb(57, 89, 160);
+    position: fixed;
+    text-align: left;
+    color: white;
+    width: 100%;
+}
+
+._navbar-icon-menu-admin-ul > li > ul > li{
+    width: 100%;
+    padding-top: 5px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+    padding-left: 2px;
     
+}
+
+._navbar-icon-menu-admin-ul > li > ul > li {
+    width: 100%;
+    font-size: 10px;
+}
+
+._navbar-icon-menu-more-ul > li > a {
+    width: 100%;
+    padding-top: 5px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+}
+
+._navbar-icon-menu-admin-ul > li > ul > li > a{
+    padding-left: 20px;
+}
+
+._navbar-icon-menu-admin-ul > li >  a{
+    padding-left: 10px;
+}
+
+._navbar-icon-menu-more-ul > li > a {
+    width: 100%;
+    padding-top: 5px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+._navbar-separator {
+    width: 100%;
+    border-top: 1px solid rgb(214, 196, 196);
+}
+
+._navbar-separator-single {
+    width: 100%;
+    border-top: 1px solid rgb(214, 196, 196);
+}
+
+._navbar-quite {
+    width: 100%;
+    border-top: 1px solid rgb(214, 196, 196);
+}
+
+ ._navbar-icon-menu-ul li {
+    width: 60px;
+    float: right;
+    align-items: stretch;
+    text-align: center;
+    padding: 5px Calc(5px);
+}  
+
+._navbar-icon-menu-ul li a {
+    display: inline-block;
+    color:#5c5b5b;
+    text-decoration: none;  
+    size: 25px;
+    text-align: center;
+}
+
 }
 
 @media (max-width: 374px) and (min-width: 321px) {
@@ -102,13 +233,144 @@
     .label-menu{
         display: none;
     }
-   
+    ._navbar-icon-menu-more-admin-container { 
+        background-color: rgb(57, 89, 160);
+        width: 50%;
+        top:0px;
+        bottom:0px;
+        right: 0px;
+        z-index: 100;
+        position: fixed;
+    }
+
+   ._navbar-icon-menu-more-container {
+     color: white;
+     display: block;
+     width: 100%;
+   }
+
+._navbar-icon-menu-admin-container {
+     color: white;
+     display: block;
+     width: 100%;
+}
+
+._navbar-icon-menu-admin-ul {
+    overflow: hidden;
+    display: block;
+    background-color:rgb(57, 89, 160);
+    position: fixed;
+    bottom: 30%;
+    text-align: left;
+    color: white;
+}
+
+._navbar-icon-menu-admin-ul  {
+    padding-top: 10px;
+    padding-right: 1px;
+    padding-bottom: 10px;
+    padding-left: 1px;
+    overflow: hidden;
+    display: block;
+    background-color:rgb(57, 89, 160);
+    position: fixed;
+    bottom: 40%;
+    text-align: left;
+    color: white;
+    width: 100%;
+}
+
+._navbar-icon-menu-more-ul {
+    list-style-type: none;
+    padding-top: 10px;
+    padding-right: 1px;
+    padding-bottom: 10px;
+    padding-left: 1px;
+    overflow: hidden;
+    bottom: 10%;
+    display: block;
+    background-color:rgb(57, 89, 160);
+    position: fixed;
+    text-align: left;
+    color: white;
+    width: 100%;
+}
+
+._navbar-icon-menu-admin-ul > li > ul > li{
+    width: 100%;
+    padding-top: 5px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    
+}
+
+._navbar-icon-menu-admin-ul > li > ul > li {
+    width: 100%;
+    font-size: 10px;
+}
+
+._navbar-icon-menu-more-ul > li > a {
+    width: 100%;
+    padding-top: 5px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+}
+
+._navbar-icon-menu-admin-ul > li > ul > li > a{
+    padding-left: 20px;
+}
+
+._navbar-icon-menu-admin-ul > li >  a{
+    padding-left: 10px;
+}
+
+._navbar-icon-menu-more-ul > li > a {
+    width: 100%;
+    padding-top: 5px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+._navbar-separator {
+    width: 100%;
+    border-top: 1px solid rgb(214, 196, 196);
+}
+
+._navbar-separator-single {
+    width: 100%;
+    border-top: 1px solid rgb(214, 196, 196);
+}
+
+._navbar-quite {
+    width: 100%;
+    border-top: 1px solid rgb(214, 196, 196);
+}
+
+ ._navbar-icon-menu-ul li {
+    width: 70px;
+    float: right;
+    align-items: stretch;
+    text-align: center;
+    padding: 5px Calc(5px);
+}  
+
+._navbar-icon-menu-ul li a {
+    display: inline-block;
+    color:#5c5b5b;
+    text-decoration: none;  
+    size: 25px;
+    text-align: center;
+}
+
 }
 
 @media (max-width: 400px) and (min-width: 375px) {
     ._navbar-icon-menu-ul li {
         width: 40px;
-        line-height: 20px;
+        line-height: 15px;
         float: right;
         align-items: center;
         text-align: center;
@@ -135,53 +397,108 @@
     .label-menu{
         display: none;
     }
+
+    ._navbar-icon-menu-more-admin-container { 
+        background-color: rgb(57, 89, 160);
+        width: 50%;
+        top:0px;
+        bottom:0px;
+        right: 0px;
+        z-index: 100;
+        position: fixed;
+    }
+
    ._navbar-icon-menu-more-container {
-     position: absolute;
-     bottom:24%;
-     right: 4%;
      color: white;
      display: block;
-     width: 50%;
-     z-index: 1001;
+     width: 100%;
    }
 
 ._navbar-icon-menu-admin-container {
-    position: absolute;
-     bottom:45%;
-     right: 4%;
      color: white;
      display: block;
-     width: 50%;
-     z-index: 1002;
+     width: 100%;
 }
 
 ._navbar-icon-menu-admin-ul {
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
     overflow: hidden;
-    width: 250px;
     display: block;
     background-color:rgb(57, 89, 160);
     position: fixed;
+    bottom: 30%;
     text-align: left;
     color: white;
+}
+
+._navbar-icon-menu-admin-ul  {
+    padding-top: 10px;
+    padding-right: 1px;
+    padding-bottom: 10px;
+    padding-left: 1px;
+    overflow: hidden;
+    display: block;
+    background-color:rgb(57, 89, 160);
+    position: fixed;
+    bottom: 40%;
+    text-align: left;
+    color: white;
+    width: 100%;
 }
 
 ._navbar-icon-menu-more-ul {
     list-style-type: none;
     padding-top: 10px;
-    padding-right: 10px;
+    padding-right: 1px;
     padding-bottom: 10px;
-    padding-left: 10px;
+    padding-left: 1px;
     overflow: hidden;
-    width: 250px;
+    bottom: 10%;
     display: block;
     background-color:rgb(57, 89, 160);
     position: fixed;
     text-align: left;
     color: white;
+    width: 100%;
+}
+
+._navbar-icon-menu-admin-ul > li > ul > li{
+    width: 100%;
+    padding-top: 5px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    
+}
+
+._navbar-icon-menu-admin-ul > li > ul > li > a{
+    padding-left: 20px;
+}
+
+._navbar-icon-menu-admin-ul > li >  a{
+    padding-left: 10px;
+}
+
+._navbar-icon-menu-more-ul > li > a {
+    width: 100%;
+    padding-top: 5px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+._navbar-separator {
+    width: 100%;
+    border-top: 1px solid rgb(214, 196, 196);
+}
+
+._navbar-separator-single {
+    width: 100%;
+    border-top: 1px solid rgb(214, 196, 196);
+}
+
+._navbar-quite {
+    width: 100%;
+    border-top: 1px solid rgb(214, 196, 196);
 }
 
  ._navbar-icon-menu-ul li {
@@ -199,6 +516,8 @@
     size: 25px;
     text-align: center;
 }
+
+
 }
 
 @media (max-width: 500px) and (min-width: 401px) {
@@ -230,6 +549,138 @@
     .label-menu{
         display: none;
     }
+
+    ._navbar-icon-menu-more-admin-container { 
+        background-color: rgb(57, 89, 160);
+        width: 50%;
+        top:0px;
+        bottom:0px;
+        right: 0px;
+        z-index: 100;
+        position: fixed;
+    }
+
+   ._navbar-icon-menu-more-container {
+     color: white;
+     display: block;
+     width: 100%;
+   }
+
+._navbar-icon-menu-admin-container {
+     color: white;
+     display: block;
+     width: 100%;
+}
+
+._navbar-icon-menu-admin-ul {
+    overflow: hidden;
+    display: block;
+    background-color:rgb(57, 89, 160);
+    position: fixed;
+    bottom: 30%;
+    text-align: left;
+    color: white;
+}
+
+._navbar-icon-menu-admin-ul  {
+    padding-top: 10px;
+    padding-right: 1px;
+    padding-bottom: 10px;
+    padding-left: 1px;
+    overflow: hidden;
+    display: block;
+    background-color:rgb(57, 89, 160);
+    position: fixed;
+    bottom: 40%;
+    text-align: left;
+    color: white;
+    width: 100%;
+}
+
+._navbar-icon-menu-more-ul {
+    list-style-type: none;
+    padding-top: 10px;
+    padding-right: 1px;
+    padding-bottom: 10px;
+    padding-left: 1px;
+    overflow: hidden;
+    bottom: 10%;
+    display: block;
+    background-color:rgb(57, 89, 160);
+    position: fixed;
+    text-align: left;
+    color: white;
+    width: 100%;
+}
+
+._navbar-icon-menu-admin-ul > li > ul > li{
+    width: 100%;
+    padding-top: 5px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    
+}
+
+._navbar-icon-menu-admin-ul > li > ul > li {
+    width: 100%;
+    font-size: 10px;
+}
+
+._navbar-icon-menu-admin-ul > li > ul > li > a{
+    padding-left: 20px;
+}
+
+._navbar-icon-menu-admin-ul > li >  a{
+    padding-left: 10px;
+}
+
+._navbar-icon-menu-more-ul > li > a {
+    width: 100%;
+    padding-top: 5px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+._navbar-icon-menu-more-ul > li > a {
+    width: 100%;
+    padding-top: 5px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+}
+
+._navbar-separator {
+    width: 100%;
+    border-top: 1px solid rgb(214, 196, 196);
+}
+
+._navbar-separator-single {
+    width: 100%;
+    border-top: 1px solid rgb(214, 196, 196);
+}
+
+._navbar-quite {
+    width: 100%;
+    border-top: 1px solid rgb(214, 196, 196);
+}
+
+ ._navbar-icon-menu-ul li {
+    width: 82px;
+    float: right;
+    align-items: stretch;
+    text-align: center;
+    padding: 5px Calc(5px);
+}  
+
+._navbar-icon-menu-ul li a {
+    display: inline-block;
+    color:#5c5b5b;
+    text-decoration: none;  
+    size: 25px;
+    text-align: center;
+}
 
     
 }
@@ -607,14 +1058,14 @@
     ._navbar-icon-menu-more-ul {
         list-style-type: none;
         margin: 0;
-        padding-top: 0px;
+        padding-top: 5px;
         padding-right: 10px;
         padding-bottom: 0px;
         padding-left: 10px;
         overflow: hidden;
         width: auto;
         display: inline-block;
-        top: 70px;
+        top: 65px;
         left: 0;
         right: 0;
         background-color:rgb(57, 89, 160);
@@ -639,6 +1090,13 @@
         position: relative;
         right: 33%;
      }
+
+     ._navbar-quite {
+        top: 7px;
+        width: 100%;
+        height: 80%;
+        border-left: 2px solid rgb(214, 196, 196);
+    }
 
      ._navbar-icon-menu-admin-ul li {
         width: 85px;
@@ -756,14 +1214,14 @@
     ._navbar-icon-menu-more-ul {
         list-style-type: none;
         margin: 0;
-        padding-top: 0px;
+        padding-top: 5px;
         padding-right: 10px;
         padding-bottom: 0px;
         padding-left: 10px;
         overflow: hidden;
         width: auto;
         display: inline-block;
-        top: 70px;
+        top: 65px;
         left: 0;
         right: 0;
         background-color:rgb(57, 89, 160);
@@ -774,14 +1232,19 @@
         z-index: 1001;
     }
 
+    ._navbar-quite {
+        top: 7px;
+        width: 100%;
+        height: 80%;
+        border-left: 2px solid rgb(214, 196, 196);
+    }
     ._navbar-icon-menu-more-ul  li {
        position: relative;
-       width: 85px;
+       width: 185px;
        float: left;
        align-items: stretch;
        text-align: center;
        padding: 20px Calc(0px);
-       left: 53%;
     }
 
     ._navbar-icon-menu-admin-ul > li {
@@ -852,12 +1315,13 @@
     color:white;
 }
 
-._navbar-icon-menu-admin-ul li a ul li {
+._navbar-icon-menu-admin-ul li ul li {
     display: inline-block;
     color:white;
     font-size: 10px;
     height: 0px;
     padding: 10px 0px;
+    text-align: left;
 }
 
 

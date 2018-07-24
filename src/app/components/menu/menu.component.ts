@@ -11,6 +11,7 @@ export class MenuComponent implements OnInit {
   showMoreSubmenu: boolean;
   showAdminSubmenu: boolean;
   showAdminClaim: boolean;
+  hidenTitleAdmin: boolean;
 
   constructor(public router: Router) {}
 
@@ -18,17 +19,20 @@ export class MenuComponent implements OnInit {
     this.showMoreSubmenu = false;
     this.showAdminSubmenu = false;
     this.showAdminClaim = true;
+    this.hidenTitleAdmin = false;
   }
 
   activeMenuMore() {
     if (!this.showMoreSubmenu) {
-      if (this.showAdminClaim && window.screen.width <= 414) {
+      if (this.showAdminClaim && window.screen.width <= 566) {
         this.showAdminSubmenu = true;
+        this.hidenTitleAdmin = true;
       }
       this.showMoreSubmenu = true;
     } else {
       this.showMoreSubmenu = false;
       this.showAdminSubmenu = false;
+      this.hidenTitleAdmin = false;
     }
   }
 
