@@ -20,6 +20,13 @@ import { ReleasesComponent } from './components/releases/releases.component';
 import { AppRoutingModule } from 'src/app/app-routong.module';
 import { FullCalendarModule } from 'ng-fullcalendar';
 import { EventSesrvice } from './services/calendar/event.service';
+import { UsersComponent } from './components/users/users.component';
+import { CoWorkerComponent } from './components/co-worker/co-worker.component';
+import { SchedulerComponent } from './components/scheduler/scheduler.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { ButtonsComponent } from './components/buttons/buttons.component';
+import { ReportsComponent } from './components/reports/reports.component';
+import { QualificationComponent } from './components/tools/qualification/qualification.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +40,14 @@ import { EventSesrvice } from './services/calendar/event.service';
     NotificationsComponent,
     MessengerComponent,
     NewsComponent,
-    ReleasesComponent
+    ReleasesComponent,
+    UsersComponent,
+    CoWorkerComponent,
+    SchedulerComponent,
+    RolesComponent,
+    ButtonsComponent,
+    ReportsComponent,
+    QualificationComponent
   ],
   imports: [
     BrowserModule,

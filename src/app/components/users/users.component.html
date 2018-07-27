@@ -1,0 +1,81 @@
+<div class="container">
+  <ul class="list-group">
+   
+      <li class="list-group-item ">
+          <div class="card-body">
+              <div class="_title-users">
+                 <h4> Buscar usuario:</h4>
+              </div>
+              <div class="_add-user">
+                 <a>
+                    <i class ="glyphicon glyphicon-plus-sign"
+                    [style.color] = "'rgb(57, 89, 160)'"></i>
+                 </a> 
+               </div>
+               <br>
+               <div class="_find-user">
+                 <input type="text">
+                 <a><i class ="glyphicon glyphicon-search"
+                  [style.color] = "'Gray'"></i>
+                 </a>
+               </div>
+               <div class="_title-users">
+                  <h4> Importar usuario:</h4>
+                  <input type="file">
+               </div>
+          </div>
+          <br>
+    </li>
+    <li class="list-group-item ">
+            <div class="card-body">
+  <table id="myTable" datatable class="row-border hover">
+    
+    <tbody>
+      <!-- <tr *ngFor="let register of registerServices"> -->
+       <tr>
+        <td>
+          <table>
+            <thead>
+              <th>Jon Doe</th>
+            </thead>
+              <tbody>
+                <tr>
+                  <td>Ayudante ala sur</td>
+                </tr>
+              </tbody>
+          </table>
+        </td>
+        <td>
+          <div>
+            <a routerLink="/co-worker">
+                <i class ="glyphicon glyphicon-edit"
+                [style.color] = "'Green'">
+             </i>
+            </a>
+          </div>
+        </td>
+        <td>
+            <div >
+              <i class ="glyphicon glyphicon-remove-circle"
+                [style.color] = "'rgb(173, 2, 2)'">
+              </i>
+            </div>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="paginator" class="center">
+      <div class="pagination">
+          <a href="#">❮</a>
+          <a href="#" class="active">1</a>
+          <a href="#">2</a>
+          <a href="#">❯</a>
+      </div>
+  </div>
+</div>
+</li>
+</ul>
+<br>
+<br>
+<br>
+</div>

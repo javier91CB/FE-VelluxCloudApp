@@ -132,7 +132,7 @@ export class NotificationsComponent implements OnInit {
     serviceBill: 2
   }
     ];
-      this.paginator = false;
+      this.paginator = true;
   }
 
   ngOnInit() { }
