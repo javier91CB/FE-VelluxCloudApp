@@ -28,7 +28,11 @@ export class MenuComponent implements OnInit {
         this.showAdminSubmenu = true;
         this.hidenTitleAdmin = true;
       }
-      this.showMoreSubmenu = true;
+      if (this.showAdminClaim && window.screen.width >= 566) {
+        this.showAdminSubmenu = false;
+        this.hidenTitleAdmin = true;
+      }
+        this.showMoreSubmenu = true;
     } else {
       this.showMoreSubmenu = false;
       this.showAdminSubmenu = false;
@@ -36,20 +40,15 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  activeMenuMoreLeave() {
-    this.showMoreSubmenu = true;
-  }
-
   activeMenuAdmin() {
     if (!this.showAdminSubmenu) {
-        this.showAdminSubmenu = true;
+      this.showAdminSubmenu = true;
+      if (window.screen.width >= 566) {
+        this.showMoreSubmenu = false;
+      }
     } else {
       this.showMoreSubmenu = false;
       this.showAdminSubmenu = false;
     }
-  }
-
-  activeMenuAdminLeave() {
-    this.showAdminSubmenu = true;
   }
 }

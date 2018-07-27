@@ -39,9 +39,37 @@
     </li>
   </ul>
 </div>
-<div class="_navbar-icon-menu-more-admin-container" 
+<div *ngIf="router.url !== '/login'" class="_navbar-icon-menu-more-admin-container" 
          [style.visibility]="(showMoreSubmenu == true) ? 'visible' : 'hidden' "
          >
+
+         <div class="_navbar-icon-menu-admin-container"
+         [style.visibility]="(showAdminSubmenu == true) ? 'visible' : 'hidden' ">
+         <button *ngIf="hidenTitleAdmin" class="_navbar-separator-button">Administración</button>
+         <ul class="_navbar-icon-menu-admin-ul">
+                     <li class="_navbar-separator"><a>Cuentas</a>
+                         <ul>  
+                                 <li><a>&#9678; Usuarios</a></li>
+                                 <li><a>&#9678; Perfiles</a></li>
+                         </ul>
+                     </li>
+                         <li class="_navbar-separator"><a>Integración</a>
+                         <ul>
+                             <li><a>&#9678; Asignaciones</a></li>
+                             <li><a>&#9678; Botones</a></li>
+                             <li><a>&#9678; Reportes</a></li>
+                         </ul>
+                     </li>
+                     <li class="_navbar-separator"><a>Contenido</a>
+                         <ul>
+                             <li><a>&#9678; Comunicados</a></li>
+                             <li><a>&#9678; Noticias</a></li>
+                             <li><a>&#9678; Enlaces de interes</a></li>
+                         </ul>
+                     </li>
+                 </ul>
+         </div> 
+
         <div class="_navbar-icon-menu-more-container"
         [style.visibility]="(showMoreSubmenu == true) ? 'visible' : 'hidden' "
         >
@@ -55,34 +83,9 @@
                         </li>
                         <li><a>Enlaces</a></li>
                         <li><a>Mis mensajes</a></li>
-                        <li class="_navbar-quite"><a>Salir</a></li>
+                        <li class="_navbar-quite"><a routerLink="/login">Salir</a></li>
                     </ul>
         </div>
-        <div class="_navbar-icon-menu-admin-container"
-        [style.visibility]="(showAdminSubmenu == true) ? 'visible' : 'hidden' ">
-            <ul class="_navbar-icon-menu-admin-ul">
-                    <li *ngIf="hidenTitleAdmin" class="_navbar-separator"><a>Administración</a></li>
-                    <li class="_navbar-separator"><a>Cuentas</a>
-                        <ul>  
-                                <li><a>&#9678; Usuarios</a></li>
-                                <li><a>&#9678; Perfiles</a></li>
-                        </ul>
-                    </li>
-                        <li class="_navbar-separator"><a>Integración</a>
-                        <ul>
-                            <li><a>&#9678; Asignaciones</a></li>
-                            <li><a>&#9678; Botones</a></li>
-                            <li><a>&#9678; Reportes</a></li>
-                        </ul>
-                    </li>
-                    <li class="_navbar-separator"><a>Contenido</a>
-                        <ul>
-                            <li><a>&#9678; Comunicados</a></li>
-                            <li><a>&#9678; Noticias</a></li>
-                            <li><a>&#9678; Enlaces de interes</a></li>
-                        </ul>
-                    </li>
-                </ul>
-        </div>  
+        
 </div>
 

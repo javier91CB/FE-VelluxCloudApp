@@ -76,60 +76,65 @@
         right: 0px;
         z-index: 100;
         position: fixed;
-        overflow-y: scroll;
     }
 
-   ._navbar-icon-menu-more-container {
-     color: white;
-     display: block;
-     width: 100%;
-   }
-
-._navbar-icon-menu-admin-container {
-     color: white;
-     display: block;
-     width: 100%;
-}
-
-._navbar-icon-menu-admin-ul {
-    overflow: hidden;
-    display: block;
-    background-color:rgb(57, 89, 160);
-    position: fixed;
-    text-align: left;
-    color: white;
-}
-
-._navbar-icon-menu-admin-ul  {
-    padding-top: 10px;
-    padding-right: 1px;
-    padding-bottom: 10px;
-    padding-left: 1px;
-    overflow: hidden;
-    display: block;
-    background-color:rgb(57, 89, 160);
-    position: fixed;
-    bottom: 48%;
-    text-align: left;
-    color: white;
-    width: 100%;
-}
-
-._navbar-icon-menu-more-ul {
-    list-style-type: none;
-    padding-top: 10px;
-    padding-right: 1px;
-    padding-bottom: 10px;
-    padding-left: 1px;
-    overflow: hidden;
-    bottom: 10%;
-    display: block;
-    background-color:rgb(57, 89, 160);
-    position: fixed;
-    text-align: left;
-    color: white;
-    width: 100%;
-}
+    ._navbar-icon-menu-more-container {
+        position: relative;
+        color: white;
+         width: 100%;
+         height: 100%;
+    }
+    
+    ._navbar-icon-menu-admin-container {
+        position: relative;
+        color: white;
+        width: 100%;
+        height: Calc(100% - 320px);
+    }
+    
+    ._navbar-separator-button {
+        background-color:rgb(57, 89, 160);
+        color: white;
+        width: 100%;
+        border: none;
+        padding-top: 10px;
+        padding-right: 1px;
+        padding-bottom: 0px;
+        padding-left: 1px;
+        position: relative;
+    }
+    
+    ._navbar-icon-menu-admin-ul  {
+        padding-top: 10px;
+        padding-right: 1px;
+        padding-bottom: 10px;
+        padding-left: 1px;
+        overflow: hidden;
+        display: block;
+        background-color:rgb(57, 89, 160);
+        position: relative;
+        text-align: left;
+        color: white;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+    }
+    
+    ._navbar-icon-menu-more-ul {
+        list-style-type: none;
+        padding-top: 10px;
+        padding-right: 1px;
+        padding-bottom: 10px;
+        padding-left: 1px;
+        overflow: hidden;
+        display: block;
+        bottom: 10%;
+        background-color:rgb(57, 89, 160);
+        position: fixed;
+        text-align: left;
+        color: white;
+        width: 100%;
+    }
 
 ._navbar-icon-menu-admin-ul > li > ul > li{
     width: 100%;
@@ -138,19 +143,6 @@
     padding-bottom: 5px;
     padding-left: 2px;
     
-}
-
-._navbar-icon-menu-admin-ul > li > ul > li {
-    width: 100%;
-    font-size: 10px;
-}
-
-._navbar-icon-menu-more-ul > li > a {
-    width: 100%;
-    padding-top: 5px;
-    padding-right: 2px;
-    padding-bottom: 5px;
-    padding-left: 2px;
 }
 
 ._navbar-icon-menu-admin-ul > li > ul > li > a{
@@ -185,11 +177,11 @@
 }
 
  ._navbar-icon-menu-ul li {
-    width: 60px;
+    width: 64px;
     float: right;
     align-items: stretch;
     text-align: center;
-    padding: 5px Calc(5px);
+    padding: 10px Calc(10px);
 }  
 ._navbar-icon-menu-more-ul li ul li {
     display: inline-block;
@@ -249,58 +241,64 @@
         position: fixed;
     }
 
-   ._navbar-icon-menu-more-container {
-     color: white;
-     display: block;
-     width: 100%;
-   }
-
-._navbar-icon-menu-admin-container {
-     color: white;
-     display: block;
-     width: 100%;
-}
-
-._navbar-icon-menu-admin-ul {
-    overflow: hidden;
-    display: block;
-    background-color:rgb(57, 89, 160);
-    position: fixed;
-    bottom: 30%;
-    text-align: left;
-    color: white;
-}
-
-._navbar-icon-menu-admin-ul  {
-    padding-top: 10px;
-    padding-right: 1px;
-    padding-bottom: 10px;
-    padding-left: 1px;
-    overflow: hidden;
-    display: block;
-    background-color:rgb(57, 89, 160);
-    position: fixed;
-    bottom: 48%;
-    text-align: left;
-    color: white;
-    width: 100%;
-}
-
-._navbar-icon-menu-more-ul {
-    list-style-type: none;
-    padding-top: 10px;
-    padding-right: 1px;
-    padding-bottom: 10px;
-    padding-left: 1px;
-    overflow: hidden;
-    bottom: 10%;
-    display: block;
-    background-color:rgb(57, 89, 160);
-    position: fixed;
-    text-align: left;
-    color: white;
-    width: 100%;
-}
+    ._navbar-icon-menu-more-container {
+        position: relative;
+        color: white;
+         width: 100%;
+         height: 100%;
+    }
+    
+    ._navbar-icon-menu-admin-container {
+        position: relative;
+        color: white;
+        width: 100%;
+        height: Calc(100% - 320px);
+        
+    }
+    
+    ._navbar-separator-button {
+        background-color:rgb(57, 89, 160);
+        color: white;
+        width: 100%;
+        border: none;
+        padding-top: 10px;
+        padding-right: 1px;
+        padding-bottom: 0px;
+        padding-left: 1px;
+        position: relative;
+    }
+    
+    ._navbar-icon-menu-admin-ul  {
+        padding-top: 10px;
+        padding-right: 1px;
+        padding-bottom: 10px;
+        padding-left: 1px;
+        overflow: hidden;
+        display: block;
+        background-color:rgb(57, 89, 160);
+        position: relative;
+        text-align: left;
+        color: white;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+    }
+    
+    ._navbar-icon-menu-more-ul {
+        list-style-type: none;
+        padding-top: 10px;
+        padding-right: 1px;
+        padding-bottom: 10px;
+        padding-left: 1px;
+        overflow: hidden;
+        display: block;
+        bottom: 10%;
+        background-color:rgb(57, 89, 160);
+        position: fixed;
+        text-align: left;
+        color: white;
+        width: 100%;
+    }
 
 ._navbar-icon-menu-admin-ul > li > ul > li{
     width: 100%;
@@ -309,19 +307,6 @@
     padding-bottom: 5px;
     padding-left: 2px;
     
-}
-
-._navbar-icon-menu-admin-ul > li > ul > li {
-    width: 100%;
-    font-size: 10px;
-}
-
-._navbar-icon-menu-more-ul > li > a {
-    width: 100%;
-    padding-top: 5px;
-    padding-right: 2px;
-    padding-bottom: 5px;
-    padding-left: 2px;
 }
 
 ._navbar-icon-menu-admin-ul > li > ul > li > a{
@@ -354,6 +339,14 @@
     width: 100%;
     border-top: 1px solid rgb(214, 196, 196);
 }
+
+ ._navbar-icon-menu-ul li {
+    width: 72px;
+    float: right;
+    align-items: stretch;
+    text-align: center;
+    padding: 10px Calc(10px);
+}  
 ._navbar-icon-menu-more-ul li ul li {
     display: inline-block;
     color:white;
@@ -361,14 +354,6 @@
     height: 0px;
     padding: 5px 20px;
 }
- ._navbar-icon-menu-ul li {
-    width: 70px;
-    float: right;
-    align-items: stretch;
-    text-align: center;
-    padding: 5px Calc(5px);
-}  
-
 ._navbar-icon-menu-ul li a {
     display: inline-block;
     color:#5c5b5b;
@@ -420,58 +405,64 @@
         position: fixed;
     }
 
-   ._navbar-icon-menu-more-container {
-     color: white;
-     display: block;
-     width: 100%;
-   }
-
-._navbar-icon-menu-admin-container {
-     color: white;
-     display: block;
-     width: 100%;
-}
-
-._navbar-icon-menu-admin-ul {
-    overflow: hidden;
-    display: block;
-    background-color:rgb(57, 89, 160);
-    position: fixed;
-    bottom: 30%;
-    text-align: left;
-    color: white;
-}
-
-._navbar-icon-menu-admin-ul  {
-    padding-top: 10px;
-    padding-right: 1px;
-    padding-bottom: 10px;
-    padding-left: 1px;
-    overflow: hidden;
-    display: block;
-    background-color:rgb(57, 89, 160);
-    position: fixed;
-    bottom: 48%;
-    text-align: left;
-    color: white;
-    width: 100%;
-}
-
-._navbar-icon-menu-more-ul {
-    list-style-type: none;
-    padding-top: 10px;
-    padding-right: 1px;
-    padding-bottom: 10px;
-    padding-left: 1px;
-    overflow: hidden;
-    bottom: 10%;
-    display: block;
-    background-color:rgb(57, 89, 160);
-    position: fixed;
-    text-align: left;
-    color: white;
-    width: 100%;
-}
+    ._navbar-icon-menu-more-container {
+        position: relative;
+        color: white;
+         width: 100%;
+         height: 100%;
+    }
+    
+    ._navbar-icon-menu-admin-container {
+        position: relative;
+        color: white;
+        width: 100%;
+        height: Calc(100% - 320px);
+        
+    }
+    
+    ._navbar-separator-button {
+        background-color:rgb(57, 89, 160);
+        color: white;
+        width: 100%;
+        border: none;
+        padding-top: 10px;
+        padding-right: 1px;
+        padding-bottom: 0px;
+        padding-left: 1px;
+        position: relative;
+    }
+    
+    ._navbar-icon-menu-admin-ul  {
+        padding-top: 10px;
+        padding-right: 1px;
+        padding-bottom: 10px;
+        padding-left: 1px;
+        overflow: hidden;
+        display: block;
+        background-color:rgb(57, 89, 160);
+        position: relative;
+        text-align: left;
+        color: white;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+    }
+    
+    ._navbar-icon-menu-more-ul {
+        list-style-type: none;
+        padding-top: 10px;
+        padding-right: 1px;
+        padding-bottom: 10px;
+        padding-left: 1px;
+        overflow: hidden;
+        display: block;
+        bottom: 10%;
+        background-color:rgb(57, 89, 160);
+        position: fixed;
+        text-align: left;
+        color: white;
+        width: 100%;
+    }
 
 ._navbar-icon-menu-admin-ul > li > ul > li{
     width: 100%;
@@ -534,9 +525,8 @@
     size: 25px;
     text-align: center;
 }
-
-
 }
+
 
 @media (max-width: 500px) and (min-width: 401px) {
     ._navbar-icon-menu-ul li {
@@ -578,26 +568,31 @@
         position: fixed;
     }
 
-   ._navbar-icon-menu-more-container {
-     color: white;
-     display: block;
+._navbar-icon-menu-more-container {
+    position: relative;
+    color: white;
      width: 100%;
-   }
-
-._navbar-icon-menu-admin-container {
-     color: white;
-     display: block;
-     width: 100%;
+     height: 100%;
 }
 
-._navbar-icon-menu-admin-ul {
-    overflow: hidden;
-    display: block;
-    background-color:rgb(57, 89, 160);
-    position: fixed;
-    bottom: 30%;
-    text-align: left;
+._navbar-icon-menu-admin-container {
+    position: relative;
     color: white;
+    width: 100%;
+    height: Calc(100% - 320px);
+    
+}
+
+._navbar-separator-button {
+    background-color:rgb(57, 89, 160);
+    color: white;
+    width: 100%;
+    border: none;
+    padding-top: 10px;
+    padding-right: 1px;
+    padding-bottom: 0px;
+    padding-left: 1px;
+    position: relative;
 }
 
 ._navbar-icon-menu-admin-ul  {
@@ -608,11 +603,12 @@
     overflow: hidden;
     display: block;
     background-color:rgb(57, 89, 160);
-    position: fixed;
-    bottom: 48%;
+    position: relative;
     text-align: left;
     color: white;
     width: 100%;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 ._navbar-icon-menu-more-ul {
@@ -622,8 +618,8 @@
     padding-bottom: 10px;
     padding-left: 1px;
     overflow: hidden;
-    bottom: 10%;
     display: block;
+    bottom: 10%;
     background-color:rgb(57, 89, 160);
     position: fixed;
     text-align: left;
@@ -640,11 +636,6 @@
     
 }
 
-._navbar-icon-menu-admin-ul > li > ul > li {
-    width: 100%;
-    font-size: 10px;
-}
-
 ._navbar-icon-menu-admin-ul > li > ul > li > a{
     padding-left: 20px;
 }
@@ -659,14 +650,6 @@
     padding-right: 2px;
     padding-bottom: 5px;
     padding-left: 10px;
-}
-
-._navbar-icon-menu-more-ul > li > a {
-    width: 100%;
-    padding-top: 5px;
-    padding-right: 2px;
-    padding-bottom: 5px;
-    padding-left: 2px;
 }
 
 ._navbar-separator {
@@ -689,9 +672,8 @@
     float: right;
     align-items: stretch;
     text-align: center;
-    padding: 5px Calc(5px);
+    padding: 10px Calc(10px);
 }  
-
 ._navbar-icon-menu-more-ul li ul li {
     display: inline-block;
     color:white;
@@ -699,7 +681,6 @@
     height: 0px;
     padding: 5px 20px;
 }
-
 ._navbar-icon-menu-ul li a {
     display: inline-block;
     color:#5c5b5b;
@@ -957,7 +938,7 @@
         align-items: stretch;
         text-align: center;
         padding: 20px Calc(0px);
-        left: 35%;
+        left: 25%;
      }
 
     ._navbar-icon-menu-admin-ul > li {
