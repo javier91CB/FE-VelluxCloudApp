@@ -1,3 +1,121 @@
-<p>
-  scheduler works!
-</p>
+<div class="container">
+  <ul class="list-group">
+   
+      <li class="list-group-item ">
+          <div class="card-body">
+              <div class="_title-users">
+                 <h4> Buscar Turno:</h4>
+              </div>
+              <div class="_add-user">
+                 <a class="custom-ref" target="_blank" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
+                    <i class ="glyphicon glyphicon-plus-sign"
+                    [style.color] = "'rgb(57, 89, 160)'"></i>
+                 </a> 
+               </div>
+               <br>
+               <div class="_find-user">
+                 <input type="text">
+                 <a><i class ="glyphicon glyphicon-search"
+                  [style.color] = "'Gray'"></i>
+                 </a>
+               </div>
+               <div class="_title-users">
+                  <h4> Importar Turnos:</h4>
+                  <input type="file">
+               </div>
+          </div>
+          <br>
+    </li>
+    <li class="list-group-item ">
+            <div class="card-body">
+  <table id="myTable" datatable class="row-border hover">
+    <tbody>
+      <!-- <tr *ngFor="let register of registerServices"> -->
+       <tr>
+        <td>
+          <table>
+            <thead>
+              <th>Turno 1</th>
+            </thead>
+              <tbody>
+                <tr>
+                  <td>Horas:</td>
+                </tr>
+                <tr>
+                  <td>Dias:</td>
+                </tr>
+              </tbody>
+          </table>
+        </td>
+        <td>
+          <div>
+            <a class="custom-ref" target="_blank" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
+                <i class ="glyphicon glyphicon-edit"
+                [style.color] = "'Green'">
+             </i>
+            </a>
+          </div>
+        </td>
+        <td>
+            <div >
+              <i class ="glyphicon glyphicon-remove-circle"
+                [style.color] = "'rgb(173, 2, 2)'">
+              </i>
+            </div>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="paginator" class="center">
+      <div class="pagination">
+          <a href="#">❮</a>
+          <a href="#" class="active">1</a>
+          <a href="#">2</a>
+          <a href="#">❯</a>
+      </div>
+  </div>
+</div>
+</li>
+</ul>
+<br>
+<br>
+<br>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Turno</h4>
+    </div>
+    <div class="modal-body">
+      <label>Nombre Turno:</label>
+      <input class="form-control"/>
+      <p></p>
+      <label>Dias:</label>
+      <p></p>
+        <label class="checkbox-inline"><input type="checkbox" value="">Lunes</label>
+        <label class="checkbox-inline"><input type="checkbox" value="">Martes</label>
+        <label class="checkbox-inline"><input type="checkbox" value="">Miercoles</label>
+        <p></p>
+        <label class="checkbox-inline"><input type="checkbox" value="">Jueves</label>
+        <label class="checkbox-inline"><input type="checkbox" value="">Viernes</label>
+        <label class="checkbox-inline"><input type="checkbox" value="">Sabado</label>
+        <p></p>
+        <label class="checkbox-inline"><input type="checkbox" value="">Domingo</label>
+      <p></p>
+      <label>Hora Inicio:</label>
+      <select class="form-control"></select>
+      <p></p>
+      <label>Hora Fin:</label>
+      <select class="form-control"></select>
+    </div>
+    <div class="modal-footer">
+                <div class="col-md-1">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>

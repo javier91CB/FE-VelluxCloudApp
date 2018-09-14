@@ -1,0 +1,131 @@
+
+.list-group-item:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+  ._add-user {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 30px;
+}
+
+._find-user {
+    width: 100%;
+}
+._find-user > input {
+    position: absolute;
+    width: 80%;
+    border: none;
+    border-bottom: 2px solid rgb(57, 89, 160);
+}
+
+._find-user > a {
+    position: relative;
+    left: Calc(80% + 30px);
+    font-size: 20px;
+}
+
+@media (max-width: 759px) and (min-width: 0px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    padding-top: 10px;
+  }
+  table {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    text-align: left;
+    background-color: white;
+    font-size: 20px;
+    bottom: 10px;
+    white-space: nowrap;
+  }
+  .th{
+    border-top: 1px solid #ddd;
+    line-height: 18px;
+    font-size: 35px;
+  } 
+}
+@media (max-width: 1023px) and (min-width: 760px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+  }
+  table {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    text-align: left;
+    background-color: white;
+    font-size: 20px;
+    bottom: 10px;
+    white-space: nowrap;
+  }
+  .th{
+    border-top: 1px solid #ddd;
+    line-height: 18px;
+    font-size: 35px;
+  } 
+}
+@media (max-width: 1446px) and (min-width: 1024px) {
+  .container {
+    padding-top: 120px;
+    width: 65%;
+  }
+  table {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    text-align: left;
+    background-color: whites;
+    font-size: 20px;
+    bottom: 10px;
+    white-space: nowrap;
+  }
+  .th{
+    border-top: 1px solid #ddd;
+    line-height: 18px;
+    font-size: 35px;
+  } 
+}
+
+.card-body{
+  background-color: transparent;
+}
+.list-group-item{
+  box-shadow: 0px 0px 10px 0px #888888;
+  border-radius: 5px !important;
+}
+
+.center {
+  text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+  position: relative;
+  left: 0px;
+  right: 0px;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 5px 10px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+}
+
+.pagination a.active {
+  background-color: rgb(57, 89, 160);
+  color: white;
+  border: 1px solid  rgb(57, 89, 160);
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+  

@@ -89,7 +89,7 @@
         position: relative;
         color: white;
         width: 100%;
-        height: Calc(100% - 320px);
+        height: Calc(100% - 350px);
     }
     
     ._navbar-separator-button {
@@ -136,19 +136,23 @@
         width: 100%;
     }
 
-._navbar-icon-menu-admin-ul > li > ul > li{
-    width: 100%;
-    padding-top: 5px;
-    padding-right: 2px;
-    padding-bottom: 5px;
-    padding-left: 2px;
+    ._navbar-icon-menu-more-ul > li > ul > li{
+        width: 100%;
+    }
     
-}
-
-._navbar-icon-menu-admin-ul > li > ul > li > a{
-    padding-left: 20px;
-}
-
+    ._navbar-icon-menu-admin-ul > li > ul > li{
+        width: 100%;
+        padding-top: 5px;
+        padding-right: 2px;
+        padding-bottom: 5px;
+        padding-left: 2px;
+        
+    }
+    
+    ._navbar-icon-menu-admin-ul > li > ul > li > a{
+        padding-left: 20px;
+    }
+    
 ._navbar-icon-menu-admin-ul > li >  a{
     padding-left: 10px;
 }
@@ -252,7 +256,7 @@
         position: relative;
         color: white;
         width: 100%;
-        height: Calc(100% - 320px);
+        height: Calc(100% - 350px);
         
     }
     
@@ -297,6 +301,10 @@
         position: fixed;
         text-align: left;
         color: white;
+        width: 100%;
+    }
+
+    ._navbar-icon-menu-more-ul > li > ul > li{
         width: 100%;
     }
 
@@ -416,7 +424,7 @@
         position: relative;
         color: white;
         width: 100%;
-        height: Calc(100% - 320px);
+        height: Calc(100% - 350px);
         
     }
     
@@ -461,6 +469,10 @@
         position: fixed;
         text-align: left;
         color: white;
+        width: 100%;
+    }
+
+    ._navbar-icon-menu-more-ul > li > ul > li{
         width: 100%;
     }
 
@@ -579,7 +591,7 @@
     position: relative;
     color: white;
     width: 100%;
-    height: Calc(100% - 320px);
+    height: Calc(100% - 350px);
     
 }
 
@@ -624,6 +636,10 @@
     position: fixed;
     text-align: left;
     color: white;
+    width: 100%;
+}
+
+._navbar-icon-menu-more-ul > li > ul > li{
     width: 100%;
 }
 
@@ -770,11 +786,14 @@
         right: 0;
         background-color:rgb(57, 89, 160);
         position: fixed;
-        height: 80px;
+        height: 95px;
         text-align: center;
         color: white;
     }
 
+    ._navbar-icon-menu-more-ul > li > ul > li{
+        width: 100%;
+    }
     ._navbar-icon-menu-admin-ul > li {
         position: relative;
         right: 33%;
@@ -926,7 +945,7 @@
         right: 0;
         background-color:rgb(57, 89, 160);
         position: fixed;
-        height: 80px;
+        height: 95px;
         text-align: center;
         color: white;
         z-index: 1001;
@@ -968,6 +987,10 @@
         text-align: center;
     }
     
+    ._navbar-icon-menu-more-ul > li > ul > li{
+        width: 100%;
+    }
+
     ._navbar-icon-menu-admin-ul li a ul li {
         display: inline-block;
         color:white;
@@ -1089,7 +1112,7 @@
         right: 0;
         background-color:rgb(57, 89, 160);
         position: fixed;
-        height: 80px;
+        height: 95px;
         text-align: center;
         color: white;
         z-index: 1001;
@@ -1269,7 +1292,7 @@
         right: 0;
         background-color:rgb(57, 89, 160);
         position: fixed;
-        height: 80px;
+        height: 95px;
         text-align: center;
         color: white;
         z-index: 1001;
@@ -1439,7 +1462,7 @@
         right: 0;
         background-color:rgb(57, 89, 160);
         position: fixed;
-        height: 80px;
+        height: 95px;
         text-align: center;
         color: white;
         z-index: 1001;

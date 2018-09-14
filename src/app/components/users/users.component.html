@@ -7,7 +7,7 @@
                  <h4> Buscar usuario:</h4>
               </div>
               <div class="_add-user">
-                 <a>
+                 <a class="custom-ref" target="_blank" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
                     <i class ="glyphicon glyphicon-plus-sign"
                     [style.color] = "'rgb(57, 89, 160)'"></i>
                  </a> 
@@ -47,7 +47,7 @@
         </td>
         <td>
           <div>
-            <a routerLink="/co-worker">
+            <a class="custom-ref" target="_blank" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
                 <i class ="glyphicon glyphicon-edit"
                 [style.color] = "'Green'">
              </i>
@@ -78,4 +78,41 @@
 <br>
 <br>
 <br>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Registro</h4>
+    </div>
+    <div class="modal-body">
+      <label>Nombre:</label>
+      <input class="form-control"/>
+      <p></p>
+      <label>Apellido:</label>
+      <input class="form-control"/>
+      <label>Email:</label>
+      <input type="email" class="form-control"/>
+      <p></p>
+      <label>Contraseña:</label>
+      <input type="password" class="form-control"/>
+      <p></p>
+      <label>Repetir Contraseña:</label>
+      <input type="password" class="form-control"/>
+      <p></p>
+      <label>Perfil:</label>
+      <select class="form-control"></select>
+      <p></p>
+      <label>Turno:</label>
+      <select class="form-control"></select>
+    </div>
+    <div class="modal-footer">
+                <div class="col-md-1">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+        </div>
+    </div>
+    </div>
+  </div>
 </div>
