@@ -27,6 +27,7 @@ import { RolesComponent } from './components/roles/roles.component';
 import { ButtonsComponent } from './components/buttons/buttons.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { QualificationComponent } from './components/tools/qualification/qualification.component';
+import { LoginService } from './services/login/login.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { QualificationComponent } from './components/tools/qualification/qualifi
     FullCalendarModule
   ],
   providers: [
-    EventSesrvice
+    EventSesrvice,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

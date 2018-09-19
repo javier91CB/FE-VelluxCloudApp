@@ -1,0 +1,6 @@
+{
+    "SecurityApi":"htttp://localhost:65308/api",
+    "NotificationApi":"htttp://localhost:65308/api",
+    "CallerApi":"htttp://localhost:65308/api",
+    "ButtonApi":"htttp://localhost:65308/api"
+}

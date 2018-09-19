@@ -1,16 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [LoginService]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor(public router: Router) { }
+  model: any = {};
+  token: string;
+  isLoginError = false;
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
-  ngOnInit() {
+  OnSubmit(userName, password) {
+
+      this.loginService.userAuthentication(userName, password)
+      .subscribe(
+        data => {
+          localStorage.setItem('userToken', data);
+          this.router.navigate(['/home']);
+        },
+        error => {
+          debugger;
+          console.log(error);
+            this.isLoginError = true;
+        });
   }
-
 }
