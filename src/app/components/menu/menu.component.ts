@@ -51,4 +51,9 @@ export class MenuComponent implements OnInit {
       this.showAdminSubmenu = false;
     }
   }
+
+  OnQuit() {
+    localStorage.removeItem('userToken');
+    this.router.navigate(['/login']);
+  }
 }

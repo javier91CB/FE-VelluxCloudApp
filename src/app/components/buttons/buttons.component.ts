@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonsComponent implements OnInit {
 
+show = true;
+
   constructor() { }
 
   ngOnInit() {

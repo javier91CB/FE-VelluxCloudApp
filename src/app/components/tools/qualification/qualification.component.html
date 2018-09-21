@@ -1,17 +1,18 @@
   <div class="container">
     <ul class="list-group">
-     
         <li class="list-group-item ">
             <div class="card-body">
+                <button type="button" class="btn btn-default custom-ref" style="text-align:left;" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
+                   <span class="glyphicon glyphicon-cog" style="color:cornflowerblue"></span>
+                </button>
                 <div class="_title-users" style="text-align:center;">
                    <h1> <label for="radio1">Calificanos</label></h1>
                 </div>
-                <form>
                 <table class="table">
                     <tbody>
                       <tr class="success">                         
                         <td>
-                            <input id="radio1" type="radio" name="estrellas" value="5">
+                            <input id="radio1" type="radio" #Estrellasc ngModel name="Estrellasc" value="5" (click)='SendQualification(Estrellasc.value)'>
                             <label for="radio1" style="font-size: 50px">★</label>
                         </td>
                         <td>
@@ -20,7 +21,7 @@
                       </tr>
                       <tr class="info">
                           <td>
-                             <input id="radio2" type="radio" name="estrellas" value="4">
+                             <input id="radio2" type="radio" #Estrellascu ngModel name="Estrellascu" value="4" (click)='SendQualification(Estrellascu.value)'>
                              <label for="radio2"  style="font-size: 50px">★</label>
                           </td>
                           <td>
@@ -29,7 +30,7 @@
                       </tr>
                       <tr class="active">
                           <td>
-                            <input id="radio3" type="radio" name="estrellas" value="3">
+                            <input id="radio3" type="radio" #Estrellast ngModel name="Estrellast" value="3" (click)='SendQualification(Estrellast.value)'>
                             <label for="radio3"  style="font-size: 50px">★</label>
                           </td>
                           <td>
@@ -38,7 +39,7 @@
                       </tr>
                       <tr class="warning">
                           <td>
-                             <input id="radio4" type="radio" name="estrellas" value="2">
+                             <input id="radio4" type="radio" #Estrellasd ngModel name="Estrellasd" value="2" (click)='SendQualification(Estrellasd.value)'>
                              <label for="radio4"  style="font-size: 50px">★</label>
                           </td>
                           <td>
@@ -47,7 +48,7 @@
                       </tr>
                       <tr class="danger">
                           <td>
-                              <input id="radio5" type="radio" name="estrellas" value="1">
+                              <input id="radio5" type="radio" #Estrellasu ngModel name="Estrellasu" value="1" (click)='SendQualification(Estrellasu.value)'>
                               <label for="radio5" style="font-size: 50px">★</label>
                           </td>
                           <td>
@@ -56,7 +57,6 @@
                       </tr>
                     </tbody>
                   </table>
-                </form>
             </div>
             <br>
       </li>
@@ -65,3 +65,29 @@
   <br>
   <br>
   </div>
+
+  <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" style="text-align:center;">Configurar Notificaciones</h4>
+          </div>
+          <div class="modal-body">
+            <label>Email receptor:</label>
+            <input class="form-control" #Recipiant ngModel name="Recipiant"/>
+            <p></p>
+            <label>Modulo:</label>
+            <input class="form-control" #Module ngModel name="Module"/>
+            <label>Lugar:</label>
+            <select class="form-control" #Place ngModel name="Place"></select>
+            <p></p>
+          </div>
+          <div class="modal-footer">
+              <div class="col-md-1">
+               <button type="button" class="btn btn-success" (click)="SaveNotificationInfo(Recipiant.value, Module.value, Place.value)" data-dismiss="modal">Guardar</button>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>

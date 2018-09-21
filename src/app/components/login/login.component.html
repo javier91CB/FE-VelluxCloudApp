@@ -9,7 +9,7 @@
       <img src="../../../assets/images/Cine-Colombia.png">
   </div>
   <div class="form-login">
-      <form method="post" class="form-horizontal" action="" (ngSubmit)="OnSubmit(UserName.value, Password.value)" novalidate="novalidate">
+      <form method="post" class="form-horizontal" action="" (click)="LoginOn(UserName.value, Password.value)" novalidate="novalidate">
           <div class="form-group">
             <label class="col-form-label" for="Email">
               Correo
@@ -28,7 +28,7 @@
             <a href="https://portal.office.com" class="custom-ref" target="_blank" rel="noopener noreferrer">Olvidé mi clave</a>
           </div>
           <div class="pt-3">
-            <button id="submit-button" type="submit" class="btn-danger" onclick="OnSubmit(UserName.value, Password.value)">Ingresar</button>
+            <button id="submit-button" type="submit" class="btn-danger" >Ingresar</button>
           </div>
         
       </form>

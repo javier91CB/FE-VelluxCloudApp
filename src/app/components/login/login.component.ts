@@ -18,16 +18,15 @@ export class LoginComponent {
     private router: Router,
     private route: ActivatedRoute) { }
 
-  OnSubmit(userName, password) {
+  LoginOn(userName, password) {
 
       this.loginService.userAuthentication(userName, password)
       .subscribe(
-        data => {
-          localStorage.setItem('userToken', data);
+        (data) => {
+          localStorage.setItem('userToken', JSON.stringify(data));
           this.router.navigate(['/home']);
         },
         error => {
-          debugger;
           console.log(error);
             this.isLoginError = true;
         });

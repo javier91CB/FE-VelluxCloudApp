@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationInfo } from '../../../model/notificationInfo';
+import { NotificationRequest } from '../../../model/notificationRequest';
+import { NotificationsService } from '../../../services/notification/notifications.service';
 
 @Component({
   selector: 'app-qualification',
@@ -7,9 +10,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QualificationComponent implements OnInit {
 
-  constructor() { }
+  notification: NotificationInfo;
+  constructor(private sericeNotification: NotificationsService) { }
+
+  notificationRequest: NotificationRequest;
 
   ngOnInit() {
   }
 
+  SendQualification(estrellas) {
+
+    const info = JSON.parse(localStorage.getItem('NotificationInfo'));
+
+    this.notificationRequest = new NotificationRequest();
+    this.notificationRequest.place = info['place'];
+    this.notificationRequest.payDesk = info['modul'];
+    this.notificationRequest.recipient = info['recipiant'];
+    this.notificationRequest.dateEmail = '';
+    this.notificationRequest.qualification = estrellas;
+
+    this.sericeNotification.notificationUser(this.notificationRequest)
+    .subscribe(
+      (data) => {
+        const result = data;
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+  SaveNotificationInfo(recipiant, modul, place) {
+
+    this.notification = new NotificationInfo();
+    this.notification.recipiant = recipiant;
+    this.notification.modul = modul;
+    this.notification.place = place;
+
+    localStorage.setItem('NotificationInfo', JSON.stringify(this.notification));
+  }
 }
