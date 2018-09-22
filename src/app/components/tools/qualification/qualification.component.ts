@@ -26,7 +26,7 @@ export class QualificationComponent implements OnInit {
     this.notificationRequest.place = info['place'];
     this.notificationRequest.payDesk = info['modul'];
     this.notificationRequest.recipient = info['recipiant'];
-    this.notificationRequest.dateEmail = '';
+    this.notificationRequest.dateEmail = '2015-03-25T12:00:00-06:00';
     this.notificationRequest.qualification = estrellas;
 
     this.sericeNotification.notificationUser(this.notificationRequest)
