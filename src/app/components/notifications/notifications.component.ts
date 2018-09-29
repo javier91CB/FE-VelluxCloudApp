@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as signalR from '@aspnet/signalr';
 
 export enum TypeStatus {
   Good= 1,
@@ -12,129 +13,30 @@ export enum TypeStatus {
   styleUrls: ['./notifications.component.css']
 })
 export class NotificationsComponent implements OnInit {
-
+  hubConnection: signalR.HubConnection;
   registerServices: object[];
   registerCount: number;
   paginator: boolean;
 
   constructor() {
     this.registerServices = [
-      {
-        Service: 'Sala 1 - 005F',
-        Owner: 'John Doe',
-        Status: TypeStatus.Alert,
-        Timer: '04:00',
-        serviceCall: 1,
-        serviceBill: 2
-      },
-      {
-        Service: 'Sala 1 - 011F',
-        Owner: 'John Doe',
-        Status: TypeStatus.Good,
-        Timer: '02:00',
-        serviceCall: 1,
-        serviceBill: 2
-      },
-      {
-        Service: 'Sala 1 - 006F',
-        Owner: 'John Doe',
-        Status: TypeStatus.Danger,
-        Timer: '15:00',
-        serviceCall: 1,
-        serviceBill: 2
-      },
-      {
-        Service: 'Sala 1 - 001F',
-        Owner: 'John Doe',
-        Status: TypeStatus.Alert,
-        Timer: '05:00',
-        serviceCall: 1,
-        serviceBill: 2
-      },
-      {
-      Service: 'Sala 1 - 005F',
-      Owner: 'John Doe',
-      Status: TypeStatus.Alert,
-      Timer: '04:00',
-      serviceCall: 1,
-      serviceBill: 2
-    },
-    {
-      Service: 'Sala 1 - 011F',
-      Owner: 'John Doe',
-      Status: TypeStatus.Good,
-      Timer: '02:00',
-      serviceCall: 1,
-      serviceBill: 2
-    },
-    {
-      Service: 'Sala 1 - 006F',
-      Owner: 'John Doe',
-      Status: TypeStatus.Danger,
-      Timer: '15:00',
-      serviceCall: 1,
-      serviceBill: 2
-    },
-    {
-      Service: 'Sala 1 - 001F',
-      Owner: 'John Doe',
-      Status: TypeStatus.Alert,
-      Timer: '05:00',
-      serviceCall: 1,
-      serviceBill: 2
-    },
-    {
-      Service: 'Sala 1 - 005F',
-      Owner: 'John Doe',
-      Status: TypeStatus.Alert,
-      Timer: '04:00',
-      serviceCall: 1,
-      serviceBill: 2
-    },
-    {
-      Service: 'Sala 1 - 005F',
-      Owner: 'John Doe',
-      Status: TypeStatus.Alert,
-      Timer: '04:00',
-      serviceCall: 1,
-      serviceBill: 2
-    },
-    {
-      Service: 'Sala 1 - 011F',
-      Owner: 'John Doe',
-      Status: TypeStatus.Good,
-      Timer: '02:00',
-      serviceCall: 1,
-      serviceBill: 2
-    },
-    {
-      Service: 'Sala 1 - 006F',
-      Owner: 'John Doe',
-      Status: TypeStatus.Danger,
-      Timer: '15:00',
-      serviceCall: 1,
-      serviceBill: 2
-    },
-    {
-      Service: 'Sala 1 - 001F',
-      Owner: 'John Doe',
-      Status: TypeStatus.Alert,
-      Timer: '05:00',
-      serviceCall: 1,
-      serviceBill: 2
-    },
-    {
-    Service: 'Sala 1 - 005F',
-    Owner: 'John Doe',
-    Status: TypeStatus.Alert,
-    Timer: '04:00',
-    serviceCall: 1,
-    serviceBill: 2
-  }
+     
     ];
       this.paginator = true;
   }
 
-  ngOnInit() { }
-
+  ngOnInit() 
+  {
+    let connection = new signalR.HubConnectionBuilder()
+    .withUrl("http://localhost:52978/callerHub", signalR.HttpTransportType.WebSockets)
+    .build();
+     debugger;
+      connection.start()
+      .then(() => {
+        console.log('Hub connection started')
+      })
+      .catch(() => {
+        console.log('Error while establishing connection')
+      });
+    }
 }
