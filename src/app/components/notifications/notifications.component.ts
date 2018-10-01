@@ -23,20 +23,25 @@ export class NotificationsComponent implements OnInit {
      
     ];
       this.paginator = true;
+    this.startConnection();
   }
 
-  ngOnInit() 
-  {
-    let connection = new signalR.HubConnectionBuilder()
+  ngOnInit() {}
+
+    private startConnection():void{
+      let connection = new signalR.HubConnectionBuilder()
     .withUrl("http://localhost:52978/callerHub", signalR.HttpTransportType.WebSockets)
     .build();
-     debugger;
       connection.start()
       .then(() => {
-        console.log('Hub connection started')
+        console.log('Caller Hub connection started.......')
       })
       .catch(() => {
         console.log('Error while establishing connection')
+        setTimeout(() => {
+          this.startConnection()
+        }, 5000);
       });
     }
+
 }

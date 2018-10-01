@@ -12,7 +12,7 @@ export class MenuComponent implements OnInit {
   showAdminSubmenu: boolean;
   showAdminClaim: boolean;
   hidenTitleAdmin: boolean;
-
+  
   constructor(public router: Router) {}
 
   ngOnInit() {

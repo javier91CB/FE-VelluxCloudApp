@@ -23,7 +23,7 @@ export class LoginComponent {
       this.loginService.userAuthentication(userName, password)
       .subscribe(
         (data) => {
-          localStorage.setItem('userToken', JSON.stringify(data));
+          localStorage.setItem('access_token', JSON.stringify(data));
           this.router.navigate(['/home']);
         },
         error => {
