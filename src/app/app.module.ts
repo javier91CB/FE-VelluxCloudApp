@@ -28,7 +28,6 @@ import { ButtonsComponent } from './components/buttons/buttons.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { QualificationComponent } from './components/tools/qualification/qualification.component';
 import { LoginService } from './services/login/login.service';
-import { HelperUserInfo } from './utilities/tools/helperUserInfo';
 
 @NgModule({
   declarations: [
@@ -49,8 +48,7 @@ import { HelperUserInfo } from './utilities/tools/helperUserInfo';
     RolesComponent,
     ButtonsComponent,
     ReportsComponent,
-    QualificationComponent,
-    HelperUserInfo
+    QualificationComponent
   ],
   imports: [
     BrowserModule,

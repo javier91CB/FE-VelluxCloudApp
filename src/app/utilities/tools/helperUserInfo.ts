@@ -22,7 +22,7 @@ export class HelperUserInfo  implements OnInit {
     getUserInformation(){
         this.tokenKey = new TokenKey();
         var accessToken = localStorage.getItem('access_token');
-        return this.getDecodedAccessToken(accessToken);
+        return accessToken!= null ? this.getDecodedAccessToken(accessToken) : null; 
     }
 
     getDecodedAccessToken(token: string): any {

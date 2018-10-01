@@ -58,7 +58,7 @@
                              <li><a routerLink="/scheduler">&#9678; Asignaciones</a></li>
                              <li><a routerLink="/buttons">&#9678; Botones</a></li>
                              <li><a routerLink="/reports">&#9678; Reportes</a></li>
-                             <li><a class="custom-ref" (click)="openModal(template)" >&#9678; Lugares</a></li>
+                             <li><a class="custom-ref" data-toggle="modal" data-target="#myModal-place" rel="noopener noreferrer" >&#9678; Lugares</a></li>
                          </ul>
                      </li>
                      <li class="_navbar-separator"><a>Contenido</a>
@@ -91,7 +91,7 @@
         
 </div>
 
-<!-- <div class="modal fade" id="myModal-place" role="dialog">
+<div class="modal fade" id="myModal-place" role="dialog">
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
           <div class="modal-header">
@@ -125,17 +125,4 @@
           </div>
           </div>
         </div>
-      </div> -->
-
-      <ng-template #template>
-        <div class="modal-header">
-          <h4 class="modal-title pull-left">Modal</h4>
-          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          This is a modal.
-        </div>
-      </ng-template>
-      
+      </div>
