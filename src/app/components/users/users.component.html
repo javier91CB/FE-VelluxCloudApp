@@ -1,4 +1,5 @@
 <div class="container">
+    
   <ul class="list-group">
    
       <li class="list-group-item ">
@@ -7,8 +8,8 @@
                  <h4> Buscar usuario:</h4>
               </div>
               <div class="_add-user">
-                 <a class="custom-ref" target="_blank" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
-                    <i class ="glyphicon glyphicon-plus-sign"
+                 <a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModalCreate" rel="noopener noreferrer">
+                    <i class ="glyphicon glyphicon-plus-sign" (click)="loadNewUserInfo()"
                     [style.color] = "'rgb(57, 89, 160)'"></i>
                  </a> 
                </div>
@@ -31,24 +32,23 @@
   <table id="myTable" datatable class="row-border hover">
     
     <tbody>
-      <!-- <tr *ngFor="let register of registerServices"> -->
-       <tr>
+      <tr *ngFor="let register of arrayRegisterRequest">
         <td>
           <table>
             <thead>
-              <th>Jon Doe</th>
+              <th>{{register.nickName}}</th>
             </thead>
               <tbody>
                 <tr>
-                  <td>Ayudante ala sur</td>
+                  <td>{{register.position}}</td>
                 </tr>
               </tbody>
           </table>
         </td>
         <td>
           <div>
-            <a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
-                <i class ="glyphicon glyphicon-edit"
+            <a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModalUpdate" rel="noopener noreferrer" >
+                <i class ="glyphicon glyphicon-edit" (click)="loadUserInfo(register)"
                 [style.color] = "'Green'">
              </i>
             </a>
@@ -56,7 +56,7 @@
         </td>
         <td>
             <div >
-              <i class ="glyphicon glyphicon-remove-circle"
+              <i class ="glyphicon glyphicon-remove-circle" (click)="removeUser(register.id)"
                 [style.color] = "'rgb(173, 2, 2)'">
               </i>
             </div>
@@ -80,12 +80,12 @@
 <br>
 </div>
 
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="myModalCreate" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
         <label class="switch">
-            <input type="checkbox" checked>
+            <input type="checkbox" checked #IsActive ngModel name="IsActive">
             <span class="slider round"></span>
         </label>
       <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -93,30 +93,94 @@
     </div>
     <div class="modal-body">
       <label>Nombre:</label>
-      <input class="form-control"/>
+      <input class="form-control" #Name ngModel name="Name" [(ngModel)]="userToEdit.firstName"/>
       <label>Apellido:</label>
-      <input class="form-control"/>
+      <input class="form-control" #Apellido ngModel name="Apellido" [(ngModel)]="userToEdit.lastName"/>
       <label>Email:</label>
-      <input type="email" class="form-control"/>
+      <input type="email" class="form-control" #Email ngModel name="Email" [(ngModel)]="userToEdit.userName"/>
       <label>Fecha de Nacimento:</label>
-      <input class="form-control" type="date"/>
+      <input class="form-control" type="date" #FechaNacimiento ngModel name="FechaNacimiento" [(ngModel)]="userToEdit.bornDate"/>
       <label>Pais:</label>
-      <input class="form-control" type="date"/>
+      <input class="form-control" type="text" #Pais ngModel name="Pais" [(ngModel)]="userToEdit.country"/>
       <label>Ciudad:</label>
-      <input class="form-control" type="date"/>
+      <input class="form-control" type="text" #Ciudad ngModel name="Ciudad" [(ngModel)]="userToEdit.city"/>
       <label>Contraseña:</label>
-      <input type="password" class="form-control"/>
+      <input type="password" class="form-control" #Password ngModel name="Password" />
       <label>Repetir Contraseña:</label>
-      <input type="password" class="form-control"/>
+      <input type="password" class="form-control" #RePassword ngModel name="RePassword" />
+      <div class="alert alert-danger" *ngIf="passwordNotMatches">
+        Las contraseñas no son iguales.....
+      </div>
       <label>Perfil:</label>
-      <select class="form-control"></select>
+      <select class="form-control" #Perfil ngModel name="Perfil"></select>
       <label>Turno:</label>
-      <select class="form-control"></select>
+      <select class="form-control" #Turno ngModel name="Turno"></select>
+      <label>Lugar:</label>
+      <select class="form-control" #Lugar ngModel name="Lugar"></select>
     </div>
     <div class="modal-footer">
                 <div class="col-md-1">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+        <button type="button" class="btn btn-success" 
+        (click)="addUser(IsActive.value,Name.value,Apellido.value,Email.value,
+        FechaNacimiento.value,Pais.value,Ciudad.value,Password.value
+        ,RePassword.value,Perfil.value,Turno.value,Lugar.value)">Guardar</button>
         </div>
+        <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
+        <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModalUpdate" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <label class="switch">
+            <input type="checkbox" checked #IsActive ngModel name="IsActive" [(ngModel)]="userToEdit.IsActive">
+            <span class="slider round"></span>
+        </label>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title" style="text-align:center;">Editar Usuario</h4>
+    </div>
+    <div class="modal-body">
+      <label style="display:none;">ID:</label>
+      <input style="display:none;" class="form-control" #IdUser ngModel name="IdUser" [(ngModel)]="userToEdit.id"/>
+      <label>Nombre:</label>
+      <input class="form-control" #Name ngModel name="Name" [(ngModel)]="userToEdit.firstName"/>
+      <label>Apellido:</label>
+      <input class="form-control" #Apellido ngModel name="Apellido" [(ngModel)]="userToEdit.lastName"/>
+      <label>Email:</label>
+      <input type="email" class="form-control" #Email ngModel name="Email" [(ngModel)]="userToEdit.userName"/>
+      <label>Fecha de Nacimento:</label>
+      <input class="form-control" type="date" #FechaNacimiento ngModel name="FechaNacimiento" [(ngModel)]="userToEdit.bornDate"/>
+      <label>Pais:</label>
+      <input class="form-control" type="text" #Pais ngModel name="Pais" [(ngModel)]="userToEdit.country"/>
+      <label>Ciudad:</label>
+      <input class="form-control" type="text" #Ciudad ngModel name="Ciudad" [(ngModel)]="userToEdit.city"/>
+      <label>Contraseña:</label>
+      <input type="password" class="form-control" #Password ngModel name="Password" />
+      <label>Repetir Contraseña:</label>
+      <input type="password" class="form-control" #RePassword ngModel name="RePassword" />
+      <div class="alert alert-danger" *ngIf="passwordNotMatches">
+        Las contraseñas no son iguales.....
+      </div>
+      <label>Perfil:</label>
+      <select class="form-control" #Perfil ngModel name="Perfil"></select>
+      <label>Turno:</label>
+      <select class="form-control" #Turno ngModel name="Turno"></select>
+      <label>Lugar:</label>
+      <select class="form-control" #Lugar ngModel name="Lugar"></select>
+    </div>
+    <div class="modal-footer">
+                <div class="col-md-1">
+        <button type="button" class="btn btn-success" 
+        (click)="editUser(IsActive.value,Name.value,Apellido.value,Email.value,
+        FechaNacimiento.value,Pais.value,Ciudad.value,Password.value
+        ,RePassword.value,Perfil.value,Turno.value,Lugar.value,IdUser.value)">Guardar</button>
+        </div>
+        <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
+        <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
     </div>
     </div>
   </div>

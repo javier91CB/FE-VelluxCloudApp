@@ -20,6 +20,8 @@ export class LoginComponent {
 
   LoginOn(userName, password) {
 
+    if(userName != "" && password != "")
+    {
       this.loginService.userAuthentication(userName, password)
       .subscribe(
         (data) => {
@@ -30,5 +32,7 @@ export class LoginComponent {
           console.log(error);
             this.isLoginError = true;
         });
+    }
   }
+ 
 }

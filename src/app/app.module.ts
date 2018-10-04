@@ -28,6 +28,9 @@ import { ButtonsComponent } from './components/buttons/buttons.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { QualificationComponent } from './components/tools/qualification/qualification.component';
 import { LoginService } from './services/login/login.service';
+import { UserService } from './services/user/user.service';
+import { ProfileService } from './services/profiles/profile.service';
+import { PlaceService } from './services/place/place.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import { LoginService } from './services/login/login.service';
   ],
   providers: [
     EventSesrvice,
-    LoginService
+    LoginService,
+    UserService,
+    ProfileService,
+    PlaceService
   ],
   bootstrap: [AppComponent]
 })

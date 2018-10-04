@@ -14,4 +14,5 @@ export class UserInfoModel {
     country: string;
     city: string;
     isActive :boolean;
+    placeId: string;
 }

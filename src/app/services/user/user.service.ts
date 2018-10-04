@@ -46,10 +46,9 @@ export class UserService {
   }
 
   getAllUsers(placeId: string){
-    
-    this.response = this.http.post(
-      this.API_URL + '/getAllUsersByPlace', 
-      JSON.stringify(placeId), {
+    this.response = this.http.get(
+      this.API_URL + '/GetAllUsers/'+placeId, 
+      {
       headers: new HttpHeaders()
       .set('Content-Type', 'application/json')
       });

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as signalR from '@aspnet/signalr';
+import { HelperUserInfo } from '../../utilities/tools/helperUserInfo';
+import { UserInfoModel } from '../../model/users/userInfoModel';
+import { TokenModel } from '../../model/token/tokenModel';
+import { CallerModel } from '../../model/notification/callerModel';
 
 export enum TypeStatus {
   Good= 1,
@@ -13,10 +17,12 @@ export enum TypeStatus {
   styleUrls: ['./notifications.component.css']
 })
 export class NotificationsComponent implements OnInit {
-  hubConnection: signalR.HubConnection;
-  registerServices: object[];
   registerCount: number;
   paginator: boolean;
+  private _hubConnection: signalR.HubConnection;
+  userInfoModel: UserInfoModel;
+  tokenModel: TokenModel;
+  registerServices: Array<CallerModel>;
 
   constructor() {
     this.registerServices = [
@@ -24,15 +30,25 @@ export class NotificationsComponent implements OnInit {
     ];
       this.paginator = true;
     this.startConnection();
+    this.startTimer();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    var _helperUserInfo = new HelperUserInfo();
+    this.userInfoModel = new UserInfoModel();
+    this.tokenModel = new TokenModel();
+    var userInfo = _helperUserInfo.getUserInformation();
+    if(userInfo != null) {
+      this.tokenModel = userInfo;
+      this.userInfoModel = this.tokenModel.userInfo;
+    }
+  }
 
-    private startConnection():void{
-      let connection = new signalR.HubConnectionBuilder()
+  private startConnection():void{
+     this._hubConnection = new signalR.HubConnectionBuilder()
     .withUrl("http://localhost:52978/callerHub", signalR.HttpTransportType.WebSockets)
     .build();
-      connection.start()
+      this._hubConnection.start()
       .then(() => {
         console.log('Caller Hub connection started.......')
       })
@@ -41,6 +57,20 @@ export class NotificationsComponent implements OnInit {
         setTimeout(() => {
           this.startConnection()
         }, 5000);
+      });
+    }
+    
+    
+    startTimer() {
+      setInterval(() => {
+       this.getCaller();
+      },5000)
+    }
+
+    getCaller() {
+      this._hubConnection.invoke('GetCallerHub', 'hola')
+      .then((data)=>{
+        this.registerServices = data;
       });
     }
 

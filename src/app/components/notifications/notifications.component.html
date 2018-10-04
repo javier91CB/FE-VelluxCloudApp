@@ -5,16 +5,16 @@
   <table id="myTable" datatable class="row-border hover">
     <thead>
       <tr>
-        <th onclick="sortTable(0)">Servicio</th>
-        <th onclick="sortTable(1)">Responsable</th>
-        <th onclick="sortTable(2)">Llamados</th>
-        <th onclick="sortTable(3)">Estado</th>
+        <th>Servicio</th>
+        <th>Responsable</th>
+        <th>Llamados</th>
+        <th>Estado</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let register of registerServices">
-        <td>{{register.Service}}</td>
-        <td>{{register.Owner}}</td>
+        <td>{{register.idButton}}</td>
+        <td>{{register.owner}}</td>
         <td>
           <table>
             <thead>
@@ -23,8 +23,8 @@
             </thead>
               <tbody>
                 <tr [style.border] = "register.serviceCall != null || register.serviceBill != null ? 'none':''">
-                  <td>{{register.serviceCall}}</td>
-                  <td>{{register.serviceBill}}</td>
+                  <td>{{register.reCallService}}</td>
+                  <td>{{register.reCallBill}}</td>
                 </tr>
               </tbody>
           </table>

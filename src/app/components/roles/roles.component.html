@@ -1,4 +1,6 @@
 <div class="container">
+
+  
   <ul class="list-group">
    
       <li class="list-group-item ">
@@ -7,7 +9,7 @@
                  <h4> Buscar Perfil:</h4>
               </div>
               <div class="_add-user">
-                 <a class="custom-ref" target="_blank" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
+                 <a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModalCreate" rel="noopener noreferrer">
                     <i class ="glyphicon glyphicon-plus-sign"
                     [style.color] = "'rgb(57, 89, 160)'"></i>
                  </a> 
@@ -31,24 +33,29 @@
   <table id="myTable" datatable class="row-border hover">
     
     <tbody>
-      <!-- <tr *ngFor="let register of registerServices"> -->
-       <tr>
+      <tr *ngFor="let roles of arrayRoles">
         <td>
           <table>
             <thead>
-              <th>Jon Doe</th>
+              <th>{{roles.name}}</th>
             </thead>
               <tbody>
+                <tr style="display: none;">
+                  <td>{{roles.id}}</td>
+                </tr>
                 <tr>
-                  <td>Ayudante ala sur</td>
+                  <td>{{roles.write}}</td>
+                </tr>
+                <tr>
+                  <td>{{roles.read}}</td>
                 </tr>
               </tbody>
           </table>
         </td>
         <td>
           <div>
-            <a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
-                <i class ="glyphicon glyphicon-edit"
+            <a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModalUpdate" rel="noopener noreferrer">
+                <i class ="glyphicon glyphicon-edit" (click)="loadRolesInfo(roles)"
                 [style.color] = "'Green'">
              </i>
             </a>
@@ -56,7 +63,7 @@
         </td>
         <td>
             <div >
-              <i class ="glyphicon glyphicon-remove-circle"
+              <i class ="glyphicon glyphicon-remove-circle" (click)="removeRoles(roles.id)" 
                 [style.color] = "'rgb(173, 2, 2)'">
               </i>
             </div>
@@ -80,12 +87,12 @@
 <br>
 </div>
 
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="myModalCreate" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
     <div class="modal-header">
         <label class="switch">
-            <input type="checkbox" checked>
+            <input type="checkbox" checked #IsActive ngModel name="IsActive">
             <span class="slider round"></span>
         </label>
       <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -93,30 +100,73 @@
     </div>
     <div class="modal-body">
       <label>Nombre:</label>
-      <input class="form-control"/>
+      <input class="form-control" #NameRole ngModel name="NameRole" [(ngModel)]="rolesToEdit.name"/>
       <p></p>
-      <label>Apellido:</label>
-      <input class="form-control"/>
-      <label>Email:</label>
-      <input type="email" class="form-control"/>
-      <p></p>
-      <label>Contraseña:</label>
-      <input type="password" class="form-control"/>
-      <p></p>
-      <label>Repetir Contraseña:</label>
-      <input type="password" class="form-control"/>
-      <p></p>
-      <label>Perfil:</label>
-      <select class="form-control"></select>
-      <p></p>
-      <label>Turno:</label>
-      <select class="form-control"></select>
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" #Read ngModel name="Read" [(ngModel)]="rolesToEdit.read"> Lectura
+        </label>
+      </div>
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" #Write ngModel name="Write" [(ngModel)]="rolesToEdit.write"> Escritura
+        </label>
+      </div>
+
     </div>
     <div class="modal-footer">
                 <div class="col-md-1">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+        <button type="button" class="btn btn-success"
+        (click)="addRoles(IsActive.value, NameRole.value, Read.value, Write.value)">Guardar</button>
         </div>
+        <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
+        <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
     </div>
     </div>
   </div>
 </div>
+
+ <div class="modal fade" id="myModalUpdate" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">      
+    <div class="modal-header">
+        <label class="switch">
+            <input type="checkbox" checked #IsActive ngModel name="IsActive">
+            <span class="slider round"></span>
+        </label>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title" style="text-align:center;">Perfil</h4>
+    </div>
+    <div class="modal-body">
+      <div style="display: none;">
+          <label>Id:</label>
+          <input class="form-control" #Id ngModel name="Id" [(ngModel)]="rolesToEdit.id"/>
+          <p></p>
+      </div>
+      <label>Nombre:</label>
+      <input class="form-control" #NameRole ngModel name="NameRole" [(ngModel)]="rolesToEdit.name"/>
+      <p></p>
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" #Read ngModel name="Read" [(ngModel)]="rolesToEdit.read"> Lectura
+        </label>
+      </div>
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" #Write ngModel name="Write" [(ngModel)]="rolesToEdit.write"> Escritura
+        </label>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+                <div class="col-md-1">
+        <button type="button" class="btn btn-success"
+        (click)="editRoles(IsActive.value, NameRole.value, Read.value, Write.value,rolesToEdit.id)">Guardar</button>
+        </div>
+        <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
+        <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
+    </div>
+    </div>
+  </div>
+</div>
+

@@ -58,7 +58,7 @@
                              <li><a routerLink="/scheduler">&#9678; Asignaciones</a></li>
                              <li><a routerLink="/buttons">&#9678; Botones</a></li>
                              <li><a routerLink="/reports">&#9678; Reportes</a></li>
-                             <li><a class="custom-ref" data-toggle="modal" data-target="#myModal-place" rel="noopener noreferrer" >&#9678; Lugares</a></li>
+                             <li><a class="custom-ref" data-toggle="modal" data-target="#myModalCreate" rel="noopener noreferrer" >&#9678; Lugares</a></li>
                          </ul>
                      </li>
                      <li class="_navbar-separator"><a>Contenido</a>
@@ -90,38 +90,41 @@
         </div>
         
 </div>
-
-<div class="modal fade" id="myModal-place" role="dialog">
+      
+       <div class="modal fade" id="myModalCreate" role="dialog">
         <div class="modal-dialog modal-sm">
-          <div class="modal-content">
+          <div class="modal-content">      
           <div class="modal-header">
               <label class="switch">
-                  <input type="checkbox" checked>
+                  <input type="checkbox" checked #IsActive ngModel name="IsActive">
                   <span class="slider round"></span>
               </label>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title" style="text-align:center;">Lugar</h4>
-            <select class="selectpicker" data-show-subtext="true" data-live-search="true">
-                <option data-subtext="lugar...">Buscar </option>
-                <option data-subtext="lugar...">Buscar </option>
-                <option data-subtext="lugar...">Buscar </option>
-            </select>
+            <h4 class="modal-title" style="text-align:center;">Lugares</h4>
           </div>
           <div class="modal-body">
-                    
-            <p></p>
+            <div style="display: none;">
+                <label>Id:</label>
+                <input class="form-control" #Id ngModel name="Id" />
+                <p></p>
+            </div>
             <label>Nombre:</label>
-            <input class="form-control"/>
+            <input class="form-control" #NamePlace ngModel name="NameRole" />
             <p></p>
-            <label>Ciudad:</label>
-            <select class="form-control"></select>
-            <label>Pais:</label>
-            <select class="form-control"></select>
+            <label class="form-check-label">Ciudad</label>
+            <input type="text" class="form-control" #City ngModel name="City" />
+            <p></p>
+            <label class="form-check-label">País</label>
+            <input type="text" class="form-control" #Country ngModel name="Country" />
+      
           </div>
           <div class="modal-footer">
                       <div class="col-md-1">
-              <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+              <button type="button" class="btn btn-success"
+              (click)="editRoles(IsActive.value, NamePlace.value, City.value, Country.value,rolesToEdit.id)">Guardar</button>
               </div>
+              <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
+              <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
           </div>
           </div>
         </div>

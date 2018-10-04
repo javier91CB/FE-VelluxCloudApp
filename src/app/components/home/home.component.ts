@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
     var userInfo = _helperUserInfo.getUserInformation();
     if(userInfo != null) {
       this.tokenModel = userInfo;
-      debugger;
       this.userInfoModel = this.tokenModel.userInfo;
     }
     else{

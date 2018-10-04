@@ -31,7 +31,6 @@ export class HelperUserInfo  implements OnInit {
         this.tokenInfo = new TokenModel();
         const helper = new JwtHelperService();
         this.userInfo = helper.decodeToken(token);
-
         const expirationDate = helper.getTokenExpirationDate(token);
         const isExpired = helper.isTokenExpired(token);
 
