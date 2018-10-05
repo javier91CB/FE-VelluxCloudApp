@@ -8,7 +8,7 @@
                  <h4> Buscar usuario:</h4>
               </div>
               <div class="_add-user">
-                 <a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModalCreate" rel="noopener noreferrer">
+                 <a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModalCreateUser" rel="noopener noreferrer">
                     <i class ="glyphicon glyphicon-plus-sign" (click)="loadNewUserInfo()"
                     [style.color] = "'rgb(57, 89, 160)'"></i>
                  </a> 
@@ -80,7 +80,7 @@
 <br>
 </div>
 
-<div class="modal fade" id="myModalCreate" role="dialog">
+<div class="modal fade" id="myModalCreateUser" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
@@ -105,25 +105,34 @@
       <label>Ciudad:</label>
       <input class="form-control" type="text" #Ciudad ngModel name="Ciudad" [(ngModel)]="userToEdit.city"/>
       <label>Contraseña:</label>
-      <input type="password" class="form-control" #Password ngModel name="Password" />
+      <input type="password" class="form-control" #Pswd ngModel name="Pswd" />
       <label>Repetir Contraseña:</label>
-      <input type="password" class="form-control" #RePassword ngModel name="RePassword" />
+      <input type="password" class="form-control" #RePswd ngModel name="RePswd" />
       <div class="alert alert-danger" *ngIf="passwordNotMatches">
         Las contraseñas no son iguales.....
       </div>
-      <label>Perfil:</label>
-      <select class="form-control" #Perfil ngModel name="Perfil"></select>
+     
       <label>Turno:</label>
       <select class="form-control" #Turno ngModel name="Turno"></select>
       <label>Lugar:</label>
-      <select class="form-control" #Lugar ngModel name="Lugar"></select>
+      <select class="form-control" #Lugar ngModel name="Lugar" [(ngModel)]="selectedOption" (change)="getAllPermissions($event.target.value)">
+        <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
+            <div style="display: none;">{{c.value}}</div>
+        </option>
+      </select>
+      <label>Perfil:</label>
+      <select class="form-control" #Perfil ngModel name="Perfil" [(ngModel)]="selectedRol">
+          <option *ngFor="let p of crossCuttingListPermissions" [ngValue]="p.key">
+              <div style="display: none;">{{p.value}}</div>
+          </option>
+      </select>
     </div>
     <div class="modal-footer">
                 <div class="col-md-1">
         <button type="button" class="btn btn-success" 
         (click)="addUser(IsActive.value,Name.value,Apellido.value,Email.value,
-        FechaNacimiento.value,Pais.value,Ciudad.value,Password.value
-        ,RePassword.value,Perfil.value,Turno.value,Lugar.value)">Guardar</button>
+        FechaNacimiento.value,Pais.value,Ciudad.value,Pswd.value,
+        RePswd.value,selectedRol,Turno.value,selectedOption)">Guardar</button>
         </div>
         <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
         <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
@@ -159,25 +168,33 @@
       <label>Ciudad:</label>
       <input class="form-control" type="text" #Ciudad ngModel name="Ciudad" [(ngModel)]="userToEdit.city"/>
       <label>Contraseña:</label>
-      <input type="password" class="form-control" #Password ngModel name="Password" />
+      <input type="password" class="form-control" #Psd ngModel name="Psd" />
       <label>Repetir Contraseña:</label>
-      <input type="password" class="form-control" #RePassword ngModel name="RePassword" />
+      <input type="password" class="form-control" #RePsd ngModel name="RePsd" />
       <div class="alert alert-danger" *ngIf="passwordNotMatches">
         Las contraseñas no son iguales.....
       </div>
-      <label>Perfil:</label>
-      <select class="form-control" #Perfil ngModel name="Perfil"></select>
       <label>Turno:</label>
       <select class="form-control" #Turno ngModel name="Turno"></select>
       <label>Lugar:</label>
-      <select class="form-control" #Lugar ngModel name="Lugar"></select>
+      <select class="form-control" #Lugar ngModel name="Lugar" [(ngModel)]="selectedOption" (change)="getAllPermissions($event.target.value)">
+        <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
+            <div style="display: none;">{{c.value}}</div>
+        </option>
+      </select>
+      <label>Perfil:</label>
+      <select class="form-control" #Perfil ngModel name="Perfil" [(ngModel)]="selecRol">
+          <option *ngFor="let p of crossCuttingListPermissions" [ngValue]="p.key">
+              <div style="display: none;">{{p.value}}</div>
+          </option>
+      </select>
     </div>
     <div class="modal-footer">
                 <div class="col-md-1">
         <button type="button" class="btn btn-success" 
         (click)="editUser(IsActive.value,Name.value,Apellido.value,Email.value,
-        FechaNacimiento.value,Pais.value,Ciudad.value,Password.value
-        ,RePassword.value,Perfil.value,Turno.value,Lugar.value,IdUser.value)">Guardar</button>
+        FechaNacimiento.value,Pais.value,Ciudad.value,Psd.value,
+        RePsd.value,selecRol,Turno.value,selectedOption,IdUser.value)">Guardar</button>
         </div>
         <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
         <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>

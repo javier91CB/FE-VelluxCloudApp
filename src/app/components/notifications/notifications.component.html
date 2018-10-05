@@ -31,10 +31,16 @@
         </td>
         <td>
           <div>
-              {{register.Timer}}
+              {{register.timer}}
                 <i [ngClass]="
-                   register.Status === 1 ? 'glyphicon glyphicon-ok-circle' : register.Status === 2 ? 'glyphicon glyphicon-exclamation-sign' :  register.Status === 3 ? 'glyphicon glyphicon-remove-circle' : ''"
-                   [style.color] = "register.Status === 1 ? 'Green' : register.Status === 2 ? '#FAD201' :  register.Status === 3 ? 'rgb(173, 2, 2)' : ''"
+                   register.status === 1 
+                   ? 'glyphicon glyphicon-ok-circle' : register.status === 2 
+                   ? 'glyphicon glyphicon-exclamation-sign' :  register.status === 3 
+                   ? 'glyphicon glyphicon-remove-circle' : ''"
+                   [style.color] = "register.status === 1 
+                   ? 'Green' : register.status === 2 
+                   ? '#FAD201' :  register.status === 3 
+                   ? 'rgb(173, 2, 2)' : ''"
                 >
                 </i>
           </div>

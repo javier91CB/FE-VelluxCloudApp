@@ -8,6 +8,7 @@ import { RolModel } from '../../model/roles/rolModel';
 import { PlaceRequest } from '../../model/Place/requestModel/placeRequest';
 import { PlaceResponse } from '../../model/Place/responseModel/placeResponse';
 import { PlaceService } from '../../services/place/place.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-menu',
@@ -46,8 +47,8 @@ export class MenuComponent implements OnInit {
       this.tokenModel = userInfo;
       this.userInfoModel = this.tokenModel.userInfo;
     }
-    this.placeId = this.tokenModel.userInfo.PlaceId;
-    this.userId = this.tokenModel.userInfo.IdUser;
+    this.placeId = this.tokenModel.userInfo.placeId;
+    this.userId = this.tokenModel.userInfo.id;
     this.rolesToEdit = new RolModel();
     this.Success = false;
     this.Fail = false;
@@ -57,7 +58,7 @@ export class MenuComponent implements OnInit {
     setInterval(() => {
       this.Success = false;
       this.Fail = false;
-    },1000)
+    },5000)
   }
   
   activeMenuMore() {
@@ -95,16 +96,20 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   
-  addRoles(city, country, createDate, placeName,updateDate,  userCreate, userUpdate, isActive){
+  addPlace(namePlace, city, country, isActive){
+    debugger;
+    var datePipe = new DatePipe('en-US');
     var placeRequest = new PlaceRequest();
+
+    placeRequest.placeName = namePlace;
     placeRequest.city = city;
     placeRequest.country = country;
-    placeRequest.createDate = createDate;
-    placeRequest.placeName = placeName;
-    placeRequest.updateDate = updateDate;
-    placeRequest.userCreate = userCreate;
-    placeRequest.userUpdate = userUpdate;
+    placeRequest.createDate = datePipe.transform(new Date().toUTCString(), 'dd/MM/yyyy');
+    placeRequest.userCreate = this.userInfoModel.id;
+    placeRequest.updateDate = datePipe.transform(new Date().toUTCString(), 'dd/MM/yyyy');
+    placeRequest.userUpdate = this.userInfoModel.id;
     placeRequest.isActive = isActive == 'on' ? true : false;
+    placeRequest.idPlace = null;
 
     console.log(JSON.stringify(placeRequest));
       this.placeService.createPlace(placeRequest).subscribe(
@@ -118,16 +123,16 @@ export class MenuComponent implements OnInit {
         });
     }
 
-  loadRolesInfo(placeToEdit){
+  loadPlaceInfo(placeToEdit){
     this.placeToEdit = new PlaceResponse();
     this.placeToEdit = placeToEdit;
   }
 
-  loadNewRolesInfo(){
+  loadNewPlaceInfo(){
     this.placeToEdit = new PlaceResponse();
   }
 
-  editRoles(placeId, city, country, createDate, placeName,updateDate,  userCreate, userUpdate, isActive){
+  editPlace(placeId, city, country, createDate, placeName,updateDate,  userCreate, userUpdate, isActive){
     var placeRequest = new PlaceRequest();
     placeRequest.idPlace = placeId;
     placeRequest.city = city;
@@ -149,7 +154,7 @@ export class MenuComponent implements OnInit {
       });
   }
 
-    removeRoles(placeId){
+    removePlace(placeId){
     this.placeService.deletePlace(placeId).subscribe(
       (data) => {
         debugger;
@@ -162,9 +167,9 @@ export class MenuComponent implements OnInit {
       });
   }
 
-  getAllRoles(placeId){
+  getAllPlace(placeId){
     debugger;
-    this.placeService.getAllPlaces(placeId).subscribe(
+    this.placeService.getAllPlaces().subscribe(
       (data) => {
         this.arrayPlace = new Array<PlaceResponse>();
         this.arrayPlace = data;

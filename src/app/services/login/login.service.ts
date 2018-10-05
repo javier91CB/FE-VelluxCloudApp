@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserRequest } from '../../model/users/requestModel/userRequest';
+import { Security_Url } from '../../utilities/url/security_Url';
 
 @Injectable()
 export class LoginService {
 
   userRequest: UserRequest;
-  private readonly API_URL = 'http://vcsecurityapi.azurewebsites.net/api/User';
+  private readonly API_URL = Security_Url.userUrl;
   constructor(private http: HttpClient) {}
 
   userAuthentication(userName, password): Observable<any> {

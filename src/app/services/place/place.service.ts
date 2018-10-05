@@ -44,9 +44,9 @@ export class PlaceService {
     return this.response;
   }
 
-  getAllPlaces(placeId: string){
+  getAllPlaces(){
     this.response = this.http.get(
-      this.API_URL + '/RegisterPlace/'+placeId, 
+      this.API_URL + '/GetAllPlace', 
       {
       headers: new HttpHeaders()
       .set('Content-Type', 'application/json')

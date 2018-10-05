@@ -6,6 +6,8 @@ import { UserInfoModel } from '../../model/users/userInfoModel';
 import { TokenModel } from '../../model/token/tokenModel';
 import { RolesResponse } from '../../model/roles/responseModel/rolesResponse';
 import { RolModel } from '../../model/roles/rolModel';
+import { CrossCuttingList } from '../../model/crosscuttingList';
+import { PlaceService } from '../../services/place/place.service';
 
 @Component({
   selector: 'app-roles',
@@ -21,8 +23,11 @@ export class RolesComponent implements OnInit {
   userId:string;
   Success:boolean;
   Fail:boolean;
+  crossCuttingList: Array<CrossCuttingList>;
 
-  constructor(private RolesService: ProfileService) { }
+  constructor
+    (private RolesService: ProfileService,
+    private placeService: PlaceService,) { }
 
   ngOnInit() {
     var _helperUserInfo = new HelperUserInfo();
@@ -33,11 +38,12 @@ export class RolesComponent implements OnInit {
       this.tokenModel = userInfo;
       this.userInfoModel = this.tokenModel.userInfo;
     }
-    this.placeId = this.tokenModel.userInfo.PlaceId;
-    this.userId = this.tokenModel.userInfo.IdUser;
+    debugger;
+    this.placeId = this.tokenModel.userInfo.placeId;
+    this.userId = this.tokenModel.userInfo.id;
     this.rolesToEdit = new RolModel();
     this.getAllRoles(this.placeId);
-
+    this.getAllPlace(this.placeId)
     this.Success = false;
     this.Fail = false;
   }
@@ -50,9 +56,28 @@ export class RolesComponent implements OnInit {
     },4000)
   }
 
-  addRoles(isActive, name, read, write){
+  getAllPlace(placeId)
+  {
+    debugger;
+    this.placeService.getAllPlaces().subscribe(
+      (data) => {
+        this.crossCuttingList = new Array<CrossCuttingList>();
+        
+        for(let _i = 0; _i < data.length; _i++)
+        {
+          var clist = new CrossCuttingList();
+          clist.key = data[_i].id;
+          clist.value = data[_i].placeName;
+          this.crossCuttingList[_i] = clist;
+        }
+      },
+      error => {
+      });
+  }
+
+  addRoles(isActive, name, read, write, place){
     var rolesRequest = new RolesRequest();
-    rolesRequest.idPlace = this.placeId;
+    rolesRequest.idPlace = place;
     rolesRequest.name = name;
     rolesRequest.permissions = read == 'on' ? 'R' : '';
     rolesRequest.permissions += write == 'on' ? ',W': '' ;
@@ -80,9 +105,9 @@ export class RolesComponent implements OnInit {
     this.rolesToEdit = new RolModel();
   }
 
-  editRoles(isActive, name, read, write, roleId){
+  editRoles(isActive, name, read, write, roleId, place){
     var rolesRequest = new RolesRequest();
-    rolesRequest.idPlace = this.placeId;
+    rolesRequest.idPlace = place;
     rolesRequest.name = name;
     rolesRequest.permissions = read == 'on' ? 'R' : '';
     rolesRequest.permissions += write == 'on' ? ',W': '' ;
@@ -102,7 +127,6 @@ export class RolesComponent implements OnInit {
     removeRoles(RolesId){
     this.RolesService.deletePermission(RolesId).subscribe(
       (data) => {
-        debugger;
         this.Success = true;
         this.startTimer();
       },

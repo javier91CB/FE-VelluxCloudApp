@@ -5,4 +5,5 @@ export class ScheduleRequest{
     startHour: string;
     endHour: string;
     isActive: boolean;
+    idPlace: string
 }

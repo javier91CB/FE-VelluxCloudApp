@@ -112,12 +112,17 @@
           <input type="checkbox" class="form-check-input" #Write ngModel name="Write" [(ngModel)]="rolesToEdit.write"> Escritura
         </label>
       </div>
-
+      <label>Lugar:</label>
+      <select class="form-control" #Lugar ngModel name="Lugar" [(ngModel)]="selectedOption" >
+        <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
+            <div style="display: none;">{{c.value}}</div>
+        </option>
+      </select>
     </div>
     <div class="modal-footer">
                 <div class="col-md-1">
         <button type="button" class="btn btn-success"
-        (click)="addRoles(IsActive.value, NameRole.value, Read.value, Write.value)">Guardar</button>
+        (click)="addRoles(IsActive.value, NameRole.value, Read.value, Write.value, selectedOption)">Guardar</button>
         </div>
         <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
         <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
@@ -156,12 +161,17 @@
           <input type="checkbox" class="form-check-input" #Write ngModel name="Write" [(ngModel)]="rolesToEdit.write"> Escritura
         </label>
       </div>
-
+      <label>Lugar:</label>
+      <select class="form-control" #Lugar ngModel name="Lugar" [(ngModel)]="selectedOption">
+        <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
+            <div style="display: none;">{{c.value}}</div>
+        </option>
+      </select>
     </div>
     <div class="modal-footer">
                 <div class="col-md-1">
         <button type="button" class="btn btn-success"
-        (click)="editRoles(IsActive.value, NameRole.value, Read.value, Write.value,rolesToEdit.id)">Guardar</button>
+        (click)="editRoles(IsActive.value, NameRole.value, Read.value, Write.value,rolesToEdit.id,selectedOption)">Guardar</button>
         </div>
         <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
         <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>

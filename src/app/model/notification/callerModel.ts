@@ -9,4 +9,6 @@ export class CallerModel{
     reCallService: number
     startCall: string
     endCall: string
+    timer: string;
+    status: number;
 }

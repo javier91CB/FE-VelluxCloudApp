@@ -58,7 +58,7 @@
                              <li><a routerLink="/scheduler">&#9678; Asignaciones</a></li>
                              <li><a routerLink="/buttons">&#9678; Botones</a></li>
                              <li><a routerLink="/reports">&#9678; Reportes</a></li>
-                             <li><a class="custom-ref" data-toggle="modal" data-target="#myModalCreate" rel="noopener noreferrer" >&#9678; Lugares</a></li>
+                             <li><a class="custom-ref" data-toggle="modal" data-target="#myModalCreatePlace" rel="noopener noreferrer" >&#9678; Lugares</a></li>
                          </ul>
                      </li>
                      <li class="_navbar-separator"><a>Contenido</a>
@@ -91,7 +91,7 @@
         
 </div>
       
-       <div class="modal fade" id="myModalCreate" role="dialog">
+       <div class="modal fade" id="myModalCreatePlace" role="dialog">
         <div class="modal-dialog modal-sm">
           <div class="modal-content">      
           <div class="modal-header">
@@ -103,13 +103,8 @@
             <h4 class="modal-title" style="text-align:center;">Lugares</h4>
           </div>
           <div class="modal-body">
-            <div style="display: none;">
-                <label>Id:</label>
-                <input class="form-control" #Id ngModel name="Id" />
-                <p></p>
-            </div>
             <label>Nombre:</label>
-            <input class="form-control" #NamePlace ngModel name="NameRole" />
+            <input class="form-control" #NamePlace ngModel name="NamePlace" />
             <p></p>
             <label class="form-check-label">Ciudad</label>
             <input type="text" class="form-control" #City ngModel name="City" />
@@ -121,7 +116,7 @@
           <div class="modal-footer">
                       <div class="col-md-1">
               <button type="button" class="btn btn-success"
-              (click)="editRoles(IsActive.value, NamePlace.value, City.value, Country.value,rolesToEdit.id)">Guardar</button>
+              (click)="addPlace(NamePlace.value, City.value, Country.value, IsActive.value)">Guardar</button>
               </div>
               <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
               <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
