@@ -15,6 +15,7 @@ import { PlaceService } from '../../services/place/place.service';
   styleUrls: ['./roles.component.css']
 })
 export class RolesComponent implements OnInit {
+  loading: boolean;
   arrayRoles: Array<RolModel>;
   rolesToEdit: RolModel;
   userInfoModel: UserInfoModel;
@@ -24,10 +25,15 @@ export class RolesComponent implements OnInit {
   Success:boolean;
   Fail:boolean;
   crossCuttingList: Array<CrossCuttingList>;
+  isWriter: false;
+  isReader: false;
+  isAct: false;
 
   constructor
     (private RolesService: ProfileService,
-    private placeService: PlaceService,) { }
+    private placeService: PlaceService) { 
+      this.loading = true;
+    }
 
   ngOnInit() {
     var _helperUserInfo = new HelperUserInfo();
@@ -55,7 +61,18 @@ export class RolesComponent implements OnInit {
       this.Fail = false;
     },4000)
   }
+  reader(val){
+    this.isReader = val;
+  }
 
+  write(val){
+    this.isWriter = val;
+  }
+
+  isActive(val){
+    this.isAct = val;
+  }
+  
   getAllPlace(placeId)
   {
     debugger;
@@ -79,10 +96,10 @@ export class RolesComponent implements OnInit {
     var rolesRequest = new RolesRequest();
     rolesRequest.idPlace = place;
     rolesRequest.name = name;
-    rolesRequest.permissions = read == 'on' ? 'R' : '';
-    rolesRequest.permissions += write == 'on' ? ',W': '' ;
+    rolesRequest.permissions = this.isReader ? 'R' : '';
+    rolesRequest.permissions += this.isWriter ? 'W': '' ;
     rolesRequest.userId = this.userId;
-    rolesRequest.isActive = isActive == 'on' ? true : false;
+    rolesRequest.isActive = this.isAct;
 
     console.log(JSON.stringify(rolesRequest));
       this.RolesService.createPermission(rolesRequest).subscribe(
@@ -154,7 +171,7 @@ export class RolesComponent implements OnInit {
 
           rolesModel[_i] = roles;
         }
-
+        this.loading = false;
         this.arrayRoles = rolesModel;
       },
       error => {

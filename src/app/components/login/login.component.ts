@@ -10,27 +10,34 @@ import { LoginService } from '../../services/login/login.service';
 })
 export class LoginComponent {
 
+  loading: boolean;
   model: any = {};
   token: string;
   isLoginError = false;
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) {
+      this.loading = false;
+     }
 
   LoginOn(userName, password) {
 
     if(userName != "" && password != "")
     {
+      debugger;
+      this.loading = true;
       this.loginService.userAuthentication(userName, password)
       .subscribe(
         (data) => {
           localStorage.setItem('access_token', JSON.stringify(data));
+          this.loading = false;
           this.router.navigate(['/home']);
         },
         error => {
           console.log(error);
-            this.isLoginError = true;
+          this.loading = false;
+          this.isLoginError = true;
         });
     }
   }

@@ -15,6 +15,18 @@ import { TokenModel } from '../../model/token/tokenModel';
 })
 export class SchedulerComponent implements OnInit {
 
+  loading: boolean;
+  mond :false;
+  tues :false;
+  wedn :false;
+  thur :false;
+  frid :false;
+  satu :false;
+  sund :false;
+  
+  startT :string;
+  endT :string;
+
   horary : Array<string>;
   Success:boolean;
   Fail:boolean;
@@ -26,10 +38,14 @@ export class SchedulerComponent implements OnInit {
   tokenModel: any;
   placeId:string;
   userId:string;
-  
+  arrayScheduleRequest : Array<ScheduleRequest>
+  isAct: false;
+
   constructor(
     private schedulerService: SchedulerService,
-    private placeService: PlaceService) { }
+    private placeService: PlaceService) {
+      this.loading = true;
+     }
 
   ngOnInit() {
     var _helperUserInfo = new HelperUserInfo();
@@ -45,6 +61,7 @@ export class SchedulerComponent implements OnInit {
     this.userId = this.tokenModel.userInfo.id;
     this.rolesToEdit = new RolModel();
     this.getAllPlace()
+    this.getAllSchedule(this.placeId);
     this.Success = false;
     this.Fail = false;
   }
@@ -54,7 +71,7 @@ export class SchedulerComponent implements OnInit {
     setInterval(() => {
       this.Success = false;
       this.Fail = false;
-    },4000)
+    },10000)
   }
 
   getAllPlace()
@@ -71,28 +88,69 @@ export class SchedulerComponent implements OnInit {
           clist.value = data[_i].placeName;
           this.crossCuttingList[_i] = clist;
         }
+        this.loading = false;
       },
       error => {
       });
   }
 
-  updateSchedul(Id, IsActive, NameSchedule,Monday,Tuesday,
-    Wednesday, Thursday, Friday, Saturday, Sunday,
+  isActive(val){
+    this.isAct = val;
+  }
+
+  monday(val){
+    this.mond = val;
+  }
+
+  tuesday(val){
+    this.tues = val;
+  }
+
+  wednesday(val){
+    this.wedn = val;
+  }
+
+  thursday(val){
+    this.thur = val;
+  }
+
+  friday(val){
+    this.frid = val;
+  }
+
+  saturday(val){
+    this.satu = val;
+  }
+
+  sunday(val){
+    this.sund = val;
+  }
+  
+  startTime(val){
+    debugger;
+    this.startT = val;
+  }
+
+  endTime(val){
+    this.endT = val;
+  }
+
+  updateSchedul(Id, IsActive, NameSchedule,
     StrHour, EndHour, selectedOption){
       debugger;
       var request = new ScheduleRequest();
       request.days = new Array<string>();
-      request.isActive = IsActive == 'on' ? true : false;
+      request.isActive = this.isAct;
       request.schedulName = NameSchedule;
-      request.endHour = EndHour;
-      request.startHour = StrHour;
-      request.days[0] = Monday == 'on' ? '1' : '';
-      request.days[1] = Tuesday == 'on' ? '2' : '';
-      request.days[2] = Wednesday == 'on'  ? '3' : '';
-      request.days[3] = Thursday == 'on' ? '4' : '';
-      request.days[4] = Friday == 'on' ? '5' : '';
-      request.days[5] = Saturday == 'on' ? '6' : '';
-      request.days[6] = Sunday == 'on' ? '7' : '';
+      request.endHour = this.endT;
+      request.startHour = this.startT;
+      request.days[0] = this.mond ? 'Lun.' : '';
+      request.days[1] = this.thur ? 'Mart.' : '';
+      request.days[2] = this.wedn ? 'Mier.' : '';
+      request.days[3] = this.thur ? 'Juev.' : '';
+      request.days[4] = this.frid ? 'Vier.' : '';
+      request.days[5] = this.satu ? 'Sabad.' : '';
+      request.days[6] = this.sund ? 'Domi.' : '';
       request.idPlace = selectedOption
 
       this.schedulerService.updateScheduler(request, Id).subscribe(
@@ -111,20 +169,20 @@ export class SchedulerComponent implements OnInit {
     createSchedul(IsActive, NameSchedule,Monday,Tuesday,
       Wednesday, Thursday, Friday, Saturday, Sunday,
       StrHour, EndHour, selectedOption){
-debugger;
+        debugger;
         var request = new ScheduleRequest();
         request.days = new Array<string>();
         request.isActive = IsActive == 'on' ? true : false;
         request.schedulName = NameSchedule;
-        request.endHour = EndHour;
-        request.startHour = StrHour;
-        request.days[0] = Monday == 'on' ? '1' : '';
-        request.days[1] = Tuesday == 'on' ? '2' : '';
-        request.days[2] = Wednesday == 'on'  ? '3' : '';
-        request.days[3] = Thursday == 'on' ? '4' : '';
-        request.days[4] = Friday == 'on' ? '5' : '';
-        request.days[5] = Saturday == 'on' ? '6' : '';
-        request.days[6] = Sunday == 'on' ? '7' : '';
+        request.endHour = this.endT;
+        request.startHour = this.startT;
+        request.days[0] = this.mond ? 'Monday' : '';
+        request.days[1] = this.thur ? 'Tuesday' : '';
+        request.days[2] = this.wedn ? 'Wednesday' : '';
+        request.days[3] = this.thur ? 'Thursday' : '';
+        request.days[4] = this.frid ? 'Friday' : '';
+        request.days[5] = this.satu ? 'Saturday' : '';
+        request.days[6] = this.sund ? 'Sunday' : '';
         request.idPlace = selectedOption
   
         this.schedulerService.createScheduler(request).subscribe(
@@ -138,4 +196,13 @@ debugger;
           });
       }
 
+      getAllSchedule(placeId){
+        this.arrayScheduleRequest = Array<ScheduleRequest>();
+        this.schedulerService.getAllSchedulers(placeId).subscribe(
+          (data) => {
+            this.arrayScheduleRequest = data;
+          },
+          error => {
+          });
+      }
 }

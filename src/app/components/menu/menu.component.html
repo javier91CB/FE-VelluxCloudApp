@@ -32,7 +32,7 @@
        
     </li>
     <li>
-        <a routerLink="/full-calendar">
+        <a routerLink="/full-calendar" style="pointer-events: none;">
             <img routerLink="/full-calendar" class="icon-calendar" src ="../assets/icons/calendar.svg">
             <h6 class="label-menu">Calendario</h6>
         </a>
@@ -57,15 +57,15 @@
                          <ul>
                              <li><a routerLink="/scheduler">&#9678; Asignaciones</a></li>
                              <li><a routerLink="/buttons">&#9678; Botones</a></li>
-                             <li><a routerLink="/reports">&#9678; Reportes</a></li>
+                             <li><a routerLink="/reports" >&#9678; Reportes</a></li>
                              <li><a class="custom-ref" data-toggle="modal" data-target="#myModalCreatePlace" rel="noopener noreferrer" >&#9678; Lugares</a></li>
                          </ul>
                      </li>
                      <li class="_navbar-separator"><a>Contenido</a>
                          <ul>
-                             <li><a>&#9678; Comunicados</a></li>
-                             <li><a>&#9678; Noticias</a></li>
-                             <li><a>&#9678; Enlaces de interes</a></li>
+                             <li><a style="pointer-events: none;">&#9678; Comunicados</a></li>
+                             <li><a style="pointer-events: none;">&#9678; Noticias</a></li>
+                             <li><a style="pointer-events: none;">&#9678; Enlaces de interes</a></li>
                          </ul>
                      </li>
                  </ul>
@@ -75,16 +75,16 @@
         [style.visibility]="(showMoreSubmenu == true) ? 'visible' : 'hidden' "
         >
                 <ul class="_navbar-icon-menu-more-ul">
-                        <li class="_navbar-separator-single"><a>Noticias y comunicados</a></li>
-                        <li><a>Mis horas de labor</a></li>
+                        <li class="_navbar-separator-single"><a style="pointer-events: none;">Noticias y comunicados</a></li>
+                        <li><a style="pointer-events: none;">Mis horas de labor</a></li>
                         <li><a>Herramientas</a>
                         <ul>
                             <li><a routerLink="/qualification">&#9678; Valoración</a></li>
-                            <li><a routerLink="/queue">&#9678; Agendamiento</a></li>
+                            <li><a routerLink="/queue" style="pointer-events: none;">&#9678; Agendamiento</a></li>
                         </ul>
                         </li>
-                        <li><a>Enlaces</a></li>
-                        <li><a>Mis mensajes</a></li>
+                        <li><a style="pointer-events: none;">Enlaces</a></li>
+                        <li><a style="pointer-events: none;">Mis mensajes</a></li>
                         <li class="_navbar-quite"><a (click)="OnQuit()">Salir</a></li>
                     </ul>
         </div>

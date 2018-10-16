@@ -1,7 +1,5 @@
 <div class="container">
-    
   <ul class="list-group">
-   
       <li class="list-group-item ">
           <div class="card-body">
               <div class="_title-users">
@@ -21,14 +19,18 @@
                  </a>
                </div>
                <div class="_title-users">
-                  <h4> Importar usuario:</h4>
-                  <input type="file">
+                  <!-- <h4> Importar usuario:</h4>
+                  <input type="file"> -->
                </div>
           </div>
           <br>
     </li>
+   
     <li class="list-group-item ">
             <div class="card-body">
+      <div style="width: 50px; margin-left: auto; margin-right: auto;" *ngIf="loading" >
+          <img src="../../../assets/loader/loading.gif" style="width: 40px;" />
+      </div>
   <table id="myTable" datatable class="row-border hover">
     
     <tbody>
@@ -40,7 +42,7 @@
             </thead>
               <tbody>
                 <tr>
-                  <td>{{register.position}}</td>
+                  <!-- <td>{{register.position}}</td> -->
                 </tr>
               </tbody>
           </table>
@@ -85,7 +87,7 @@
     <div class="modal-content">
     <div class="modal-header">
         <label class="switch">
-            <input type="checkbox" checked #IsActive ngModel name="IsActive">
+            <input type="checkbox" checked #IsActive ngModel name="IsActive" (change)="isActive($event.target.checked)">
             <span class="slider round"></span>
         </label>
       <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -141,12 +143,14 @@
   </div>
 </div>
 
+
+
 <div class="modal fade" id="myModalUpdate" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
         <label class="switch">
-            <input type="checkbox" checked #IsActive ngModel name="IsActive" [(ngModel)]="userToEdit.IsActive">
+            <input type="checkbox" checked #IsActive ngModel name="IsActive" [(ngModel)]="userToEdit.IsActive" (change)="isActive($event.target.checked)">
             <span class="slider round"></span>
         </label>
       <button type="button" class="close" data-dismiss="modal">&times;</button>

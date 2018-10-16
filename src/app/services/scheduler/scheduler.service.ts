@@ -55,9 +55,10 @@ export class SchedulerService {
   }
 
   getAllSchedulers(placeId: string){
-    this.response = this.http.post(
-      this.API_URL + '/getAllSchedulesByPlace', 
-      JSON.stringify(placeId), {
+    debugger;
+    this.response = this.http.get(
+      this.API_URL + '/GetAllScheduleByPlace/'+placeId, 
+      {
       headers: new HttpHeaders()
       .set('Content-Type', 'application/json')
       });

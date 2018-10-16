@@ -19,6 +19,7 @@ export class UsersComponent implements OnInit {
   registerRequest:RegisterRequest;
   paginator: boolean;
   passwordNotMatches= false;
+  loading: boolean;
   userInfoModel: UserInfoModel;
   tokenModel: any;
   userToEdit: RegisterRequest;
@@ -28,11 +29,13 @@ export class UsersComponent implements OnInit {
   
   crossCuttingList: Array<CrossCuttingList>;
   crossCuttingListPermissions: Array<CrossCuttingList>;
+  isAct: false;
 
   constructor(private userService: UserService, 
     private placeService: PlaceService,
     private profileService: ProfileService) {
     this.paginator = true;
+    this.loading = true;
    }
 
   ngOnInit() {
@@ -60,6 +63,10 @@ export class UsersComponent implements OnInit {
     },4000)
   }
   
+  isActive(val){
+    this.isAct = val;
+  }
+
   getAllPlace(placeId)
   {
     debugger;
@@ -195,6 +202,7 @@ export class UsersComponent implements OnInit {
     this.userService.getAllUsers(placeId).subscribe(
       (data) => {
         this.arrayRegisterRequest = data;
+        this.loading = false;
       },
       error => {
       });

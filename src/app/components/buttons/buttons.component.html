@@ -21,33 +21,42 @@
                </div>
                <div class="_title-users">
                   <h4> Importar botones:</h4>
-                  <input type="file">
+                  <input type="file" (change)="handleFileInput($event.target.files)">
                </div>
           </div>
           <br>
     </li>
     <li class="list-group-item ">
+        <div style="width: 50px; margin-left: auto; margin-right: auto;" *ngIf="loading" >
+            <img src="../../../assets/loader/loading.gif" style="width: 40px;" />
+        </div>
             <div class="card-body">
   <table id="myTable" datatable class="row-border hover">
-    
+      <thead>
+          <tr>
+            <th>Boton</th>
+            <th>Responsable</th>
+            <th>Turno</th>
+          </tr>
+      </thead>
     <tbody>
-      <!-- <tr *ngFor="let register of registerServices"> -->
-       <tr>
-        <td>
-          <table>
-            <thead>
-              <th>Jon Doe</th>
-            </thead>
+      <tr *ngFor="let button of scheduler" style="font-size: 70%;">
+        <!-- <td> -->
+          <!-- <table style="font-size: 70%;" >
               <tbody>
-                <tr>
-                  <td>Ayudante ala sur</td>
-                </tr>
+                <tr> -->
+                  <td style="display:none;">{{button.id}}</td>
+                  <td>{{button.idButton}}</td>
+                  <td>{{button.owner}}</td>
+                  <td>{{button.schedule}}</td>
+                  <td style="display:none;">{{button.placeId}}</td>
+                <!-- </tr>
               </tbody>
           </table>
-        </td>
-        <td>
+        </td> -->
+        <!-- <td>
           <div>
-            <a class="custom-ref" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
+             <a class="custom-ref" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
                 <i class ="glyphicon glyphicon-edit"
                 [style.color] = "'Green'">
              </i>
@@ -60,7 +69,7 @@
                 [style.color] = "'rgb(173, 2, 2)'">
               </i>
             </div>
-          </td>
+        </td> -->
       </tr>
     </tbody>
   </table>
@@ -113,8 +122,8 @@
       <select class="form-control"></select>
     </div>
     <div class="modal-footer">
-                <div class="col-md-1">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+        <div class="col-md-1">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
         </div>
     </div>
     </div>
