@@ -32,6 +32,13 @@ import { UserService } from './services/user/user.service';
 import { ProfileService } from './services/profiles/profile.service';
 import { PlaceService } from './services/place/place.service';
 import { ButtonsService } from './services/buttons/buttons.service';
+import { MessagingService } from './services/shared/messaging.service';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AsyncPipe } from '../../node_modules/@angular/common';
 
 @NgModule({
   declarations: [
@@ -62,7 +69,11 @@ import { ButtonsService } from './services/buttons/buttons.service';
     HttpClientModule,
     AppRoutingModule,
     Ng2CarouselamosModule,
-    FullCalendarModule
+    FullCalendarModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireMessagingModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [
     EventSesrvice,
@@ -70,7 +81,9 @@ import { ButtonsService } from './services/buttons/buttons.service';
     UserService,
     ProfileService,
     PlaceService,
-    ButtonsService
+    ButtonsService,
+    MessagingService,
+    AsyncPipe
   ],
   bootstrap: [AppComponent]
 })

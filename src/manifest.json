@@ -1,4 +1,5 @@
 {
+    "gcm_sender_id": "103953800507",
     "name": "Angular Progressive Web App",
     "short_name": "Ng-PWA",
     "start_url": "./",

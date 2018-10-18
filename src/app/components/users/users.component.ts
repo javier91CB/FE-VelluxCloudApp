@@ -7,6 +7,8 @@ import { TokenModel } from '../../model/token/tokenModel';
 import { PlaceService } from '../../services/place/place.service';
 import { CrossCuttingList } from '../../model/crosscuttingList';
 import { ProfileService } from '../../services/profiles/profile.service';
+import { ScheduleResponse } from 'src/app/model/schedule/response/scheduleResponse';
+import { SchedulerService } from 'src/app/services/scheduler/scheduler.service';
 
 @Component({
   selector: 'app-users',
@@ -29,11 +31,14 @@ export class UsersComponent implements OnInit {
   
   crossCuttingList: Array<CrossCuttingList>;
   crossCuttingListPermissions: Array<CrossCuttingList>;
+  crossCuttingListSchedule: Array<CrossCuttingList>;
   isAct: false;
+  arrayScheduleRequest: any[];
 
   constructor(private userService: UserService, 
     private placeService: PlaceService,
-    private profileService: ProfileService) {
+    private profileService: ProfileService,
+    private scheduleService: SchedulerService ) {
     this.paginator = true;
     this.loading = true;
    }
@@ -88,7 +93,6 @@ export class UsersComponent implements OnInit {
 
   getAllPermissions(placeId)
   {
-    debugger;
     var s = placeId.toString().slice(3,placeId.length);
     this.profileService.getAllPermissions(s).subscribe(
       (data) => {
@@ -104,11 +108,32 @@ export class UsersComponent implements OnInit {
       },
       error => {
       });
+debugger;
+
+     this.scheduleService.getAllSchedulers(s).subscribe(
+      (dataSchedule) => {
+        this.crossCuttingListSchedule = new Array<CrossCuttingList>();
+        
+        for(let _is = 0; _is < dataSchedule.length; _is++)
+        {
+          var clist = new CrossCuttingList();
+          clist.key = dataSchedule[_is].id;
+          clist.value = dataSchedule[_is].schedulName;
+          this.crossCuttingListSchedule[_is] = clist;
+        }
+      },
+      error => {
+      });
   }
 
   addUser(IsActive,Name,Apellido,Email,
     FechaNacimiento,Pais,Ciudad,Password
     ,RePassword,Perfil,Turno,selectedOption){
+
+    var scheduleArray = new Array<string>();
+
+    scheduleArray[0] = Turno;
+
     debugger;
     this.registerRequest = new RegisterRequest();
     this.registerRequest.firstName = Name; 
@@ -119,7 +144,7 @@ export class UsersComponent implements OnInit {
     this.registerRequest.city = Ciudad;
     this.registerRequest.password = Password;
     this.registerRequest.position = Perfil;
-    this.registerRequest.schedule = Turno;
+    this.registerRequest.schedule = scheduleArray;
     this.registerRequest.nickName = Name + ' ' + Apellido;
     this.registerRequest.idPlace = selectedOption;
     this.registerRequest.isActive = IsActive == 'on' ? true : false;

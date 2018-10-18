@@ -113,9 +113,6 @@
       <div class="alert alert-danger" *ngIf="passwordNotMatches">
         Las contraseñas no son iguales.....
       </div>
-     
-      <label>Turno:</label>
-      <select class="form-control" #Turno ngModel name="Turno"></select>
       <label>Lugar:</label>
       <select class="form-control" #Lugar ngModel name="Lugar" [(ngModel)]="selectedOption" (change)="getAllPermissions($event.target.value)">
         <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
@@ -128,13 +125,19 @@
               <div style="display: none;">{{p.value}}</div>
           </option>
       </select>
+      <label>Turno:</label>
+      <select class="form-control" #Turno ngModel name="Turno" [(ngModel)]="selecSchedule">
+          <option *ngFor="let p of crossCuttingListSchedule" [ngValue]="p.key">
+              <div style="display: none;">{{p.value}}</div>
+          </option>
+      </select>
     </div>
     <div class="modal-footer">
                 <div class="col-md-1">
         <button type="button" class="btn btn-success" 
         (click)="addUser(IsActive.value,Name.value,Apellido.value,Email.value,
         FechaNacimiento.value,Pais.value,Ciudad.value,Pswd.value,
-        RePswd.value,selectedRol,Turno.value,selectedOption)">Guardar</button>
+        RePswd.value,selectedRol,selecSchedule,selectedOption)">Guardar</button>
         </div>
         <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
         <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
@@ -178,8 +181,6 @@
       <div class="alert alert-danger" *ngIf="passwordNotMatches">
         Las contraseñas no son iguales.....
       </div>
-      <label>Turno:</label>
-      <select class="form-control" #Turno ngModel name="Turno"></select>
       <label>Lugar:</label>
       <select class="form-control" #Lugar ngModel name="Lugar" [(ngModel)]="selectedOption" (change)="getAllPermissions($event.target.value)">
         <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
@@ -189,6 +190,12 @@
       <label>Perfil:</label>
       <select class="form-control" #Perfil ngModel name="Perfil" [(ngModel)]="selecRol">
           <option *ngFor="let p of crossCuttingListPermissions" [ngValue]="p.key">
+              <div style="display: none;">{{p.value}}</div>
+          </option>
+      </select>
+      <label>Turno:</label>
+      <select class="form-control" #Turno ngModel name="Turno" [(ngModel)]="selecSchedule">
+          <option *ngFor="let p of crossCuttingListSchedule" [ngValue]="p.key">
               <div style="display: none;">{{p.value}}</div>
           </option>
       </select>

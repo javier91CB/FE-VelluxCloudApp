@@ -2,67 +2,77 @@
     <ul class="list-group">
         <li class="list-group-item ">
             <div class="card-body">
-                <button type="button" class="btn btn-default custom-ref" style="text-align:left;" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
-                   <span class="glyphicon glyphicon-cog" style="color:cornflowerblue"></span>
-                </button>
                 <div class="_title-users" style="text-align:center;">
-                   <h1> <label for="radio1">Calificanos</label></h1>
+                   <h5><label for="radio1" style="color:rgb(78, 112, 175)">¿Comó valoras tu experiencia en nuestra tienda?</label></h5>
                 </div>
-                <table class="table">
+                <div class="alert alert-success" *ngIf="Success">Se ha enviado con exito...</div>
+                <table style="width: auto; margin: 0 auto;">
                     <tbody>
-                      <tr class="success">                         
+                      <tr style="padding-top: 5px;">
+                          <!-- class="success">-->
                         <td>
-                            <input id="radio1" type="radio" #Estrellasc ngModel name="Estrellasc" value="5" (click)='SendQualification(Estrellasc.value)'>
-                            <label for="radio1" style="font-size: 50px">★</label>
+                            <input id="radio1" type="radio" #Estrellasc ngModel name="Estrellasc" value="5" disabled="blocked">
+                            <img src="../../../../assets/images/4.PNG" (click)='SendQualification(Estrellasc.value)'>
                         </td>
-                        <td>
-                            <label style="font-size: 30px">Excelente</label>
-                        </td>
+                        <!-- <td>
+                            <label style="font-size: 20px">Excelente</label>
+                        </td> -->
                       </tr>
-                      <tr class="info">
+                      <tr style="padding-top: 5px;">
+                          <!-- class="info"> -->
                           <td>
-                             <input id="radio2" type="radio" #Estrellascu ngModel name="Estrellascu" value="4" (click)='SendQualification(Estrellascu.value)'>
-                             <label for="radio2"  style="font-size: 50px">★</label>
+                             <input id="radio2" type="radio" #Estrellascu ngModel name="Estrellascu" value="4" disabled="blocked">
+                             <img src="../../../../assets/images/3.PNG" (click)='SendQualification(Estrellascu.value)'>
                           </td>
-                          <td>
-                              <label style="font-size: 30px">Bueno</label>
-                          </td>
+                          <!-- <td>
+                              <label style="font-size: 20px">Bueno</label>
+                          </td> -->
                       </tr>
-                      <tr class="active">
+                      <tr style="padding-top: 5px;">
+                          <!-- class="active"> -->
                           <td>
-                            <input id="radio3" type="radio" #Estrellast ngModel name="Estrellast" value="3" (click)='SendQualification(Estrellast.value)'>
-                            <label for="radio3"  style="font-size: 50px">★</label>
+                            <input id="radio3" type="radio" #Estrellast ngModel name="Estrellast" value="3" disabled="blocked">
+                            <img src="../../../../assets/images/2.PNG" (click)='SendQualification(Estrellast.value)'>
                           </td>
-                          <td>
-                              <label style="font-size: 30px">Regular</label>
-                          </td>
+                          <!-- <td>
+                              <label style="font-size: 20px">Regular</label>
+                          </td> -->
                       </tr>
-                      <tr class="warning">
+                      <tr> 
+                      <!-- class="warning"> -->
                           <td>
-                             <input id="radio4" type="radio" #Estrellasd ngModel name="Estrellasd" value="2" (click)='SendQualification(Estrellasd.value)'>
-                             <label for="radio4"  style="font-size: 50px">★</label>
+                             <input id="radio4" type="radio" #Estrellasd ngModel name="Estrellasd" value="2" disabled="blocked">
+                             <img src="../../../../assets/images/1.PNG" (click)='SendQualification(Estrellasd.value)'>
                           </td>
-                          <td>
-                              <label style="font-size: 30px">Malo</label>
-                          </td>
+                          <!-- <td>
+                              <label style="font-size: 20px">Malo</label>
+                          </td> -->
                       </tr>
-                      <tr class="danger">
+                      <tr> 
+                          <!-- class="danger"> -->
                           <td>
-                              <input id="radio5" type="radio" #Estrellasu ngModel name="Estrellasu" value="1" (click)='SendQualification(Estrellasu.value)'>
-                              <label for="radio5" style="font-size: 50px">★</label>
+                              <input id="radio5" type="radio" #Estrellasu ngModel name="Estrellasu" value="1">
+                              <img src="../../../../assets/images/0.PNG" (click)='SendQualification(Estrellasu.value)' disabled="blocked">
                           </td>
-                          <td>
-                              <label style="font-size: 30px;">Pesimo</label>
-                          </td>
+                          <!-- <td>
+                              <label style="font-size: 20px;">Pesimo</label>
+                          </td> -->
+                      </tr>
+                      <tr>
+                        <img src="../../../../assets/images/countries.PNG" style="width: 90px; margin: 0 auto;">
                       </tr>
                     </tbody>
                   </table>
+                  <hr>
+                  <div class="center-block" style="width: 100%; margin-left: auto; margin-right: auto;">
+                    <button type="button" class="btn btn-default custom-ref" style="text-align:right;" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
+                            <span class="glyphicon glyphicon-cog" style="color:cornflowerblue"></span>
+                    </button>
+                 </div>
             </div>
             <br>
       </li>
   </ul>
-  <br>
-  <br>
   <br>
   </div>
 
@@ -74,6 +84,9 @@
             <h4 class="modal-title" style="text-align:center;">Configurar Notificaciones</h4>
           </div>
           <div class="modal-body">
+            <label>Nombre de Administrador:</label>
+            <input class="form-control" #NameRecipiant ngModel name="NameRecipiant"/>
+            <p></p>
             <label>Email receptor:</label>
             <input class="form-control" #Recipiant ngModel name="Recipiant"/>
             <p></p>
@@ -85,7 +98,9 @@
           </div>
           <div class="modal-footer">
               <div class="col-md-1">
-               <button type="button" class="btn btn-success" (click)="SaveNotificationInfo(Recipiant.value, Module.value, Place.value)" data-dismiss="modal">Guardar</button>
+               <button type="button" class="btn btn-success" 
+               (click)="SaveNotificationInfo(NameRecipiant.value, Recipiant.value, 
+               Module.value, Place.value)" data-dismiss="modal">Guardar</button>
               </div>
           </div>
           </div>

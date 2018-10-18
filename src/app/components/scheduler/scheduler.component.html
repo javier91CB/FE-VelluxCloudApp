@@ -8,7 +8,7 @@
               </div>
               <div class="_add-user">
                  <a class="custom-ref" target="_blank" data-toggle="modal" data-target="#myModalCreate" rel="noopener noreferrer">
-                    <i class ="glyphicon glyphicon-plus-sign"
+                    <i class ="glyphicon glyphicon-plus-sign" (click)="loadNewScheduleInfo()"
                     [style.color] = "'rgb(57, 89, 160)'"></i>
                  </a> 
                </div>
@@ -49,8 +49,8 @@
                 <tr>
                     <td>Hora Fin: {{register.endHour}}</td>
                   </tr>
-                <tr style="font-size: 60%;">
-                  <td>Dias: {{register.days}}</td>
+                <tr>
+                  <td>Dias: <h6>{{register.days}}</h6></td>
                 </tr>
               </tbody>
           </table>
@@ -58,7 +58,7 @@
         <td>
           <div>
             <a class="custom-ref" target="_blank" data-toggle="modal" data-target="#myModalUpdate" rel="noopener noreferrer">
-                <i class ="glyphicon glyphicon-edit"
+                <i class ="glyphicon glyphicon-edit" (click) = "loadScheduleInfo(register)"
                 [style.color] = "'Green'">
              </i>
             </a>
@@ -165,10 +165,10 @@
     <div class="modal-body">
       <div style="display: none;">
           <label>Id:</label>
-          <input class="form-control" #Id ngModel name="Id"/>
+          <input class="form-control" #Id ngModel name="Id" />
       </div>
       <label>Nombre Turno:</label>
-      <input class="form-control" #Name ngModel name="Name"/>
+      <input class="form-control" #Name ngModel name="Name" />
       <p></p>
       <label>Dias:</label>
       <p></p>

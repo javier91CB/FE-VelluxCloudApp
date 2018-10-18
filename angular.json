@@ -21,7 +21,9 @@
             "assets": [
               "src/velluxicon.ico",
               "src/assets",
-			        "src/web.config"
+              "src/web.config",
+              "src/firebase-messaging-sw.js",
+              "src/manifest.json"
             ],
             "styles": [
               "src/styles.css"

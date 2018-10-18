@@ -7,6 +7,7 @@ import { RolModel } from '../../model/roles/rolModel';
 import { UserInfoModel } from '../../model/users/userInfoModel';
 import { HelperUserInfo } from '../../utilities/tools/helperUserInfo';
 import { TokenModel } from '../../model/token/tokenModel';
+import { ScheduleResponse } from 'src/app/model/schedule/response/scheduleResponse';
 
 @Component({
   selector: 'app-scheduler',
@@ -38,8 +39,10 @@ export class SchedulerComponent implements OnInit {
   tokenModel: any;
   placeId:string;
   userId:string;
-  arrayScheduleRequest : Array<ScheduleRequest>
+  arrayScheduleRequest : Array<ScheduleResponse>
   isAct: false;
+  schedulerToEdit: ScheduleRequest;
+  schedulerToEditUpload: ScheduleResponse;
 
   constructor(
     private schedulerService: SchedulerService,
@@ -64,6 +67,16 @@ export class SchedulerComponent implements OnInit {
     this.getAllSchedule(this.placeId);
     this.Success = false;
     this.Fail = false;
+  }
+
+  loadNewScheduleInfo(){
+    this.schedulerToEdit = new ScheduleRequest();
+  }
+
+  loadScheduleInfo(register){
+    debugger;
+    this.schedulerToEditUpload = new ScheduleResponse();
+    this.schedulerToEditUpload = register;
   }
 
   startTimer() {
@@ -197,7 +210,7 @@ export class SchedulerComponent implements OnInit {
       }
 
       getAllSchedule(placeId){
-        this.arrayScheduleRequest = Array<ScheduleRequest>();
+        this.arrayScheduleRequest = Array<ScheduleResponse>();
         this.schedulerService.getAllSchedulers(placeId).subscribe(
           (data) => {
             this.arrayScheduleRequest = data;
