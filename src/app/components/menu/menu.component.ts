@@ -31,9 +31,12 @@ export class MenuComponent implements OnInit {
   placeToEdit: any;
   
   constructor(public router: Router,
-    private placeService:PlaceService) {}
+    private placeService:PlaceService) {
+      debugger;
+    }
 
   ngOnInit() {
+    debugger;
     this.showMoreSubmenu = false;
     this.showAdminSubmenu = false;
     this.showAdminClaim = true;
@@ -46,10 +49,10 @@ export class MenuComponent implements OnInit {
     if(userInfo != null) {
       this.tokenModel = userInfo;
       this.userInfoModel = this.tokenModel.userInfo;
+      this.placeId = this.tokenModel.userInfo.placeId;
+      this.userId = this.tokenModel.userInfo.id;
+      this.rolesToEdit = new RolModel();
     }
-    this.placeId = this.tokenModel.userInfo.placeId;
-    this.userId = this.tokenModel.userInfo.id;
-    this.rolesToEdit = new RolModel();
     this.Success = false;
     this.Fail = false;
   }
@@ -104,9 +107,9 @@ export class MenuComponent implements OnInit {
     placeRequest.placeName = namePlace;
     placeRequest.city = city;
     placeRequest.country = country;
-    placeRequest.createDate = datePipe.transform(new Date().toUTCString(), 'dd/MM/yyyy');
+    placeRequest.createDate = datePipe.transform(new Date().toUTCString(), 'yyyy-MM-dd');
     placeRequest.userCreate = this.userInfoModel.id;
-    placeRequest.updateDate = datePipe.transform(new Date().toUTCString(), 'dd/MM/yyyy');
+    placeRequest.updateDate = datePipe.transform(new Date().toUTCString(), 'yyyy-MM-dd');
     placeRequest.userUpdate = this.userInfoModel.id;
     placeRequest.isActive = isActive == 'on' ? true : false;
     placeRequest.idPlace = null;

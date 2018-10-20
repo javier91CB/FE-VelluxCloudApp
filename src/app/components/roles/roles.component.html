@@ -38,24 +38,26 @@
     <tbody>
       <tr *ngFor="let roles of arrayRoles">
         <td>
-          <table>
+          <table [ngStyle]="{'background-color':roles.isActive === false ? 'whitesmoke' : 'none'}">
             <thead>
-              <th>{{roles.name}}</th>
+              <th [ngStyle]="{'background-color':roles.isActive === false ? 'whitesmoke' : 'none' }">
+                {{roles.name}}
+              </th>
             </thead>
               <tbody>
                 <tr style="display: none;">
                   <td>{{roles.id}}</td>
                 </tr>
-                <tr>
+                <tr style="display: none;">
                   <td>{{roles.write}}</td>
                 </tr>
-                <tr>
+                <tr style="display: none;">
                   <td>{{roles.read}}</td>
                 </tr>
               </tbody>
           </table>
         </td>
-        <td>
+        <td [ngStyle]="{'background-color':roles.isActive === false ? 'whitesmoke' : 'none' }">
           <div>
             <a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModalUpdate" rel="noopener noreferrer">
                 <i class ="glyphicon glyphicon-edit" (click)="loadRolesInfo(roles)"
@@ -64,7 +66,7 @@
             </a>
           </div>
         </td>
-        <td>
+        <td [ngStyle]="{'background-color':roles.isActive === false ? 'whitesmoke' : 'none' }">
             <div >
               <i class ="glyphicon glyphicon-remove-circle" (click)="removeRoles(roles.id)" 
                 [style.color] = "'rgb(173, 2, 2)'">
@@ -74,14 +76,14 @@
       </tr>
     </tbody>
   </table>
-  <div *ngIf="paginator" class="center">
+  <!-- <div *ngIf="paginator" class="center">
       <div class="pagination">
           <a href="#">❮</a>
           <a href="#" class="active">1</a>
           <a href="#">2</a>
           <a href="#">❯</a>
       </div>
-  </div>
+  </div> -->
 </div>
 </li>
 </ul>
@@ -95,7 +97,8 @@
     <div class="modal-content">
     <div class="modal-header">
         <label class="switch">
-            <input type="checkbox" checked #IsActive ngModel name="IsActive" (change)="isActive($event.target.checked)">
+            <input type="checkbox" checked #IsActive ngModel name="IsActive" 
+            [(ngModel)]="rolesToEdit.isActive" (change)="isActive($event.target.checked)">
             <span class="slider round"></span>
         </label>
       <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -125,7 +128,7 @@
     <div class="modal-footer">
                 <div class="col-md-1">
         <button type="button" class="btn btn-success"
-        (click)="addRoles(IsActive.value, NameRole.value, Read.value, Write.value, selectedOption)">Guardar</button>
+        (click)="addRoles(NameRole.value, selectedOption)">Guardar</button>
         </div>
         <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
         <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
@@ -139,7 +142,7 @@
     <div class="modal-content">      
     <div class="modal-header">
         <label class="switch">
-            <input type="checkbox" checked #IsActive ngModel name="IsActive" (change)="isActive($event.target.checked)">
+            <input type="checkbox" checked #IsActive ngModel name="IsActive" [(ngModel)]="rolesToEdit.isActive" (change)="isActive($event.target.checked)">
             <span class="slider round"></span>
         </label>
       <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -156,12 +159,12 @@
       <p></p>
       <div class="form-check-inline">
         <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" #Read ngModel name="Read" [(ngModel)]="rolesToEdit.read"> Lectura
+          <input type="checkbox" class="form-check-input" #Read ngModel name="Read" [(ngModel)]="rolesToEdit.read" (change)="reader($event.target.checked)"> Lectura
         </label>
       </div>
       <div class="form-check-inline">
         <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" #Write ngModel name="Write" [(ngModel)]="rolesToEdit.write"> Escritura
+          <input type="checkbox" class="form-check-input" #Write ngModel name="Write" [(ngModel)]="rolesToEdit.write" (change)="write($event.target.checked)"> Escritura
         </label>
       </div>
       <label>Lugar:</label>
@@ -174,7 +177,7 @@
     <div class="modal-footer">
                 <div class="col-md-1">
         <button type="button" class="btn btn-success"
-        (click)="editRoles(IsActive.value, NameRole.value, Read.value, Write.value,rolesToEdit.id,selectedOption)">Guardar</button>
+        (click)="editRoles(IsActive.value, NameRole.value,rolesToEdit.id,selectedOption)">Guardar</button>
         </div>
         <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
         <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>

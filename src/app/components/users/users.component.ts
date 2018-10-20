@@ -9,6 +9,7 @@ import { CrossCuttingList } from '../../model/crosscuttingList';
 import { ProfileService } from '../../services/profiles/profile.service';
 import { ScheduleResponse } from 'src/app/model/schedule/response/scheduleResponse';
 import { SchedulerService } from 'src/app/services/scheduler/scheduler.service';
+import { AES } from 'crypto-js';
 
 @Component({
   selector: 'app-users',
@@ -17,6 +18,7 @@ import { SchedulerService } from 'src/app/services/scheduler/scheduler.service';
 })
 export class UsersComponent implements OnInit {
 
+  key: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9eyJpc3MiOiJhdXRoMCJ9AbIJTDMFc7yUa5MhvcP03nJPyCPzZtQcGEpzWfOkEF"
   arrayRegisterRequest:Array<RegisterRequest>;
   registerRequest:RegisterRequest;
   paginator: boolean;
@@ -28,11 +30,14 @@ export class UsersComponent implements OnInit {
   Success:boolean;
   Fail:boolean;
   placeId: string;
-  
+  selectedPlace:string;
+  selecRol:string;
+  selecSchedule:string;
+
   crossCuttingList: Array<CrossCuttingList>;
   crossCuttingListPermissions: Array<CrossCuttingList>;
   crossCuttingListSchedule: Array<CrossCuttingList>;
-  isAct: false;
+  isAct: boolean;
   arrayScheduleRequest: any[];
 
   constructor(private userService: UserService, 
@@ -60,7 +65,6 @@ export class UsersComponent implements OnInit {
     this.Fail = false;
   }
 
-  
   startTimer() {
     setInterval(() => {
       this.Success = false;
@@ -86,6 +90,10 @@ export class UsersComponent implements OnInit {
           clist.value = data[_i].placeName;
           this.crossCuttingList[_i] = clist;
         }
+        var clistDefault = new CrossCuttingList();
+        clistDefault.key = '000000000000000';
+        clistDefault.value = 'Seleccione...';
+        this.crossCuttingList.unshift(clistDefault);
       },
       error => {
       });
@@ -93,8 +101,7 @@ export class UsersComponent implements OnInit {
 
   getAllPermissions(placeId)
   {
-    var s = placeId.toString().slice(3,placeId.length);
-    this.profileService.getAllPermissions(s).subscribe(
+    this.profileService.getAllPermissions(placeId).subscribe(
       (data) => {
         this.crossCuttingListPermissions = new Array<CrossCuttingList>();
         
@@ -105,12 +112,17 @@ export class UsersComponent implements OnInit {
           clist.value = data[_i].name;
           this.crossCuttingListPermissions[_i] = clist;
         }
+
+        var clistDefault = new CrossCuttingList();
+        clistDefault.key = '000000000000000';
+        clistDefault.value = 'Seleccione....';
+        this.crossCuttingListPermissions.unshift(clistDefault);
+
       },
       error => {
       });
-debugger;
 
-     this.scheduleService.getAllSchedulers(s).subscribe(
+     this.scheduleService.getAllSchedulers(placeId).subscribe(
       (dataSchedule) => {
         this.crossCuttingListSchedule = new Array<CrossCuttingList>();
         
@@ -121,6 +133,10 @@ debugger;
           clist.value = dataSchedule[_is].schedulName;
           this.crossCuttingListSchedule[_is] = clist;
         }
+        var clistDefault = new CrossCuttingList();
+        clistDefault.key = '000000000000000';
+        clistDefault.value = 'Seleccione....';
+        this.crossCuttingListSchedule.unshift(clistDefault);
       },
       error => {
       });
@@ -130,11 +146,6 @@ debugger;
     FechaNacimiento,Pais,Ciudad,Password
     ,RePassword,Perfil,Turno,selectedOption){
 
-    var scheduleArray = new Array<string>();
-
-    scheduleArray[0] = Turno;
-
-    debugger;
     this.registerRequest = new RegisterRequest();
     this.registerRequest.firstName = Name; 
     this.registerRequest.lastName = Apellido;
@@ -142,25 +153,28 @@ debugger;
     this.registerRequest.bornDate = FechaNacimiento;
     this.registerRequest.country = Pais;
     this.registerRequest.city = Ciudad;
-    this.registerRequest.password = Password;
+    this.registerRequest.password = AES.encrypt(Password, this.key).ciphertext.toString();
     this.registerRequest.position = Perfil;
-    this.registerRequest.schedule = scheduleArray;
+    this.registerRequest.idSchedule = Turno;
     this.registerRequest.nickName = Name + ' ' + Apellido;
     this.registerRequest.idPlace = selectedOption;
-    this.registerRequest.isActive = IsActive == 'on' ? true : false;
+    this.registerRequest.isActive = this.isAct ? true : false;
     this.registerRequest.claims = null;
-
+debugger;
     console.log(JSON.stringify(this.registerRequest));
-    if(Password == RePassword){
+    var p1 = AES.encrypt(Password, this.key).ciphertext.toString();
+    var p2 = AES.encrypt(RePassword, this.key).ciphertext.toString();
+    if( p1 == p2 ){
       this.userService.createUser(this.registerRequest).subscribe(
         (data) => {
           this.passwordNotMatches = false;
           this.Success = true;
+          this.getAllUser(this.placeId);
           this.startTimer();
 
         },
         error => {
-          this.Success = false;
+          this.Fail = true;
           this.startTimer();
         });
     }
@@ -169,12 +183,18 @@ debugger;
     }
   }
   loadUserInfo(register){
+    debugger;
     this.userToEdit = new RegisterRequest();
     this.userToEdit = register;
-    
+    this.selectedPlace = this.userToEdit.idPlace;
+    this.getAllPermissions(this.selectedPlace)
+    this.selecRol = this.userToEdit.position;
+    this.selecSchedule = this.userToEdit.idSchedule;
+    this.isAct = this.userToEdit.isActive;
   }
   loadNewUserInfo(){
     this.userToEdit = new RegisterRequest();
+    this.userToEdit.isActive = true;
   }
   editUser(IsActive,Name,Apellido,Email,
     FechaNacimiento,Pais,Ciudad,Password
@@ -186,22 +206,26 @@ debugger;
       this.registerRequest.bornDate = FechaNacimiento;
       this.registerRequest.country = Pais;
       this.registerRequest.city = Ciudad;
-      this.registerRequest.password = Password;
+      this.registerRequest.password = AES.encrypt(Password, this.key).ciphertext.toString();
       this.registerRequest.position = Perfil;
-      this.registerRequest.schedule = Turno;
+      this.registerRequest.idSchedule = Turno;
       this.registerRequest.nickName = Name + ' ' + Apellido;
       this.registerRequest.idPlace = selectedOption;
-      this.registerRequest.isActive = IsActive == 'on' ? true : false;
+      this.registerRequest.isActive = this.isAct ? true : false;
       this.registerRequest.claims = null;
-      if(Password == RePassword){
+      debugger;
+      var p1 = AES.encrypt(Password, this.key).ciphertext.toString();
+      var p2 = AES.encrypt(RePassword, this.key).ciphertext.toString();
+      if(p1 == p2){
     this.userService.updateUser(this.registerRequest, IdUser).subscribe(
       (data) => {
         this.passwordNotMatches = false;
         this.Success = true;
+        this.getAllUser(this.placeId);
         this.startTimer();
       },
       error => {
-        this.Success = false;
+        this.Fail = true;
         this.startTimer();
       });
     }
@@ -214,10 +238,11 @@ debugger;
     this.userService.deleteUser(userId).subscribe(
       (data) => {
         this.Success = true;
+        this.getAllUser(this.placeId);
         this.startTimer();
       },
       error => {
-        this.Success = false;
+        this.Fail = true;
         this.startTimer();
       });
   }

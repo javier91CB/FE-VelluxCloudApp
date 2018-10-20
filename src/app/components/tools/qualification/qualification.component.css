@@ -25,14 +25,14 @@
     unicode-bidi: bidi-override;
   }
   
-  label:hover,
+  /* label:hover,
   label:hover ~ label {
     color: orange;
   }
   
   input[type="radio"]:checked ~ label {
     color: orange;
-  }
+  } */
 
   
 .list-group-item:not(:last-child) {

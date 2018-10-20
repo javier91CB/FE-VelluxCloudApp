@@ -28,11 +28,13 @@ export class RolesComponent implements OnInit {
   isWriter: false;
   isReader: false;
   isAct: false;
+  selectedOption: string;
 
   constructor
     (private RolesService: ProfileService,
     private placeService: PlaceService) { 
       this.loading = true;
+      
     }
 
   ngOnInit() {
@@ -62,10 +64,12 @@ export class RolesComponent implements OnInit {
     },4000)
   }
   reader(val){
+    debugger;
     this.isReader = val;
   }
 
   write(val){
+    debugger;
     this.isWriter = val;
   }
 
@@ -92,11 +96,12 @@ export class RolesComponent implements OnInit {
       });
   }
 
-  addRoles(isActive, name, read, write, place){
+  addRoles(name, place){
+    debugger;
     var rolesRequest = new RolesRequest();
     rolesRequest.idPlace = place;
     rolesRequest.name = name;
-    rolesRequest.permissions = this.isReader ? 'R' : '';
+    rolesRequest.permissions = this.isReader ? 'R,' : '';
     rolesRequest.permissions += this.isWriter ? 'W': '' ;
     rolesRequest.userId = this.userId;
     rolesRequest.isActive = this.isAct;
@@ -105,46 +110,56 @@ export class RolesComponent implements OnInit {
       this.RolesService.createPermission(rolesRequest).subscribe(
         (data) => {
           this.Success = true;
+          debugger;
+          this.getAllRoles(this.placeId);
           this.startTimer();
         },
         error => {
-          this.Success = false;
+          this.Fail = true;
           this.startTimer();
         });
     }
 
   loadRolesInfo(rolesToEdit){
+    debugger;
     this.rolesToEdit = new RolModel();
     this.rolesToEdit = rolesToEdit;
+    this.selectedOption = rolesToEdit.idPlace;
   }
 
   loadNewRolesInfo(){
     this.rolesToEdit = new RolModel();
+    this.isWriter = false;
+    this.isReader = false;
+    this.rolesToEdit.isActive = true;
   }
 
-  editRoles(isActive, name, read, write, roleId, place){
+  editRoles(isActive, name, roleId, place){
+    debugger;
     var rolesRequest = new RolesRequest();
     rolesRequest.idPlace = place;
     rolesRequest.name = name;
-    rolesRequest.permissions = read == 'on' ? 'R' : '';
-    rolesRequest.permissions += write == 'on' ? ',W': '' ;
+    rolesRequest.permissions = this.isReader ? 'R,' : '';
+    rolesRequest.permissions += this.isWriter ? 'W': '' ;
     rolesRequest.userId = this.userId;
-    rolesRequest.isActive = isActive == 'on' ? true : false;
+    rolesRequest.isActive = this.isAct;
     this.RolesService.updatePermission(rolesRequest, roleId).subscribe(
       (data) => {
         this.Success = true;
+        this.getAllRoles(this.placeId);
         this.startTimer();
       },
       error => {
-        this.Success = false;
+        this.Fail = true;
         this.startTimer();
       });
   }
 
-    removeRoles(RolesId){
+  removeRoles(RolesId){
     this.RolesService.deletePermission(RolesId).subscribe(
       (data) => {
         this.Success = true;
+        this.getAllRoles(this.placeId);
         this.startTimer();
       },
       error => {
@@ -160,11 +175,13 @@ export class RolesComponent implements OnInit {
         
         for(var _i = 0; _i < data.length; _i++)
         {
+          debugger;
+          var arrP = data[_i].permisions.split(',')
           var roles = new RolModel();
           roles.id = data[_i].id;
           roles.name = data[_i].name;
-          roles.read = data[_i].read;
-          roles.write = data[_i].write;
+          roles.read = arrP.indexOf('R') >= 0;
+          roles.write = arrP.indexOf('W') >= 0;
           roles.idPlace = data[_i].idPlace;
           roles.isActive = data[_i].isActive;
           roles.userId = data[_i].userId;
@@ -175,6 +192,7 @@ export class RolesComponent implements OnInit {
         this.arrayRoles = rolesModel;
       },
       error => {
+        this.Fail=true;
       });
   }
 }

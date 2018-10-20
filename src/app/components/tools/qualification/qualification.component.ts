@@ -3,6 +3,8 @@ import { NotificationInfo } from '../../../model/notification/notificationInfo';
 import { NotificationRequest } from '../../../model/notification/requestModel/notificationRequest';
 import { NotificationsService } from '../../../services/notification/notifications.service';
 import { MessagingService } from 'src/app/services/shared/messaging.service';
+import { CrossCuttingList } from 'src/app/model/crosscuttingList';
+import { PlaceService } from 'src/app/services/place/place.service';
 
 @Component({
   selector: 'app-qualification',
@@ -14,15 +16,18 @@ export class QualificationComponent implements OnInit {
   notification: NotificationInfo;
   Success:boolean;
   blocked:boolean;
+  crossCuttingList: any;
 
   constructor(
     private sericeNotification: NotificationsService,
-    private messagingService: MessagingService) { }
+    private messagingService: MessagingService,
+    private placeService: PlaceService) { }
   message;
   
   notificationRequest: NotificationRequest;
 
   ngOnInit() {
+    this.getAllPlace();
   }
 
   SendQualification(estrellas) {
@@ -55,13 +60,43 @@ export class QualificationComponent implements OnInit {
     },10000)
   }
 
-  SaveNotificationInfo(nomeRecipiant, recipiant, modul, place) {
+  getAllPlace()
+  {
+    debugger;
+    this.placeService.getAllPlaces().subscribe(
+      (data) => {
+        this.crossCuttingList = new Array<CrossCuttingList>();
+        
+        for(let _i = 0; _i < data.length; _i++)
+        {
+          var clist = new CrossCuttingList();
+          clist.key = data[_i].id;
+          clist.value = data[_i].placeName;
+          this.crossCuttingList[_i] = clist;
+        }
+      },
+      error => {
+      });
+  }
+
+  SaveAsNotificationAdmin(nomeRecipiant, recipiant) {
 
     const userId = nomeRecipiant;
     this.messagingService.requestPermission(userId)
     this.messagingService.receiveMessage()
     this.message = this.messagingService.currentMessage
 
+    this.notification = new NotificationInfo();
+    this.notification.nomeRecipiant = nomeRecipiant;
+    this.notification.recipiant = recipiant;
+
+    localStorage.setItem('NotificationInfo', JSON.stringify(this.notification));
+
+  }
+
+  SaveNotificationInfo(nomeRecipiant, recipiant, modul, place) {
+
+    this.message = this.messagingService.currentMessage
     this.notification = new NotificationInfo();
     this.notification.nomeRecipiant = nomeRecipiant;
     this.notification.recipiant = recipiant;

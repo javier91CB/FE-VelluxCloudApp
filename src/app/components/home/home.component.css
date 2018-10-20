@@ -13,10 +13,14 @@
 
 .carousel-inner{
   height: calc(320px);
+  background-image: linear-gradient(white, rgb(48, 56, 75));
 }
 
 .item img{
   height: calc(320px);
+  margin-left: auto; 
+  margin-right: auto;
+  border-radius: 15px;
 }
 
 .card-body-explain{

@@ -84,22 +84,41 @@
             <h4 class="modal-title" style="text-align:center;">Configurar Notificaciones</h4>
           </div>
           <div class="modal-body">
-            <label>Nombre de Administrador:</label>
+            <label>Nombre de Administrador:
+                <h6>(Recibir Notificaciones)</h6></label>
             <input class="form-control" #NameRecipiant ngModel name="NameRecipiant"/>
-            <p></p>
+            <label>Lugar:</label>
+            <select class="form-control col-md-3" #Place ngModel name="Place" [(ngModel)]="selectedOption" required>
+                    <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
+                    <div style="display: none;">{{c.value}}</div>
+                    </option>
+            </select>
+            <br/>
+            <br/>
+            <button type="button" class="btn btn-success" 
+               (click)="SaveAsNotificationAdmin(selectedOption, selectedOption)" 
+               data-dismiss="modal">Suscribir</button>
+            <hr>
             <label>Email receptor:</label>
             <input class="form-control" #Recipiant ngModel name="Recipiant"/>
             <p></p>
             <label>Modulo:</label>
             <input class="form-control" #Module ngModel name="Module"/>
             <label>Lugar:</label>
-            <select class="form-control" #Place ngModel name="Place"></select>
-            <p></p>
+            <select class="form-control col-md-3" #Place ngModel name="Place" [(ngModel)]="selectedOption" required>
+                <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
+                <div style="display: none;">{{c.value}}</div>
+                </option>
+            </select>
+            
           </div>
+          <br/>
+          <br/>
+          <br/>
           <div class="modal-footer">
               <div class="col-md-1">
                <button type="button" class="btn btn-success" 
-               (click)="SaveNotificationInfo(NameRecipiant.value, Recipiant.value, 
+               (click)="SaveNotificationInfo(Recipiant.value, 
                Module.value, Place.value)" data-dismiss="modal">Guardar</button>
               </div>
           </div>

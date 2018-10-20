@@ -6,7 +6,7 @@ export class RegisterRequest {
     lastName: string;
     password: string;
     claims: Array<string>;
-    schedule: Array<string>;
+    idSchedule: string;
     bornDate: string;
     position: string;
     country: string;

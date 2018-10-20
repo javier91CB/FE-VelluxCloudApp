@@ -1,8 +1,8 @@
 export class RolModel{
     id:string;
     name: string;
-    write: string;
-    read: string;
+    write: boolean;
+    read: boolean;
     userId: string;
     isActive: boolean;
     idPlace: string;
