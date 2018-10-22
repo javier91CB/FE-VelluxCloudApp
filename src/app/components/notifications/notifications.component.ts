@@ -48,8 +48,6 @@ export class NotificationsComponent implements OnInit {
   }
 
   private startConnection():void{
-    debugger;
-
     this._hubConnection = new signalR.HubConnectionBuilder()
     .withUrl(this.API_URL, signalR.HttpTransportType.WebSockets)
     .build();

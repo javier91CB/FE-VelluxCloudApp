@@ -32,11 +32,9 @@ export class MenuComponent implements OnInit {
   
   constructor(public router: Router,
     private placeService:PlaceService) {
-      debugger;
     }
 
   ngOnInit() {
-    debugger;
     this.showMoreSubmenu = false;
     this.showAdminSubmenu = false;
     this.showAdminClaim = true;
@@ -53,6 +51,7 @@ export class MenuComponent implements OnInit {
       this.userId = this.tokenModel.userInfo.id;
       this.rolesToEdit = new RolModel();
     }
+    this.getAllPlace();
     this.Success = false;
     this.Fail = false;
   }
@@ -100,7 +99,6 @@ export class MenuComponent implements OnInit {
   }
   
   addPlace(namePlace, city, country, isActive){
-    debugger;
     var datePipe = new DatePipe('en-US');
     var placeRequest = new PlaceRequest();
 
@@ -160,7 +158,6 @@ export class MenuComponent implements OnInit {
     removePlace(placeId){
     this.placeService.deletePlace(placeId).subscribe(
       (data) => {
-        debugger;
         this.Success = true;
         this.startTimer();
       },
@@ -170,10 +167,11 @@ export class MenuComponent implements OnInit {
       });
   }
 
-  getAllPlace(placeId){
+  getAllPlace(){
     debugger;
     this.placeService.getAllPlaces().subscribe(
       (data) => {
+        debugger;
         this.arrayPlace = new Array<PlaceResponse>();
         this.arrayPlace = data;
       },

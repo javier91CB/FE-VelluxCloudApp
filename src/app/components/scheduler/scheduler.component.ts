@@ -17,13 +17,22 @@ import { ScheduleResponse } from 'src/app/model/schedule/response/scheduleRespon
 export class SchedulerComponent implements OnInit {
 
   loading: boolean;
-  mond :false;
-  tues :false;
-  wedn :false;
-  thur :false;
-  frid :false;
-  satu :false;
-  sund :false;
+  mond :boolean;
+  tues :boolean;
+  wedn :boolean;
+  thur :boolean;
+  frid :boolean;
+  satu :boolean;
+  sund :boolean;
+
+  Monday :boolean;
+  Tuesday :boolean;
+  Wednesday :boolean;
+  Thursday :boolean;
+  Friday :boolean;
+  Saturday :boolean;
+  Sunday :boolean;
+
   
   startT :string;
   endT :string;
@@ -59,7 +68,6 @@ export class SchedulerComponent implements OnInit {
       this.tokenModel = userInfo;
       this.userInfoModel = this.tokenModel.userInfo;
     }
-    debugger;
     this.placeId = this.tokenModel.userInfo.placeId;
     this.userId = this.tokenModel.userInfo.id;
     this.rolesToEdit = new RolModel();
@@ -77,6 +85,13 @@ export class SchedulerComponent implements OnInit {
     debugger;
     this.schedulerToEditUpload = new ScheduleResponse();
     this.schedulerToEditUpload = register;
+    this.Monday = register.days[0].length > 0;
+    this.Tuesday = register.days[1].length > 0;
+    this.Wednesday = register.days[2].length > 0;
+    this.Thursday = register.days[3].length > 0;
+    this.Friday = register.days[4].length > 0;
+    this.Saturday = register.days[5].length > 0;
+    this.Sunday = register.days[6].length > 0;
   }
 
   startTimer() {
@@ -89,7 +104,6 @@ export class SchedulerComponent implements OnInit {
 
   getAllPlace()
   {
-    debugger;
     this.placeService.getAllPlaces().subscribe(
       (data) => {
         this.crossCuttingList = new Array<CrossCuttingList>();
@@ -140,7 +154,6 @@ export class SchedulerComponent implements OnInit {
   }
   
   startTime(val){
-    debugger;
     this.startT = val;
   }
 
@@ -150,20 +163,19 @@ export class SchedulerComponent implements OnInit {
 
   updateSchedul(Id, IsActive, NameSchedule,
     StrHour, EndHour, selectedOption){
-      debugger;
       var request = new ScheduleRequest();
       request.days = new Array<string>();
       request.isActive = this.isAct;
       request.schedulName = NameSchedule;
       request.endHour = this.endT;
       request.startHour = this.startT;
-      request.days[0] = this.mond ? 'Lun.' : '';
-      request.days[1] = this.thur ? 'Mart.' : '';
-      request.days[2] = this.wedn ? 'Mier.' : '';
-      request.days[3] = this.thur ? 'Juev.' : '';
-      request.days[4] = this.frid ? 'Vier.' : '';
-      request.days[5] = this.satu ? 'Sabad.' : '';
-      request.days[6] = this.sund ? 'Domi.' : '';
+      request.days[0] = this.mond ? 'Monday' : '';
+      request.days[1] = this.thur ? 'Tuesday' : '';
+      request.days[2] = this.wedn ? 'Wednesday' : '';
+      request.days[3] = this.thur ? 'Thursday' : '';
+      request.days[4] = this.frid ? 'Friday' : '';
+      request.days[5] = this.satu ? 'Saturday' : '';
+      request.days[6] = this.sund ? 'Sunday' : '';
       request.idPlace = selectedOption
 
       this.schedulerService.updateScheduler(request, Id).subscribe(
@@ -182,7 +194,6 @@ export class SchedulerComponent implements OnInit {
     createSchedul(IsActive, NameSchedule,Monday,Tuesday,
       Wednesday, Thursday, Friday, Saturday, Sunday,
       StrHour, EndHour, selectedOption){
-        debugger;
         var request = new ScheduleRequest();
         request.days = new Array<string>();
         request.isActive = IsActive == 'on' ? true : false;

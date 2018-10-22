@@ -46,7 +46,6 @@ export class RolesComponent implements OnInit {
       this.tokenModel = userInfo;
       this.userInfoModel = this.tokenModel.userInfo;
     }
-    debugger;
     this.placeId = this.tokenModel.userInfo.placeId;
     this.userId = this.tokenModel.userInfo.id;
     this.rolesToEdit = new RolModel();
@@ -64,12 +63,10 @@ export class RolesComponent implements OnInit {
     },4000)
   }
   reader(val){
-    debugger;
     this.isReader = val;
   }
 
   write(val){
-    debugger;
     this.isWriter = val;
   }
 
@@ -79,7 +76,6 @@ export class RolesComponent implements OnInit {
   
   getAllPlace(placeId)
   {
-    debugger;
     this.placeService.getAllPlaces().subscribe(
       (data) => {
         this.crossCuttingList = new Array<CrossCuttingList>();
@@ -97,7 +93,6 @@ export class RolesComponent implements OnInit {
   }
 
   addRoles(name, place){
-    debugger;
     var rolesRequest = new RolesRequest();
     rolesRequest.idPlace = place;
     rolesRequest.name = name;
@@ -110,7 +105,6 @@ export class RolesComponent implements OnInit {
       this.RolesService.createPermission(rolesRequest).subscribe(
         (data) => {
           this.Success = true;
-          debugger;
           this.getAllRoles(this.placeId);
           this.startTimer();
         },
@@ -121,7 +115,6 @@ export class RolesComponent implements OnInit {
     }
 
   loadRolesInfo(rolesToEdit){
-    debugger;
     this.rolesToEdit = new RolModel();
     this.rolesToEdit = rolesToEdit;
     this.selectedOption = rolesToEdit.idPlace;
@@ -135,7 +128,6 @@ export class RolesComponent implements OnInit {
   }
 
   editRoles(isActive, name, roleId, place){
-    debugger;
     var rolesRequest = new RolesRequest();
     rolesRequest.idPlace = place;
     rolesRequest.name = name;
@@ -175,7 +167,6 @@ export class RolesComponent implements OnInit {
         
         for(var _i = 0; _i < data.length; _i++)
         {
-          debugger;
           var arrP = data[_i].permisions.split(',')
           var roles = new RolModel();
           roles.id = data[_i].id;

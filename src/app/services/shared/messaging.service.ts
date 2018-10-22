@@ -25,22 +25,22 @@ export class MessagingService {
     )
   }
 
-  updateToken(userId, token) {
+  updateToken(userId, placeId, token) {
     // we can change this function to request our backend service
     this.angularFireAuth.authState.pipe(take(1)).subscribe(
       () => {
         const data = {};
         data[userId] = token
-        this.angularFireDB.object('fcmTokens/').update(data)
+        data[placeId] = token
+        this.angularFireDB.object(placeId+'/').update(data)
       })
   }
 
-  requestPermission(userId) {
-    debugger;
+  requestPermission(userId, placeId) {
     this.angularFireMessaging.requestToken.subscribe(
       (token) => {
         console.log(token);
-        this.updateToken(userId, token);
+        this.updateToken(userId, placeId, token);
       },
       (err) => {
         console.error('Unable to get permission to notify.', err);

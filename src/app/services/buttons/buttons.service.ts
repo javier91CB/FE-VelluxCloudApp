@@ -13,7 +13,6 @@ export class ButtonsService {
   constructor(private http: HttpClient) { }
 
   getAllSchedulers(placeId: string){
-    debugger;
     this.response = this.http.get(
       this.endpoint + '/GetAllButtonScheduleByPlace/'+placeId, 
       {

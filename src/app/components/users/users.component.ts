@@ -9,7 +9,8 @@ import { CrossCuttingList } from '../../model/crosscuttingList';
 import { ProfileService } from '../../services/profiles/profile.service';
 import { ScheduleResponse } from 'src/app/model/schedule/response/scheduleResponse';
 import { SchedulerService } from 'src/app/services/scheduler/scheduler.service';
-import { AES } from 'crypto-js';
+import * as CryptoJS from 'crypto-js';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-users',
@@ -78,7 +79,6 @@ export class UsersComponent implements OnInit {
 
   getAllPlace(placeId)
   {
-    debugger;
     this.placeService.getAllPlaces().subscribe(
       (data) => {
         this.crossCuttingList = new Array<CrossCuttingList>();
@@ -146,6 +146,9 @@ export class UsersComponent implements OnInit {
     FechaNacimiento,Pais,Ciudad,Password
     ,RePassword,Perfil,Turno,selectedOption){
 
+    var OutputP1 = CryptoJS.AES.encrypt(Password.trim(), this.key.trim()).toString();
+    var OutputP2 = CryptoJS.AES.encrypt(RePassword.trim(), this.key.trim()).toString();
+
     this.registerRequest = new RegisterRequest();
     this.registerRequest.firstName = Name; 
     this.registerRequest.lastName = Apellido;
@@ -153,25 +156,21 @@ export class UsersComponent implements OnInit {
     this.registerRequest.bornDate = FechaNacimiento;
     this.registerRequest.country = Pais;
     this.registerRequest.city = Ciudad;
-    this.registerRequest.password = AES.encrypt(Password, this.key).ciphertext.toString();
+    this.registerRequest.password = OutputP1;
     this.registerRequest.position = Perfil;
     this.registerRequest.idSchedule = Turno;
     this.registerRequest.nickName = Name + ' ' + Apellido;
     this.registerRequest.idPlace = selectedOption;
-    this.registerRequest.isActive = this.isAct ? true : false;
+    this.registerRequest.isActive = this.isAct;
     this.registerRequest.claims = null;
-debugger;
     console.log(JSON.stringify(this.registerRequest));
-    var p1 = AES.encrypt(Password, this.key).ciphertext.toString();
-    var p2 = AES.encrypt(RePassword, this.key).ciphertext.toString();
-    if( p1 == p2 ){
+    if( OutputP1 == OutputP2 ){
       this.userService.createUser(this.registerRequest).subscribe(
         (data) => {
           this.passwordNotMatches = false;
           this.Success = true;
           this.getAllUser(this.placeId);
           this.startTimer();
-
         },
         error => {
           this.Fail = true;
@@ -183,14 +182,14 @@ debugger;
     }
   }
   loadUserInfo(register){
-    debugger;
+    var datePipe = new DatePipe('en-US');
     this.userToEdit = new RegisterRequest();
     this.userToEdit = register;
     this.selectedPlace = this.userToEdit.idPlace;
     this.getAllPermissions(this.selectedPlace)
     this.selecRol = this.userToEdit.position;
     this.selecSchedule = this.userToEdit.idSchedule;
-    this.isAct = this.userToEdit.isActive;
+    this.userToEdit.bornDate = datePipe.transform(this.userToEdit.bornDate, 'yyyy-MM-dd');
   }
   loadNewUserInfo(){
     this.userToEdit = new RegisterRequest();
@@ -199,6 +198,8 @@ debugger;
   editUser(IsActive,Name,Apellido,Email,
     FechaNacimiento,Pais,Ciudad,Password
     ,RePassword,Perfil,Turno,selectedOption,IdUser){
+      if(Password == RePassword){
+      var OutputP = CryptoJS.AES.encrypt(Password.trim(), this.key.trim()).toString();
       this.registerRequest = new RegisterRequest();
       this.registerRequest.firstName = Name; 
       this.registerRequest.lastName = Apellido;
@@ -206,17 +207,13 @@ debugger;
       this.registerRequest.bornDate = FechaNacimiento;
       this.registerRequest.country = Pais;
       this.registerRequest.city = Ciudad;
-      this.registerRequest.password = AES.encrypt(Password, this.key).ciphertext.toString();
+      this.registerRequest.password = OutputP;
       this.registerRequest.position = Perfil;
       this.registerRequest.idSchedule = Turno;
       this.registerRequest.nickName = Name + ' ' + Apellido;
       this.registerRequest.idPlace = selectedOption;
-      this.registerRequest.isActive = this.isAct ? true : false;
+      this.registerRequest.isActive = this.isAct;
       this.registerRequest.claims = null;
-      debugger;
-      var p1 = AES.encrypt(Password, this.key).ciphertext.toString();
-      var p2 = AES.encrypt(RePassword, this.key).ciphertext.toString();
-      if(p1 == p2){
     this.userService.updateUser(this.registerRequest, IdUser).subscribe(
       (data) => {
         this.passwordNotMatches = false;

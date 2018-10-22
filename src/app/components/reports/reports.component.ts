@@ -43,7 +43,6 @@ export class ReportsComponent implements OnInit {
 
   getAllPlace(placeId)
   {
-    debugger;
     this.placeService.getAllPlaces().subscribe(
       (data) => {
         this.crossCuttingList = new Array<CrossCuttingList>();

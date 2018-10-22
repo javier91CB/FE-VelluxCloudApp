@@ -25,7 +25,6 @@ export class LoginComponent {
 
     if(userName != "" && password != "")
     {
-      debugger;
       this.loading = true;
       this.loginService.userAuthentication(userName, password)
       .subscribe(

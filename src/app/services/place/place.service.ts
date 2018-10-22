@@ -24,7 +24,6 @@ export class PlaceService {
   }
 
   updatePlace(placeRequest, placeId){
-    debugger;
     this.response = this.http.put(
       this.API_URL + '/UpdatePlace/'+placeId, 
       JSON.stringify(placeRequest), {

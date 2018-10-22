@@ -95,7 +95,8 @@
     <div class="modal-content">
     <div class="modal-header">
         <label class="switch">
-            <input type="checkbox" checked #IsActive ngModel name="IsActive" (change)="isActive($event.target.checked)">
+            <input type="checkbox" checked #IsActive ngModel name="IsActive" 
+            (change)="isActive($event.target.checked)">
             <span class="slider round"></span>
         </label>
       <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -156,50 +157,56 @@
     <div class="modal-content">
     <div class="modal-header">
         <label class="switch">
-            <input type="checkbox" checked #IsActive ngModel name="IsActive">
+            <input type="checkbox" checked #IsActive ngModel name="IsActive" 
+            (change)="isActive($event.target.checked)">
             <span class="slider round"></span>
         </label>
       <button type="button" class="close" data-dismiss="modal">&times;</button>
       <h4 class="modal-title" style="text-align:center;">Turno</h4>
     </div>
     <div class="modal-body">
-      <div style="display: none;">
-          <label>Id:</label>
-          <input class="form-control" #Id ngModel name="Id" />
-      </div>
-      <label>Nombre Turno:</label>
-      <input class="form-control" #Name ngModel name="Name" />
-      <p></p>
-      <label>Dias:</label>
-      <p></p>
-      <label class="checkbox-inline"><input type="checkbox" value="Monday"
-        #Monday ngModel name="Monday">Lunes</label>
-      <label class="checkbox-inline"><input type="checkbox" value="Tuesday"
-        #Tuesday ngModel name="Tuesday">Martes</label>
-      <label class="checkbox-inline"><input type="checkbox" value="Wednesday"
-         #Wednesday ngModel name="Wednesday">Miercoles</label>
-      <p></p>
-      <label class="checkbox-inline"><input type="checkbox" value="Thursday"
-        #Thursday ngModel name="Thursday">Jueves</label>
-      <label class="checkbox-inline"><input type="checkbox" value="Friday"
-        #Friday ngModel name="Friday">Viernes</label>
-      <label class="checkbox-inline"><input type="checkbox" value="Saturday"
-        #Saturday ngModel name="Saturday">Sabado</label>
-      <p></p>
-      <label class="checkbox-inline"><input type="checkbox" value="Sunday"
-        #Sunday ngModel name="Sunday">Domingo</label>
-      <p></p>
-      <label>Hora Inicio:</label>
-      <input type="time" class="form-control" #StrHour ngModel name="StrHour">
-      <p></p>
-      <label>Hora Fin:</label>
-      <input type="time" class="form-control" #EndHour ngModel name="EndHour">
-      <label>Lugar:</label>
-      <select class="form-control" #Lugar ngModel name="Lugar" [(ngModel)]="selectedOption">
-        <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
-            <div style="display: none;">{{c.value}}</div>
-        </option>
-      </select>
+        <label>Nombre Turno:</label>
+        <input class="form-control" type="text" #SchedulName ngModel name="SchedulName"/>
+        <p></p>
+        <label>Dias:</label>
+        <p></p>
+          <label class="checkbox-inline"><input type="checkbox" value="false" checked="checked" 
+            (change)="monday($event.target.checked)"
+            #Monday ngModel name="Monday">Lunes</label>
+          <label class="checkbox-inline"><input type="checkbox" value="false" checked="checked" 
+            (change)="tuesday($event.target.checked)"
+            #Tuesday ngModel name="Tuesday">Martes</label>
+          <label class="checkbox-inline"><input type="checkbox" value="false" checked="checked" 
+            (change)="wednesday($event.target.checked)"
+             #Wednesday ngModel name="Wednesday">Miercoles</label>
+          <p></p>
+          <label class="checkbox-inline"><input type="checkbox" value="false" checked="checked" 
+            (change)="thursday($event.target.checked)"
+            #Thursday ngModel name="Thursday">Jueves</label>
+          <label class="checkbox-inline"><input type="checkbox" value="false" checked="checked" 
+            (change)="friday($event.target.checked)"
+            #Friday ngModel name="Friday">Viernes</label>
+          <label class="checkbox-inline"><input type="checkbox" value="false" checked="checked" 
+            (change)="saturday($event.target.checked)"
+            #Saturday ngModel name="Saturday">Sabado</label>
+          <p></p>
+          <label class="checkbox-inline"><input type="checkbox" value="false" checked="checked" 
+            (change)="sunday($event.target.checked)"
+            #Sunday ngModel name="Sunday">Domingo</label>
+        <p></p>
+        <label>Hora Inicio:</label>
+        <input type="time" class="form-control" #StrHour ngModel name="StrHour" min="00:00" max="24:00" 
+        (change)=startTime($event.target.value) >
+        <p></p>
+        <label>Hora Fin:</label>
+        <input type="time" class="form-control" #EndHour ngModel name="EndHour" min="00:00" max="24:00" 
+        (change)=endTime($event.target.value) >
+        <label>Lugar:</label>
+        <select class="form-control" #Lugar ngModel name="Lugar" [(ngModel)]="selectedOption">
+            <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
+                <div style="display: none;">{{c.value}}</div>
+            </option>
+          </select>
     </div>
     <div class="modal-footer">
                 <div class="col-md-1">

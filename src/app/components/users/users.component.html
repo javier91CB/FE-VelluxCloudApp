@@ -138,7 +138,7 @@
         <button type="button" class="btn btn-success" 
         (click)="addUser(IsActive.value,Name.value,Apellido.value,Email.value,
         FechaNacimiento.value,Pais.value,Ciudad.value,Pswd.value,
-        RePswd.value,Perfil.value,Turno.value,Lugar.value)">Guardar</button>
+        RePswd.value,Perfil.value,selecSchedule.value,Lugar.value)">Guardar</button>
         </div>
         <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
         <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
@@ -152,9 +152,9 @@
     <div class="modal-content">
     <div class="modal-header">
         <label class="switch">
-            <input type="checkbox" checked #IsActive ngModel name="IsActive" 
-            [(ngModel)]="userToEdit.IsActive" (change)="isActive($event.target.checked)">
-            <span class="slider round"></span>
+         <input type="checkbox" checked #IsActive ngModel name="IsActive" 
+         [(ngModel)]="userToEdit.isActive" (change)="isActive($event.target.checked)">
+         <span class="slider round"></span>
         </label>
       <button type="button" class="close" data-dismiss="modal">&times;</button>
       <h4 class="modal-title" style="text-align:center;">Editar Usuario</h4>
@@ -205,7 +205,7 @@
         <button type="button" class="btn btn-success" 
         (click)="editUser(IsActive.value,Name.value,Apellido.value,Email.value,
         FechaNacimiento.value,Pais.value,Ciudad.value,Psd.value,
-        RePsd.value,Perfil.value,Turno.value,Lugar.value,IdUser.value)">Guardar</button>
+        RePsd.value,selecRol,selecSchedule,selectedPlace,IdUser.value)">Guardar</button>
         </div>
         <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
         <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>

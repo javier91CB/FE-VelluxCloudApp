@@ -25,7 +25,6 @@ export class ProfileService {
   }
 
   updatePermission(rolesRequest, PermissionId){
-    debugger;
     this.response = this.http.put(
       this.API_URL + '/UpdatePermission/'+PermissionId, 
       JSON.stringify(rolesRequest), {

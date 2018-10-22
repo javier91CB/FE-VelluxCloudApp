@@ -81,17 +81,9 @@ export class QualificationComponent implements OnInit {
 
   SaveAsNotificationAdmin(nomeRecipiant, recipiant) {
 
-    const userId = nomeRecipiant;
-    this.messagingService.requestPermission(userId)
+    this.messagingService.requestPermission(nomeRecipiant, recipiant)
     this.messagingService.receiveMessage()
     this.message = this.messagingService.currentMessage
-
-    this.notification = new NotificationInfo();
-    this.notification.nomeRecipiant = nomeRecipiant;
-    this.notification.recipiant = recipiant;
-
-    localStorage.setItem('NotificationInfo', JSON.stringify(this.notification));
-
   }
 
   SaveNotificationInfo(nomeRecipiant, recipiant, modul, place) {

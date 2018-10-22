@@ -55,7 +55,6 @@ export class SchedulerService {
   }
 
   getAllSchedulers(placeId: string){
-    debugger;
     this.response = this.http.get(
       this.API_URL + '/GetAllScheduleByPlace/'+placeId, 
       {
