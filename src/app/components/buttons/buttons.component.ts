@@ -127,4 +127,60 @@ loading: boolean;
         this.startTimer();
       });
   }
+
+  showDetails(){
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+  }
+
+  createButton(button){
+    this.buttonsService.createButton(button).subscribe(
+      (data) => {
+        
+        this.Success = true;
+        this.startTimer();
+      },
+      error => {
+        this.Success = false;
+        this.startTimer();
+      });
+  }
+
+  updateButton(button){
+    this.buttonsService.updateButton(button, button.id).subscribe(
+      (data) => {
+        
+        this.Success = true;
+        this.startTimer();
+      },
+      error => {
+        this.Success = false;
+        this.startTimer();
+      });
+  }
+
+  removeButton(buttonId){
+    this.buttonsService.removeButton(buttonId).subscribe(
+      (data) => {
+        
+        this.Success = true;
+        this.startTimer();
+      },
+      error => {
+        this.Success = false;
+        this.startTimer();
+      });
+  }
 } 

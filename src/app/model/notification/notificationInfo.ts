@@ -1,6 +1,7 @@
 export class NotificationInfo {
-    nomeRecipiant: string;
+    nameRecipiant: string;
     recipiant: string;
     modul: string;
     place: string;
+    namePlace:string;
 }

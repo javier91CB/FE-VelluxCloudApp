@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireMessaging } from '@angular/fire/messaging';
 import { mergeMapTo } from 'rxjs/operators';
 import { take } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -25,22 +25,24 @@ export class MessagingService {
     )
   }
 
-  updateToken(userId, placeId, token) {
+  updateToken(userId, placeId, namePlace, token) {
     // we can change this function to request our backend service
     this.angularFireAuth.authState.pipe(take(1)).subscribe(
       () => {
         const data = {};
-        data[userId] = token
-        data[placeId] = token
-        this.angularFireDB.object(placeId+'/').update(data)
+        data['Admin'] = userId;
+        data['PlaceId'] = placeId;
+        data['Token'] = token;
+        this.angularFireDB.object(namePlace+'/').update(data)
       })
   }
 
-  requestPermission(userId, placeId) {
+  requestPermission(userId, placeId, namePlace) {
     this.angularFireMessaging.requestToken.subscribe(
       (token) => {
         console.log(token);
-        this.updateToken(userId, placeId, token);
+        alert(token);
+        this.updateToken(userId, placeId, namePlace, token);
       },
       (err) => {
         console.error('Unable to get permission to notify.', err);
@@ -48,10 +50,13 @@ export class MessagingService {
     );
   }
 
-  receiveMessage() {
+  receiveMessage(){
     this.angularFireMessaging.messages.subscribe(
       (payload) => {
+        debugger;
         console.log("new message received. ", payload);
+        alert(payload['notification'].title);
+        alert(payload['notification'].body);
         this.currentMessage.next(payload);
       })
   }

@@ -1,3 +1,15 @@
+#error-container {
+  position: fixed;
+  width: 90%;
+  border-radius: 20px;
+  left: 0px;
+  right: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  z-index: 100;
+  font-size: 10px;
+}
 @media (max-width: 2046px) and (min-width: 1023px) {
     .container {
       padding-top: 220px;

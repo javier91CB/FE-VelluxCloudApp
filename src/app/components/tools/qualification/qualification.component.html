@@ -65,7 +65,7 @@
                   </table>
                   <hr>
                   <div class="center-block" style="width: 100%; margin-left: auto; margin-right: auto;">
-                    <button type="button" class="btn btn-default custom-ref" style="text-align:right;" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
+                    <button type="button" class="btn btn-default custom-ref" style="text-align:right;" data-toggle="modal" data-target="#myModal" (click)="onload()" rel="noopener noreferrer">
                             <span class="glyphicon glyphicon-cog" style="color:cornflowerblue"></span>
                     </button>
                  </div>
@@ -88,28 +88,28 @@
                 <div class="panel">
                         <label>Nombre de Administrador:
                             <h6>(Recibir Notificaciones)</h6></label>
-                            <input class="form-control" #NameRecipiant ngModel name="NameRecipiant"/>
+                            <input class="form-control" #NameRecipiant ngModel name="NameRecipiant" [(ngModel)]="notificationInfo.nameRecipiant"/>
                             <label>Lugar:</label>
-                            <select class="form-control col-md-3" #Place ngModel name="Place" [(ngModel)]="selectedOption" required>
+                            <select class="form-control col-md-3" #Place ngModel name="Place" [(ngModel)]="selectedOptionPlace" required>
                                     <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
                                     <div style="display: none;">{{c.value}}</div>
                                     </option>
                             </select>
                             <br/>
                             <button type="button" class="btn btn-success" 
-                             (click)="SaveAsNotificationAdmin(NameRecipiant.value, selectedOption)" 
+                             (click)="SaveAsNotificationAdmin(NameRecipiant.value, selectedOptionPlace)" 
                              data-dismiss="modal">Suscribir</button>
                              <br>
                 </div>
                 <button class="accordion">Configuración de Modulo</button>
                 <div class="panel">
                         <label>Email receptor:</label>
-                        <input class="form-control" #Recipiant ngModel name="Recipiant"/>
+                        <input class="form-control" #Recipiant ngModel name="Recipiant" [(ngModel)]="notificationInfo.Recipiant"/>
                         <p></p>
                         <label>Modulo:</label>
-                        <input class="form-control" #Module ngModel name="Module"/>
+                        <input class="form-control" #Module ngModel name="Module" [(ngModel)]="notificationInfo.module"/>
                         <label>Lugar:</label>
-                        <select class="form-control col-md-3" #Place ngModel name="Place" [(ngModel)]="selectedOption" required>
+                        <select class="form-control col-md-3" #Place ngModel name="Place" [(ngModel)]="selectedOptionPlace" required>
                             <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
                             <div style="display: none;">{{c.value}}</div>
                             </option>
@@ -117,7 +117,7 @@
                         <br>
                         <button type="button" class="btn btn-success" 
                             (click)="SaveNotificationInfo(Recipiant.value, 
-                            Module.value, Place.value)" data-dismiss="modal">Guardar</button>
+                            Module.value, selectedOptionPlace)" data-dismiss="modal">Guardar</button>
                 </div>
           </div>
           <div class="modal-footer">

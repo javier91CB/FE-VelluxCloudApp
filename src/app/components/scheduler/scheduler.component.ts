@@ -82,7 +82,6 @@ export class SchedulerComponent implements OnInit {
   }
 
   loadScheduleInfo(register){
-    debugger;
     this.schedulerToEditUpload = new ScheduleResponse();
     this.schedulerToEditUpload = register;
     this.Monday = register.days[0].length > 0;

@@ -92,7 +92,7 @@
 </div>
       
        <div class="modal fade" id="myModalCreatePlace" role="dialog">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog ">
           <div class="modal-content">      
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -109,11 +109,27 @@
             <input type="text" class="form-control" #Country ngModel name="Country" />
             <br/>
             <button class="accordion">Lista de lugares</button>
-            <div class="panel">
+            <div class="panel" style="height: 180px; overflow-y: scroll;">
                     <table class="table">
                             <tbody>
                               <tr *ngFor="let place of arrayPlace">
-                                <td>{{place.placeName}}</td>
+                                <td>
+                                    <button class="accordion-details" (click)="showDetails()">{{place.placeName}}</button>
+                                    <div class="panel-details">
+                                            <label>Nombre:</label>
+                                            <input class="form-control" #NamePlace [(ngModel)]="place.placeName" name="NamePlace" />
+                                            <p></p>
+                                            <label class="form-check-label">Ciudad</label>
+                                            <input type="text" class="form-control" #City [(ngModel)]="place.city" name="City" />
+                                            <p></p>
+                                            <label class="form-check-label">País</label>
+                                            <input type="text" class="form-control" #Country [(ngModel)]="place.country" name="Country" />
+                                            <br/>
+                                            <button type="button" class="btn btn-success" (click)="editPlace(place)" >Actualizar</button>
+                                            &nbsp;
+                                            <button type="button" class="btn btn-danger" (click)="removePlace(place.id)">Eliminar</button> 
+                                    </div>
+                                </td>
                               </tr>
                             </tbody>
                     </table>
@@ -122,7 +138,7 @@
           <div class="modal-footer">
                       <div class="col-md-1">
               <button type="button" class="btn btn-success"
-              (click)="addPlace(NamePlace.value, City.value, Country.value, IsActive.value)">Guardar</button>
+              (click)="addPlace(NamePlace.value, City.value, Country.value)">Guardar</button>
               </div>
               <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
               <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>

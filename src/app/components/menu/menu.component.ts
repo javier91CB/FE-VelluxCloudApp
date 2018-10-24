@@ -98,7 +98,7 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   
-  addPlace(namePlace, city, country, isActive){
+  addPlace(namePlace, city, country){
     var datePipe = new DatePipe('en-US');
     var placeRequest = new PlaceRequest();
 
@@ -109,7 +109,6 @@ export class MenuComponent implements OnInit {
     placeRequest.userCreate = this.userInfoModel.id;
     placeRequest.updateDate = datePipe.transform(new Date().toUTCString(), 'yyyy-MM-dd');
     placeRequest.userUpdate = this.userInfoModel.id;
-    placeRequest.isActive = isActive == 'on' ? true : false;
     placeRequest.idPlace = null;
 
     console.log(JSON.stringify(placeRequest));
@@ -133,18 +132,17 @@ export class MenuComponent implements OnInit {
     this.placeToEdit = new PlaceResponse();
   }
 
-  editPlace(placeId, city, country, createDate, placeName,updateDate,  userCreate, userUpdate, isActive){
+  editPlace(value){
     var placeRequest = new PlaceRequest();
-    placeRequest.idPlace = placeId;
-    placeRequest.city = city;
-    placeRequest.country = country;
-    placeRequest.createDate = createDate;
-    placeRequest.placeName = placeName;
-    placeRequest.updateDate = updateDate;
-    placeRequest.userCreate = userCreate;
-    placeRequest.userUpdate = userUpdate;
-    placeRequest.isActive = isActive == 'on' ? true : false;
-    this.placeService.updatePlace(placeRequest, placeId).subscribe(
+    placeRequest.idPlace = value.placeId;
+    placeRequest.city = value.city;
+    placeRequest.country = value.country;
+    placeRequest.createDate = value.createDate;
+    placeRequest.placeName = value.placeName;
+    placeRequest.updateDate = value.updateDate;
+    placeRequest.userCreate = value.userCreate;
+    placeRequest.userUpdate = value.userUpdate;
+    this.placeService.updatePlace(placeRequest, value.id).subscribe(
       (data) => {
         this.Success = true;
         this.startTimer();
@@ -168,10 +166,8 @@ export class MenuComponent implements OnInit {
   }
 
   getAllPlace(){
-    debugger;
     this.placeService.getAllPlaces().subscribe(
       (data) => {
-        debugger;
         this.arrayPlace = new Array<PlaceResponse>();
         this.arrayPlace = data;
       },
@@ -179,4 +175,20 @@ export class MenuComponent implements OnInit {
       });
   }
 
+  showDetails(){
+    var acc = document.getElementsByClassName("accordion-details");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+  }
 }
