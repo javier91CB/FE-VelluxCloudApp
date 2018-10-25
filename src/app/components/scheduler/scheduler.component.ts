@@ -8,6 +8,7 @@ import { UserInfoModel } from '../../model/users/userInfoModel';
 import { HelperUserInfo } from '../../utilities/tools/helperUserInfo';
 import { TokenModel } from '../../model/token/tokenModel';
 import { ScheduleResponse } from 'src/app/model/schedule/response/scheduleResponse';
+import { ScheduleAuxModel } from 'src/app/model/schedule/scheduleAuxModel';
 
 @Component({
   selector: 'app-scheduler',
@@ -48,10 +49,11 @@ export class SchedulerComponent implements OnInit {
   tokenModel: any;
   placeId:string;
   userId:string;
-  arrayScheduleRequest : Array<ScheduleResponse>
+  arrayScheduleRequest : Array<ScheduleAuxModel>
   isAct: false;
   schedulerToEdit: ScheduleRequest;
   schedulerToEditUpload: ScheduleResponse;
+  selectedOption: any;
 
   constructor(
     private schedulerService: SchedulerService,
@@ -71,8 +73,9 @@ export class SchedulerComponent implements OnInit {
     this.placeId = this.tokenModel.userInfo.placeId;
     this.userId = this.tokenModel.userInfo.id;
     this.rolesToEdit = new RolModel();
-    this.getAllPlace()
+    this.schedulerToEditUpload = new ScheduleResponse();
     this.getAllSchedule(this.placeId);
+    this.getAllPlace()
     this.Success = false;
     this.Fail = false;
   }
@@ -82,9 +85,8 @@ export class SchedulerComponent implements OnInit {
   }
 
   loadScheduleInfo(register){
-    debugger;
-    this.schedulerToEditUpload = new ScheduleResponse();
     this.schedulerToEditUpload = register;
+    this.selectedOption = this.placeId;
   }
 
   startTimer() {
@@ -153,24 +155,25 @@ export class SchedulerComponent implements OnInit {
     this.endT = val;
   }
 
-  updateSchedul(Id, NameSchedule,selectedOption){
+  updateSchedul(schedule,selectedOption){
       var request = new ScheduleRequest();
       request.days = new Array<string>();
-      request.isActive = this.isAct;
-      request.schedulName = NameSchedule;
-      request.endHour = this.endT;
-      request.startHour = this.startT;
-      request.days[0] = this.mond ? 'Monday' : '';
-      request.days[1] = this.thur ? 'Tuesday' : '';
-      request.days[2] = this.wedn ? 'Wednesday' : '';
-      request.days[3] = this.thur ? 'Thursday' : '';
-      request.days[4] = this.frid ? 'Friday' : '';
-      request.days[5] = this.satu ? 'Saturday' : '';
-      request.days[6] = this.sund ? 'Sunday' : '';
+      request.isActive = schedule.isActive;
+      request.schedulName = schedule.schedulName;
+      request.endHour = schedule.endHour;
+      request.startHour = schedule.startHour;
+      request.days[0] = schedule.monday ? 'Monday' : '';
+      request.days[1] = schedule.tuesday ? 'Tuesday' : '';
+      request.days[2] = schedule.wednesday ? 'Wednesday' : '';
+      request.days[3] = schedule.thursday ? 'Thursday' : '';
+      request.days[4] = schedule.friday ? 'Friday' : '';
+      request.days[5] = schedule.saturday ? 'Saturday' : '';
+      request.days[6] = schedule.sunday ? 'Sunday' : '';
       request.idPlace = selectedOption
 
-      this.schedulerService.updateScheduler(request, Id).subscribe(
+      this.schedulerService.updateScheduler(request, schedule.id).subscribe(
         (data) => {
+          this.getAllSchedule(this.placeId);
           this.Success = true;
           this.startTimer();
         },
@@ -199,6 +202,7 @@ export class SchedulerComponent implements OnInit {
   
         this.schedulerService.createScheduler(request).subscribe(
           (data) => {
+            this.getAllSchedule(this.placeId);
             this.Success = true;
             this.startTimer();
           },
@@ -209,25 +213,39 @@ export class SchedulerComponent implements OnInit {
       }
 
       getAllSchedule(placeId){
-        debugger;
         this.schedulerService.getAllSchedulers(placeId).subscribe(
           (data) => {
-            var arraySchedule = Array<ScheduleResponse>();
+            var arraySchedule = Array<ScheduleAuxModel>();
             for(var _i = 0; _i < data.length; _i++)
             {
-              debugger;
-              var schedule = new ScheduleResponse();
+              var schedule = new ScheduleAuxModel();
               schedule.id = data[_i].id;
               schedule.schedulName = data[_i].schedulName;
               schedule.startHour = data[_i].startHour;
               schedule.endHour = data[_i].endHour;
               schedule.isActive = data[_i].isActive;
-              schedule.days = data[_i].days;
-    
+              schedule.monday    = data[_i].days[0] == 'Monday';
+              schedule.tuesday   = data[_i].days[1] == 'Tuesday';
+              schedule.wednesday = data[_i].days[2] == 'Wednesday';
+              schedule.thursday  = data[_i].days[3] == 'Thursday';
+              schedule.friday    = data[_i].days[4] == 'Friday';
+              schedule.saturday  = data[_i].days[5] == 'Saturday';
+              schedule.sunday    = data[_i].days[6] == 'Sunday';
+              
               arraySchedule[_i] = schedule;
             }
             this.loading = false;
             this.arrayScheduleRequest = arraySchedule;
+          },
+          error => {
+          });
+      }
+
+      removeSchedule(id){
+        this.schedulerService.deleteScheduler(id).subscribe(
+          (data) => {
+            this.getAllSchedule(this.placeId);
+            this.loading = false;
           },
           error => {
           });

@@ -142,7 +142,8 @@
     <div class="modal-content">      
     <div class="modal-header">
         <label class="switch">
-            <input type="checkbox" checked #IsActive ngModel name="IsActive" [(ngModel)]="rolesToEdit.isActive" (change)="isActive($event.target.checked)">
+            <input type="checkbox" checked #IsActive ngModel name="IsActive" 
+            [(ngModel)]="rolesToEdit.isActive" (change)="isActive($event.target.checked)">
             <span class="slider round"></span>
         </label>
       <button type="button" class="close" data-dismiss="modal">&times;</button>

@@ -64,9 +64,7 @@ crossCuttingListUsers: any[];
     this.arrayRegisterRequest = Array<RegisterRequest>();
     this.userService.getAllUsers(placeId).subscribe(
       (data) => {
-        debugger;
         this.crossCuttingListUsers = new Array<CrossCuttingList>();
-        
         for(let _i = 0; _i < data.length; _i++)
         {
           var clist = new CrossCuttingList();
@@ -171,7 +169,6 @@ crossCuttingListUsers: any[];
   }
 
   createButton(BotonName, Owner, Schedule, Place){
-    debugger;
     var buttonRequest = new ButtonRequest();
     buttonRequest.idButton = BotonName;
     buttonRequest.owner = this.crossCuttingListUsers.find(x=>x.key === Owner).value;
@@ -190,7 +187,6 @@ crossCuttingListUsers: any[];
   }
 
   updateButton(button){
-    debugger;
     var buttonRequest = new ButtonRequest();
     buttonRequest.idButton = button.idButton;
     buttonRequest.owner = button.owner;

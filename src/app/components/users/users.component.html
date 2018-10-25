@@ -36,9 +36,11 @@
     <tbody>
       <tr *ngFor="let register of arrayRegisterRequest">
         <td>
-          <table>
+          <table [ngStyle]="{'background-color':register.isActive === false ? 'whitesmoke' : 'none'}">
             <thead>
-              <th>{{register.nickName}}</th>
+              <th [ngStyle]="{'background-color':register.isActive === false ? 'whitesmoke' : 'none'}">
+                {{register.nickName}}
+              </th>
             </thead>
               <tbody>
                 <tr>
@@ -47,7 +49,7 @@
               </tbody>
           </table>
         </td>
-        <td>
+        <td [ngStyle]="{'background-color':register.isActive === false ? 'whitesmoke' : 'none'}">
           <div>
             <a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModalUpdate" rel="noopener noreferrer" >
                 <i class ="glyphicon glyphicon-edit" (click)="loadUserInfo(register)"
@@ -56,8 +58,8 @@
             </a>
           </div>
         </td>
-        <td>
-            <div >
+        <td [ngStyle]="{'background-color':register.isActive === false ? 'whitesmoke' : 'none'}">
+            <div>
               <i class ="glyphicon glyphicon-remove-circle" (click)="removeUser(register.id)"
                 [style.color] = "'rgb(173, 2, 2)'">
               </i>

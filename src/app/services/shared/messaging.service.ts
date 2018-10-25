@@ -53,7 +53,6 @@ export class MessagingService {
   receiveMessage(){
     this.angularFireMessaging.messages.subscribe(
       (payload) => {
-        debugger;
         console.log("new message received. ", payload);
         alert(payload['notification'].title);
         alert(payload['notification'].body);

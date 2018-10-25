@@ -36,9 +36,11 @@
       <tr *ngFor="let register of arrayScheduleRequest">
         <td>
           <hr>
-          <table>
+          <table [ngStyle]="{'background-color':register.isActive === false ? 'whitesmoke' : 'none' }">
             <thead>
-              <th>{{register.schedulName}}</th>
+              <th [ngStyle]="{'background-color':register.isActive === false ? 'whitesmoke' : 'none' }">
+                {{register.schedulName}}
+              </th>
             </thead>
               <tbody style="font-size: 15px;">
                 <tr>
@@ -66,25 +68,25 @@
                     <tbody style="border: black 1px solid; text-align:center;">
                       <tr>
                         <td style="border: black 1px solid;">
-                            <i class="glyphicon glyphicon-ok" [style.color] = "'rgb(57, 89, 160)'"></i>
+                            <i [className]="register.monday ? 'glyphicon glyphicon-ok' : ''" [style.color] = "'rgb(57, 89, 160)'"></i>
                         </td>
                         <td style="border: black 1px solid;">
-                            <i class="glyphicon glyphicon-ok" [style.color] = "'rgb(57, 89, 160)'"></i>
+                            <i [className]="register.tuesday ? 'glyphicon glyphicon-ok' : ''" [style.color] = "'rgb(57, 89, 160)'"></i>
                         </td>
                         <td style="border: black 1px solid;">
-                          <i class="glyphicon glyphicon-ok" [style.color] = "'rgb(57, 89, 160)'"></i>
+                          <i [className]="register.wednesday ? 'glyphicon glyphicon-ok' : ''" [style.color] = "'rgb(57, 89, 160)'"></i>
                         </td>
                         <td style="border: black 1px solid;">
-                            <i class="glyphicon glyphicon-ok" [style.color] = "'rgb(57, 89, 160)'"></i>
+                            <i [className]="register.thursday ? 'glyphicon glyphicon-ok' : ''" [style.color] = "'rgb(57, 89, 160)'"></i>
                         </td>
                         <td style="border: black 1px solid;">
-                            <i class="glyphicon glyphicon-ok" [style.color] = "'rgb(57, 89, 160)'"></i>
+                            <i [className]="register.friday ? 'glyphicon glyphicon-ok' : ''" [style.color] = "'rgb(57, 89, 160)'"></i>
                         </td>
                         <td style="border: black 1px solid;">
-                            <i class="glyphicon glyphicon-ok" [style.color] = "'rgb(57, 89, 160)'"></i>
+                            <i [className]="register.saturday ? 'glyphicon glyphicon-ok' : ''" [style.color] = "'rgb(57, 89, 160)'"></i>
                         </td>
                         <td style="border: black 1px solid;">
-                          <i class="glyphicon glyphicon-ok" [style.color] = "'rgb(57, 89, 160)'"></i>
+                          <i [className]="register.sunday ? 'glyphicon glyphicon-ok' : ''" [style.color] = "'rgb(57, 89, 160)'"></i>
                         </td>
                       </tr>
                     </tbody>
@@ -95,8 +97,8 @@
         </td>
         <td>
           <div>
-            <a class="custom-ref" target="_blank" data-toggle="modal" data-target="#myModalUpdate" rel="noopener noreferrer">
-                <i class ="glyphicon glyphicon-edit" (click) = "loadScheduleInfo(register)"
+            <a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModalUpdate" rel="noopener noreferrer">
+                <i class ="glyphicon glyphicon-edit" (click)="loadScheduleInfo(register)"
                 [style.color] = "'Green'">
              </i>
             </a>
@@ -104,7 +106,7 @@
         </td>
         <td>
             <div >
-              <i class ="glyphicon glyphicon-remove-circle"
+              <i class ="glyphicon glyphicon-remove-circle" (click)="removeSchedule(register.id)" 
                 [style.color] = "'rgb(173, 2, 2)'">
               </i>
             </div>
@@ -210,39 +212,48 @@
         <p></p>
         <label>Dias:</label>
         <p></p>
-          <label class="checkbox-inline"><input type="checkbox" checked="checked" 
+          <label class="checkbox-inline"><input type="checkbox" checked
+            [(ngModel)] = "schedulerToEditUpload.monday"
             (change)="monday($event.target.checked)"
             #Monday name="Monday">Lunes</label>
-          <label class="checkbox-inline"><input type="checkbox" checked="checked" 
+          <label class="checkbox-inline"><input type="checkbox" checked
+            [(ngModel)] = "schedulerToEditUpload.tuesday"
             (change)="tuesday($event.target.checked)"
             #Tuesday name="Tuesday">Martes</label>
-          <label class="checkbox-inline"><input type="checkbox" checked="checked" 
+          <label class="checkbox-inline"><input type="checkbox" checked
+            [(ngModel)] = "schedulerToEditUpload.wednesday"
             (change)="wednesday($event.target.checked)"
              #Wednesday name="Wednesday">Miercoles</label>
           <p></p>
-          <label class="checkbox-inline"><input type="checkbox" checked="checked" 
+          <label class="checkbox-inline"><input type="checkbox" checked
+            [(ngModel)] = "schedulerToEditUpload.thursday"
             (change)="thursday($event.target.checked)"
             #Thursday name="Thursday">Jueves</label>
-          <label class="checkbox-inline"><input type="checkbox" checked="checked" 
+          <label class="checkbox-inline"><input type="checkbox" checked
+            [(ngModel)] = "schedulerToEditUpload.friday"
             (change)="friday($event.target.checked)"
             #Friday name="Friday">Viernes</label>
-          <label class="checkbox-inline"><input type="checkbox" checked="checked" 
+          <label class="checkbox-inline"><input type="checkbox" checked
+            [(ngModel)] = "schedulerToEditUpload.saturday"
             (change)="saturday($event.target.checked)"
             #Saturday name="Saturday">Sabado</label>
           <p></p>
-          <label class="checkbox-inline"><input type="checkbox" checked="checked" 
+          <label class="checkbox-inline"><input type="checkbox" checked
+            [(ngModel)] = "schedulerToEditUpload.sunday"
             (change)="sunday($event.target.checked)"
             #Sunday name="Sunday">Domingo</label>
         <p></p>
         <label>Hora Inicio:</label>
         <input type="time" class="form-control" #StrHour name="StrHour" min="00:00" max="24:00" 
+        [(ngModel)] = "schedulerToEditUpload.startHour"
         (change)=startTime($event.target.value) >
         <p></p>
         <label>Hora Fin:</label>
         <input type="time" class="form-control" #EndHour name="EndHour" min="00:00" max="24:00" 
+        [(ngModel)] = "schedulerToEditUpload.endHour"
         (change)=endTime($event.target.value) >
         <label>Lugar:</label>
-        <select class="form-control" #Lugar name="Lugar" [(ngModel)]="selectedOption">
+        <select class="form-control" #Lugar name="Lugar" [(ngModel)]="selectedOption" disabled>
             <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
                 <div style="display: none;">{{c.value}}</div>
             </option>
@@ -251,9 +262,7 @@
     <div class="modal-footer">
                 <div class="col-md-1">
         <button type="button" class="btn btn-success"
-        (click)="updateSchedul(Id.value, IsActive.value, Name.value,Monday.value,Tuesday.value,
-        Wednesday.value, Thursday.value, Friday.value, Saturday.value, Sunday.value,
-        StrHour.value, EndHour.value, selectedOption)">Guardar</button>
+        (click)="updateSchedul(schedulerToEditUpload, selectedOption)">Guardar</button>
         </div>
         <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
         <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
