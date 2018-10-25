@@ -8,6 +8,9 @@ import { RegisterRequest } from 'src/app/model/users/requestModel/registerReques
 import { PlaceService } from 'src/app/services/place/place.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { ScheduleModel } from 'src/app/model/schedule/scheduleModel';
+import { ButtonRequest } from 'src/app/model/buttons/requestModel/buttonRequest';
+import { ScheduleResponse } from 'src/app/model/schedule/response/scheduleResponse';
+import { SchedulerService } from 'src/app/services/scheduler/scheduler.service';
 
 @Component({
   selector: 'app-buttons',
@@ -23,15 +26,19 @@ Fail:boolean;
 placeId: string;
 tokenModel: any;
 userInfoModel: UserInfoModel;
-crossCuttingList: CrossCuttingList[];
 arrayRegisterRequest: any[];
 scheduler: Array<ScheduleModel>;
 loading: boolean;
+buttonNew: ButtonRequest;
+crossCuttingList: CrossCuttingList[];
+crossCuttingListSchedule: any[];
+crossCuttingListUsers: any[];
 
   constructor(
     private buttonsService: ButtonsService,
     private placeService: PlaceService,
-    private userService: UserService,) { 
+    private userService: UserService,
+    private schedulerService: SchedulerService) { 
       this.loading = true;
     }
 
@@ -46,8 +53,9 @@ loading: boolean;
     }
     this.placeId = this.tokenModel.userInfo.placeId;
     this.getAllUser(this.placeId)
-    this.getAllPlace(this.placeId)
+    this.getAllPlace()
     this.getAllButtons(this.placeId)
+    this.getAllSchedule(this.placeId)
     this.Success = false;
     this.Fail = false;
   }
@@ -56,13 +64,26 @@ loading: boolean;
     this.arrayRegisterRequest = Array<RegisterRequest>();
     this.userService.getAllUsers(placeId).subscribe(
       (data) => {
-        this.arrayRegisterRequest = data;
+        debugger;
+        this.crossCuttingListUsers = new Array<CrossCuttingList>();
+        
+        for(let _i = 0; _i < data.length; _i++)
+        {
+          var clist = new CrossCuttingList();
+          clist.key = data[_i].id;
+          clist.value = data[_i].nickName;
+          this.crossCuttingListUsers[_i] = clist;
+        }
+        var clistDefault = new CrossCuttingList();
+        clistDefault.key = '000000000000000';
+        clistDefault.value = 'Seleccione....';
+        this.crossCuttingListUsers.unshift(clistDefault);
       },
       error => {
       });
   }
 
-  getAllPlace(placeId)
+  getAllPlace()
   {
     this.placeService.getAllPlaces().subscribe(
       (data) => {
@@ -75,6 +96,10 @@ loading: boolean;
           clist.value = data[_i].placeName;
           this.crossCuttingList[_i] = clist;
         }
+        var clistDefault = new CrossCuttingList();
+        clistDefault.key = '000000000000000';
+        clistDefault.value = 'Seleccione....';
+        this.crossCuttingList.unshift(clistDefault);
       },
       error => {
       });
@@ -145,10 +170,16 @@ loading: boolean;
     }
   }
 
-  createButton(button){
-    this.buttonsService.createButton(button).subscribe(
+  createButton(BotonName, Owner, Schedule, Place){
+    debugger;
+    var buttonRequest = new ButtonRequest();
+    buttonRequest.idButton = BotonName;
+    buttonRequest.owner = this.crossCuttingListUsers.find(x=>x.key === Owner).value;
+    buttonRequest.placeId = Place;
+    buttonRequest.schedule = this.crossCuttingListSchedule.find(x=>x.key === Schedule).value;
+    this.buttonsService.createButton(buttonRequest).subscribe(
       (data) => {
-        
+        this.getAllButtons(this.placeId);
         this.Success = true;
         this.startTimer();
       },
@@ -159,9 +190,16 @@ loading: boolean;
   }
 
   updateButton(button){
-    this.buttonsService.updateButton(button, button.id).subscribe(
+    debugger;
+    var buttonRequest = new ButtonRequest();
+    buttonRequest.idButton = button.idButton;
+    buttonRequest.owner = button.owner;
+    buttonRequest.placeId = button.placeId;
+    buttonRequest.schedule = button.schedule;
+
+    this.buttonsService.updateButton(buttonRequest, button.id).subscribe(
       (data) => {
-        
+        this.getAllButtons(this.placeId);
         this.Success = true;
         this.startTimer();
       },
@@ -174,13 +212,37 @@ loading: boolean;
   removeButton(buttonId){
     this.buttonsService.removeButton(buttonId).subscribe(
       (data) => {
-        
+        this.getAllButtons(this.placeId);
         this.Success = true;
         this.startTimer();
       },
       error => {
         this.Success = false;
         this.startTimer();
+      });
+  }
+
+  loadNewButtonInfo(){
+    this.buttonNew = new ButtonRequest();
+  }
+
+  getAllSchedule(placeId){
+    this.schedulerService.getAllSchedulers(placeId).subscribe(
+      (dataSchedule) => {
+        this.crossCuttingListSchedule = Array<ScheduleResponse>();    
+        for(let _is = 0; _is < dataSchedule.length; _is++)
+        {
+          var clist = new CrossCuttingList();
+          clist.key = dataSchedule[_is].id;
+          clist.value = dataSchedule[_is].schedulName;
+          this.crossCuttingListSchedule[_is] = clist;
+        }
+        var clistDefault = new CrossCuttingList();
+        clistDefault.key = '000000000000000';
+        clistDefault.value = 'Seleccione....';
+        this.crossCuttingListSchedule.unshift(clistDefault);
+      },
+      error => {
       });
   }
 } 

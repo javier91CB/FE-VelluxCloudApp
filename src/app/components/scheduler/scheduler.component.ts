@@ -57,7 +57,7 @@ export class SchedulerComponent implements OnInit {
     private schedulerService: SchedulerService,
     private placeService: PlaceService) {
       this.loading = true;
-     }
+    }
 
   ngOnInit() {
     var _helperUserInfo = new HelperUserInfo();
@@ -78,23 +78,16 @@ export class SchedulerComponent implements OnInit {
   }
 
   loadNewScheduleInfo(){
-    this.schedulerToEdit = new ScheduleRequest();
+    this.schedulerToEdit = new ScheduleResponse();
   }
 
   loadScheduleInfo(register){
+    debugger;
     this.schedulerToEditUpload = new ScheduleResponse();
     this.schedulerToEditUpload = register;
-    this.Monday = register.days[0].length > 0;
-    this.Tuesday = register.days[1].length > 0;
-    this.Wednesday = register.days[2].length > 0;
-    this.Thursday = register.days[3].length > 0;
-    this.Friday = register.days[4].length > 0;
-    this.Saturday = register.days[5].length > 0;
-    this.Sunday = register.days[6].length > 0;
   }
 
   startTimer() {
-    
     setInterval(() => {
       this.Success = false;
       this.Fail = false;
@@ -160,8 +153,7 @@ export class SchedulerComponent implements OnInit {
     this.endT = val;
   }
 
-  updateSchedul(Id, IsActive, NameSchedule,
-    StrHour, EndHour, selectedOption){
+  updateSchedul(Id, NameSchedule,selectedOption){
       var request = new ScheduleRequest();
       request.days = new Array<string>();
       request.isActive = this.isAct;
@@ -189,10 +181,7 @@ export class SchedulerComponent implements OnInit {
 
     }
 
-
-    createSchedul(IsActive, NameSchedule,Monday,Tuesday,
-      Wednesday, Thursday, Friday, Saturday, Sunday,
-      StrHour, EndHour, selectedOption){
+    createSchedul(IsActive, NameSchedule,selectedOption){
         var request = new ScheduleRequest();
         request.days = new Array<string>();
         request.isActive = IsActive == 'on' ? true : false;
@@ -220,10 +209,25 @@ export class SchedulerComponent implements OnInit {
       }
 
       getAllSchedule(placeId){
-        this.arrayScheduleRequest = Array<ScheduleResponse>();
+        debugger;
         this.schedulerService.getAllSchedulers(placeId).subscribe(
           (data) => {
-            this.arrayScheduleRequest = data;
+            var arraySchedule = Array<ScheduleResponse>();
+            for(var _i = 0; _i < data.length; _i++)
+            {
+              debugger;
+              var schedule = new ScheduleResponse();
+              schedule.id = data[_i].id;
+              schedule.schedulName = data[_i].schedulName;
+              schedule.startHour = data[_i].startHour;
+              schedule.endHour = data[_i].endHour;
+              schedule.isActive = data[_i].isActive;
+              schedule.days = data[_i].days;
+    
+              arraySchedule[_i] = schedule;
+            }
+            this.loading = false;
+            this.arrayScheduleRequest = arraySchedule;
           },
           error => {
           });

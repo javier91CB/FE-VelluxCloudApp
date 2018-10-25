@@ -7,8 +7,8 @@
                  <h4> Buscar boton:</h4>
               </div>
               <div class="_add-user">
-                 <a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModal" rel="noopener noreferrer">
-                    <i class ="glyphicon glyphicon-plus-sign" (click)="loadNewScheduleInfo()"
+                 <a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModalCreateButton" rel="noopener noreferrer">
+                    <i class ="glyphicon glyphicon-plus-sign" (click)="loadNewButtonInfo()"
                     [style.color] = "'rgb(57, 89, 160)'"></i>
                  </a> 
                </div>
@@ -98,19 +98,25 @@
         <h4 class="modal-title" style="text-align:center;">Boton</h4>
       </div>
       <div class="modal-body">
-        <label>BotonId:</label>
-        <input class="form-control" #BotonName ngModel name="BotonName" />
-        <p></p>
         <label>Boton:</label>
-        <input class="form-control" #BotonName ngModel name="BotonName" />
+        <input class="form-control" #BotonName ([ngModel])="buttonNew.idButton" name="BotonName" ng-required="requeridoNombre"  />
         <p></p>
         <label>Responsable</label>
-        <input type="text" class="form-control" #City ngModel name="City" />
+        <select class="form-control" #Owner name="Owner" [(ngModel)]="selecOwner" ng-required="requeridoNombre" >
+            <option *ngFor="let p of crossCuttingListUsers" [ngValue]="p.key">
+                <div style="display: none;">{{p.value}}</div>
+            </option>
+        </select>
         <p></p>
         <label>Turno</label>
-        <input type="text" class="form-control" #Country ngModel name="Country" />
+        <select class="form-control" #Schedule name="Schedule" [(ngModel)]="selecSchedule" ng-required="requeridoNombre" >
+            <option *ngFor="let p of crossCuttingListSchedule" [ngValue]="p.key">
+                <div style="display: none;">{{p.value}}</div>
+            </option>
+        </select>
         <p></p>
-        <select class="form-control" #Lugar ngModel name="Lugar" [(ngModel)]="selectedOption">
+        <label>Lugar</label>
+        <select class="form-control" #Place ngModel name="Place" [(ngModel)]="selectedOption" ng-required="requeridoNombre" >
             <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
                 <div style="display: none;">{{c.value}}</div>
             </option>
@@ -119,7 +125,7 @@
       <div class="modal-footer">
                   <div class="col-md-1">
           <button type="button" class="btn btn-success"
-          (click)="addPlace(NamePlace.value, City.value, Country.value)">Guardar</button>
+          (click)="createButton(BotonName.value, selecOwner, selecSchedule, selectedOption)">Guardar</button>
           </div>
           <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
           <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>

@@ -37,7 +37,7 @@ export class ButtonsService {
 
   updateButton(button,buttonId){
     this.response = this.http.put(
-      this.endpoint + '/CreateButton/'+buttonId,
+      this.endpoint + '/UpdateButton/'+buttonId,
       button, 
       {
       headers: new HttpHeaders()
@@ -48,7 +48,7 @@ export class ButtonsService {
   }
 
   removeButton(buttonId){
-    this.response = this.http.get(
+    this.response = this.http.delete(
       this.endpoint + '/DeleteButton/'+buttonId, 
       {
       headers: new HttpHeaders()
