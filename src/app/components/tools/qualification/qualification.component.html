@@ -84,7 +84,7 @@
             <h4 class="modal-title" style="text-align:center;">Configurar Notificaciones</h4>
           </div>
           <div class="modal-body">
-                <button class="accordion">Confiuración de administrador</button>
+                <button class="accordion" (click)="showDetails()">Confiuración de administrador</button>
                 <div class="panel">
                         <label>Nombre de Administrador:
                             <h6>(Recibir Notificaciones)</h6></label>
@@ -101,7 +101,7 @@
                              data-dismiss="modal">Suscribir</button>
                              <br>
                 </div>
-                <button class="accordion">Configuración de Modulo</button>
+                <button class="accordion" (click)="showDetails()">Configuración de Modulo</button>
                 <div class="panel">
                         <label>Email receptor:</label>
                         <input class="form-control" #Recipiant ngModel name="Recipiant" [(ngModel)]="notificationInfo.Recipiant"/>
