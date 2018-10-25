@@ -156,6 +156,7 @@ export class MenuComponent implements OnInit {
     removePlace(placeId){
     this.placeService.deletePlace(placeId).subscribe(
       (data) => {
+        this.getAllPlace();
         this.Success = true;
         this.startTimer();
       },
