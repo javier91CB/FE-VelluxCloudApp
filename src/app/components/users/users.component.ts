@@ -146,8 +146,8 @@ export class UsersComponent implements OnInit {
     FechaNacimiento,Pais,Ciudad,Password
     ,RePassword,Perfil,Turno,selectedOption){
 
-    var OutputP1 = CryptoJS.AES.encrypt(Password.trim(), this.key.trim()).toString();
-    var OutputP2 = CryptoJS.AES.encrypt(RePassword.trim(), this.key.trim()).toString();
+    // var OutputP1 = CryptoJS.AES.encrypt(Password.trim(), this.key.trim()).toString();
+    // var OutputP2 = CryptoJS.AES.encrypt(RePassword.trim(), this.key.trim()).toString();
 
     this.registerRequest = new RegisterRequest();
     this.registerRequest.firstName = Name; 
@@ -156,7 +156,7 @@ export class UsersComponent implements OnInit {
     this.registerRequest.bornDate = FechaNacimiento;
     this.registerRequest.country = Pais;
     this.registerRequest.city = Ciudad;
-    this.registerRequest.password = OutputP1;
+    this.registerRequest.password = Password;
     this.registerRequest.position = Perfil;
     this.registerRequest.idSchedule = Turno;
     this.registerRequest.nickName = Name + ' ' + Apellido;
@@ -164,7 +164,7 @@ export class UsersComponent implements OnInit {
     this.registerRequest.isActive = this.isAct;
     this.registerRequest.claims = null;
     console.log(JSON.stringify(this.registerRequest));
-    if( OutputP1 == OutputP2 ){
+    if( Password == RePassword ){
       this.userService.createUser(this.registerRequest).subscribe(
         (data) => {
           this.passwordNotMatches = false;
