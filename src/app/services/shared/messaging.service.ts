@@ -46,6 +46,7 @@ export class MessagingService {
       },
       (err) => {
         console.error('Unable to get permission to notify.', err);
+        alert('error: '+err);
       }
     );
   }
