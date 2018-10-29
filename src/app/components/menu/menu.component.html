@@ -2,7 +2,10 @@
   <ul class="_navbar-icon-menu-ul">
     <li>
         <a>
+            <div class="notificationMenu">
+                <span class="badge">*</span>
                 <img class="icon-more" src ="../assets/icons/more.svg" (click)="activeMenuMore()">
+            </div>
         </a>
     </li>
     <li>
@@ -63,6 +66,12 @@
                      </li>
                      <li class="_navbar-separator"><a>Contenido</a>
                          <ul>
+                            <li>
+                                <a href="#" class="notification">
+                                    <span>Notificaciones</span>&nbsp;
+                                    <span class="badge">3</span>
+                                </a>
+                            </li>
                              <li><a style="pointer-events: none;">&#9678; Comunicados</a></li>
                              <li><a style="pointer-events: none;">&#9678; Noticias</a></li>
                              <li><a style="pointer-events: none;">&#9678; Enlaces de interes</a></li>

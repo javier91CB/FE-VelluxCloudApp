@@ -83,6 +83,15 @@
 .center {
     text-align: center;
 }
+.notificationMenu .badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 2px 4px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+  }
 
 @media (max-width: 320px) and (min-width: 120px) {
     ._navbar-icon-menu-ul li {
@@ -898,6 +907,14 @@
 }
 
 @media (max-width: 748px) and (min-width: 631px) {
+    .notificationMenu .badge {
+        position: absolute;
+        top: 15px;
+        right: 49%;
+        border-radius: 50%;
+        background: red;
+        color: white;
+      }
     ._navbar-icon-menu
     {
        display: inline-block;
@@ -1065,6 +1082,14 @@
 }
 
 @media (max-width: 1022px) and (min-width: 749px) {
+    .notificationMenu .badge {
+        position: absolute;
+        top: 15px;
+        right: 39%;
+        border-radius: 50%;
+        background: red;
+        color: white;
+      }
     ._navbar-icon-menu
     {
        display: inline-block;
@@ -1245,6 +1270,14 @@
 
 
 @media (max-width: 1048px) and (min-width: 1023px) {
+    .notificationMenu .badge {
+        position: absolute;
+        top: 15px;
+        right: 39%;
+        border-radius: 50%;
+        background: red;
+        color: white;
+      }
     ._navbar-icon-menu
     {
        display: inline-block;
@@ -1425,6 +1458,14 @@
 }
 
 @media (max-width: 2048px) and (min-width: 1049px) {
+    .notificationMenu .badge {
+        position: absolute;
+        top: 15px;
+        right: 39%;
+        border-radius: 50%;
+        background: red;
+        color: white;
+      }
     ._navbar-icon-menu
     {
        display: inline-block;
