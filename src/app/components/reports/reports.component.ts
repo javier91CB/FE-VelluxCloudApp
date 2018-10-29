@@ -69,12 +69,15 @@ export class ReportsComponent implements OnInit {
     reportRequest.siteName = namePlaceValue;
     reportRequest.siteId = place;
 
+    var offset = new Date().getTimezoneOffset()/60;
+    console.log(offset);
     var response =
       this.endpoint + '/ReportBySite/'
       +reportRequest.startDateReport+'/'
       +reportRequest.endDateReport+'/'
       +reportRequest.siteId+'/'
-      +reportRequest.siteName;
+      +reportRequest.siteName+'/'
+      +offset;
       this.loading = false;
       return window.location.href=response;
   }

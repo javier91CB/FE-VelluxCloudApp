@@ -133,6 +133,7 @@ crossCuttingListUsers: any[];
   }
 
   handleFileInput(File: FileList ){
+    this.loading = true;
       this.fileToUpload = File.item(0);
       var reader = new FileReader();
       reader.onload = (event: any) =>{
@@ -141,9 +142,10 @@ crossCuttingListUsers: any[];
     reader.readAsDataURL(this.fileToUpload)
     this.buttonsService.postFile(this.fileToUpload).subscribe(
       (data) => {
-        
+        this.getAllButtons(this.placeId);
         this.Success = true;
         this.startTimer();
+        this.loading = false;
       },
       error => {
         this.Success = false;
@@ -181,7 +183,7 @@ crossCuttingListUsers: any[];
         this.startTimer();
       },
       error => {
-        this.Success = false;
+        this.Fail = false;
         this.startTimer();
       });
   }
