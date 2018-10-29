@@ -99,8 +99,13 @@ export class UsersComponent implements OnInit {
       });
   }
 
-  getAllPermissions(placeId)
+  getAllPermissions(place)
   {
+    debugger;
+    var placeId = place;
+    if(place.length > 36){
+      placeId = place.slice(3,place.length);
+    }
     this.profileService.getAllPermissions(placeId).subscribe(
       (data) => {
         this.crossCuttingListPermissions = new Array<CrossCuttingList>();
@@ -145,10 +150,8 @@ export class UsersComponent implements OnInit {
   addUser(IsActive,Name,Apellido,Email,
     FechaNacimiento,Pais,Ciudad,Password
     ,RePassword,Perfil,Turno,selectedOption){
-
-    // var OutputP1 = CryptoJS.AES.encrypt(Password.trim(), this.key.trim()).toString();
-    // var OutputP2 = CryptoJS.AES.encrypt(RePassword.trim(), this.key.trim()).toString();
-
+    if( Password == RePassword ){
+      debugger;
     this.registerRequest = new RegisterRequest();
     this.registerRequest.firstName = Name; 
     this.registerRequest.lastName = Apellido;
@@ -161,10 +164,10 @@ export class UsersComponent implements OnInit {
     this.registerRequest.idSchedule = Turno;
     this.registerRequest.nickName = Name + ' ' + Apellido;
     this.registerRequest.idPlace = selectedOption;
-    this.registerRequest.isActive = this.isAct;
+    this.registerRequest.isActive = true;
     this.registerRequest.claims = null;
     console.log(JSON.stringify(this.registerRequest));
-    if( Password == RePassword ){
+  
       this.userService.createUser(this.registerRequest).subscribe(
         (data) => {
           this.passwordNotMatches = false;
@@ -199,7 +202,6 @@ export class UsersComponent implements OnInit {
     FechaNacimiento,Pais,Ciudad,Password
     ,RePassword,Perfil,Turno,selectedOption,IdUser){
       if(Password == RePassword){
-      var OutputP = CryptoJS.AES.encrypt(Password.trim(), this.key.trim()).toString();
       this.registerRequest = new RegisterRequest();
       this.registerRequest.firstName = Name; 
       this.registerRequest.lastName = Apellido;
@@ -207,7 +209,7 @@ export class UsersComponent implements OnInit {
       this.registerRequest.bornDate = FechaNacimiento;
       this.registerRequest.country = Pais;
       this.registerRequest.city = Ciudad;
-      this.registerRequest.password = OutputP;
+      this.registerRequest.password = Password;
       this.registerRequest.position = Perfil;
       this.registerRequest.idSchedule = Turno;
       this.registerRequest.nickName = Name + ' ' + Apellido;
@@ -248,6 +250,7 @@ export class UsersComponent implements OnInit {
     this.arrayRegisterRequest = Array<RegisterRequest>();
     this.userService.getAllUsers(placeId).subscribe(
       (data) => {
+        debugger;
         this.arrayRegisterRequest = data;
         this.loading = false;
       },

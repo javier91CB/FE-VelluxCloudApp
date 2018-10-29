@@ -89,7 +89,7 @@
     <div class="modal-content">
     <div class="modal-header">
         <label class="switch">
-            <input type="checkbox" checked #IsActive ngModel name="IsActive" 
+            <input type="checkbox" checked="checked" #IsActive ngModel name="IsActive" 
             [(ngModel)]="userToEdit.isActive" (change)="isActive($event.target.checked)">
             <span class="slider round"></span>
         </label>
@@ -140,7 +140,7 @@
         <button type="button" class="btn btn-success" 
         (click)="addUser(IsActive.value,Name.value,Apellido.value,Email.value,
         FechaNacimiento.value,Pais.value,Ciudad.value,Pswd.value,
-        RePswd.value,Perfil.value,selecSchedule.value,Lugar.value)">Guardar</button>
+        RePswd.value,selectedRol,selecSchedule,selectedOption)">Guardar</button>
         </div>
         <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
         <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
@@ -196,7 +196,7 @@
           </option>
       </select>
       <label>Turno:</label>
-      <select class="form-control" #Turno ngModel name="Turno" [(ngModel)]="selecSchedule">
+      <select class="form-control" #Schedule ngModel name="Schedule" [(ngModel)]="selecSchedule">
           <option *ngFor="let p of crossCuttingListSchedule" [ngValue]="p.key">
               <div style="display: none;">{{p.value}}</div>
           </option>
