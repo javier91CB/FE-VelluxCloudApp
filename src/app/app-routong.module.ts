@@ -13,6 +13,7 @@ import { RolesComponent } from './components/roles/roles.component';
 import { SchedulerComponent } from './components/scheduler/scheduler.component';
 import { QualificationComponent } from './components/tools/qualification/qualification.component';
 import { UsersComponent } from './components/users/users.component';
+import { NotificationPushComponent } from './components/notification-push/notification-push.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
     { path: 'full-calendar', component: CalendarComponent},
     { path: 'profile', component: ProfileComponent},
     { path: 'notifications', component: NotificationsComponent},
+    { path: 'notificationsPush', component: NotificationPushComponent},
     { path: 'admin', component: AdminComponent},
     { path: 'co-worker', component: CoWorkerComponent},
     { path: 'buttons', component: ButtonsComponent},

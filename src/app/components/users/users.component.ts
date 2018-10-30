@@ -101,7 +101,6 @@ export class UsersComponent implements OnInit {
 
   getAllPermissions(place)
   {
-    debugger;
     var placeId = place;
     if(place.length > 36){
       placeId = place.slice(3,place.length);
@@ -151,7 +150,6 @@ export class UsersComponent implements OnInit {
     FechaNacimiento,Pais,Ciudad,Password
     ,RePassword,Perfil,Turno,selectedOption){
     if( Password == RePassword ){
-      debugger;
     this.registerRequest = new RegisterRequest();
     this.registerRequest.firstName = Name; 
     this.registerRequest.lastName = Apellido;
@@ -250,7 +248,6 @@ export class UsersComponent implements OnInit {
     this.arrayRegisterRequest = Array<RegisterRequest>();
     this.userService.getAllUsers(placeId).subscribe(
       (data) => {
-        debugger;
         this.arrayRegisterRequest = data;
         this.loading = false;
       },

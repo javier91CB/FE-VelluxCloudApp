@@ -91,6 +91,7 @@
     border-radius: 50%;
     background: red;
     color: white;
+    font-size: 10px;
   }
 
 @media (max-width: 320px) and (min-width: 120px) {
@@ -914,6 +915,7 @@
         border-radius: 50%;
         background: red;
         color: white;
+        font-size: 10px;
       }
     ._navbar-icon-menu
     {
@@ -1089,6 +1091,7 @@
         border-radius: 50%;
         background: red;
         color: white;
+        font-size: 10px;
       }
     ._navbar-icon-menu
     {
@@ -1277,6 +1280,7 @@
         border-radius: 50%;
         background: red;
         color: white;
+        font-size: 10px;
       }
     ._navbar-icon-menu
     {
@@ -1465,6 +1469,7 @@
         border-radius: 50%;
         background: red;
         color: white;
+        font-size: 10px;
       }
     ._navbar-icon-menu
     {

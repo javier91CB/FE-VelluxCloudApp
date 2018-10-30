@@ -1,0 +1,41 @@
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item ">
+              <div class="card-body">
+    <table id="myTable" datatable class="row-border hover">
+      <thead>
+        <tr>
+          <th style="display: none;">Id</th>
+          <th>Lugar</th>
+          <th>Modulo</th>
+          <th>Calificación</th>
+          <th>Fecha</th>
+          <th style="display: none;">Place</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of notificationPush">
+          <td style="display: none;">{{item.id}}</td>
+          <td>{{item.placeName}}</td>
+          <td>{{item.module}}</td>
+          <td>{{item.number}}</td>
+          <td>{{item.notificationDate}}</td>
+          <td style="display: none;">{{item.placeId}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <div *ngIf="paginator" class="center">
+        <div class="pagination">
+            <a href="#">❮</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">❯</a>
+        </div>
+    </div> -->
+  </div>
+  </li>
+  </ul>
+  <br>
+  <br>
+  <br>
+  </div>

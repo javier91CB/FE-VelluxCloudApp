@@ -27,4 +27,13 @@ export class NotificationsService {
         .set('Content-Type', 'application/json')
         });
     }
+
+  notificationPushQualification(place): Observable<any> {
+      console.log(this.API_URL);
+      return this.http.get(this.API_URL + '/NotificationPush/'+place,
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+      });
+    }
 }

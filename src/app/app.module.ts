@@ -39,6 +39,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
  import { environment } from 'src/environments/environment';
 import { AsyncPipe } from '../../node_modules/@angular/common';
+import { NotificationPushComponent } from './components/notification-push/notification-push.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { AsyncPipe } from '../../node_modules/@angular/common';
     RolesComponent,
     ButtonsComponent,
     ReportsComponent,
-    QualificationComponent
+    QualificationComponent,
+    NotificationPushComponent
   ],
   imports: [
     BrowserModule,

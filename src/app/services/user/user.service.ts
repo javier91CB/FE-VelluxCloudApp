@@ -16,7 +16,6 @@ export class UserService {
     private http: HttpClient) {}
 
   createUser(registerRequest: RegisterRequest){
-    debugger;
     this.response = this.http.post(
       this.API_URL + '/RegisterUser', 
       JSON.stringify(registerRequest), {

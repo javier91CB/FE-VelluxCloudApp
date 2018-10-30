@@ -134,7 +134,6 @@ alert('entramos a salvar la informacion');
   }
 
   showDetails(){
-    debugger;
     var acc = document.getElementsByClassName("accordion");
     var i;
 

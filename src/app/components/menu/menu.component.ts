@@ -29,6 +29,8 @@ export class MenuComponent implements OnInit {
   rolesToEdit: any;
   arrayPlace: Array<PlaceResponse>;
   placeToEdit: any;
+  notificationCount: number;
+  isActiveNotification: boolean;
   
   constructor(public router: Router,
     private placeService:PlaceService) {
@@ -54,6 +56,8 @@ export class MenuComponent implements OnInit {
     this.getAllPlace();
     this.Success = false;
     this.Fail = false;
+    this.isActiveNotification = false;
+    this.startCheckNotification();
   }
   
   startTimer() {
@@ -61,6 +65,20 @@ export class MenuComponent implements OnInit {
       this.Success = false;
       this.Fail = false;
     },5000)
+  }
+
+  startCheckNotification() {
+    setInterval(() => {
+      var listPush = JSON.parse(localStorage.getItem("notificationPush"));
+      if(listPush != null){
+        this.isActiveNotification = true;
+        this.notificationCount = listPush.length;
+      }
+      else{
+        this.notificationCount = 0;
+        this.isActiveNotification = false;
+      }
+    },1000)
   }
   
   activeMenuMore() {
@@ -121,7 +139,7 @@ export class MenuComponent implements OnInit {
           this.Success = false;
           this.startTimer();
         });
-    }
+  }
 
   loadPlaceInfo(placeToEdit){
     this.placeToEdit = new PlaceResponse();
@@ -153,7 +171,7 @@ export class MenuComponent implements OnInit {
       });
   }
 
-    removePlace(placeId){
+  removePlace(placeId){
     this.placeService.deletePlace(placeId).subscribe(
       (data) => {
         this.getAllPlace();
