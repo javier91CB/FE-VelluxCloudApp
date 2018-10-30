@@ -20,18 +20,19 @@ export enum TypeStatus {
 export class NotificationsComponent implements OnInit {
   registerCount: number;
   paginator: boolean;
-  private _hubConnection: signalR.HubConnection;
+  _hubConnection: signalR.HubConnection;
   userInfoModel: UserInfoModel;
   tokenModel: TokenModel;
   registerServices: Array<CallerModel>;
   placeId: string;
   private readonly API_URL = caller_Url.callerHubUrl;
   constructor() {
-    this.registerServices = [
-     
-    ];
+    this.registerServices = [];
       this.paginator = true;
-    this.startConnection();
+    if(typeof this._hubConnection === 'undefined' || 
+    this._hubConnection['connection'].connectionState === 0){
+       this.startConnection();
+    }
     this.startTimer();
   }
 
@@ -47,7 +48,7 @@ export class NotificationsComponent implements OnInit {
     }
   }
 
-  private startConnection():void{
+  public startConnection():void{
     this._hubConnection = new signalR.HubConnectionBuilder()
     .withUrl(this.API_URL, signalR.HttpTransportType.WebSockets)
     .build();
@@ -63,7 +64,6 @@ export class NotificationsComponent implements OnInit {
       });
     }
     
-    
     startTimer() {
       setInterval(() => {
        this.getCaller();
@@ -71,36 +71,35 @@ export class NotificationsComponent implements OnInit {
     }
 
     getCaller() {
-      this._hubConnection.invoke('GetCallerHub',this.placeId )
-      .then((data)=>{
-        this.registerServices = new Array<CallerModel>();
-       for (var _i = 0; _i < data.length; _i++) {
-          var callerModel = new CallerModel();
-          callerModel.id = data[_i].id;
-          callerModel.idButton = data[_i].idButton;
-          callerModel.idPlace = data[_i].idPlace;
-          callerModel.isBill = data[_i].isBill;
-          callerModel.isService = data[_i].isService;
-          callerModel.owner = data[_i].owner;
-          callerModel.reCallBill = data[_i].reCallBill;
-          callerModel.reCallService = data[_i].reCallService;
-          callerModel.startCall = data[_i].startCall;
-          callerModel.endCall = data[_i].endCall;
-
-          var time = (new Date().getTime() - new Date(data[_i].startCall).getTime())/1000;
-          var horas = Math.floor(time / 3600);
-          var minutos = Math.floor((time - (horas * 3600)) / 60);
-          var segundos = time - (horas * 3600) - (minutos * 60);
-          var m = Math.ceil(minutos) < 10 ? '0'+ Math.ceil(minutos).toString() : Math.ceil(minutos).toString();
-          var s = Math.ceil(segundos)  < 10 ? '0'+ Math.ceil(segundos).toString() : Math.ceil(segundos).toString();
-          callerModel.timer = m + ':' + s;
-          callerModel.status = time < 180 ? 1 :  time < 300 ? 2 : time < 420 ? 3 : 0;
-
-          this.registerServices[_i] = callerModel;
-        }
-
-        
-      });
+      if(this._hubConnection['connection'].connectionState == 1){
+        this._hubConnection.invoke('GetCallerHub',this.placeId )
+        .then((data)=>{
+          this.registerServices = new Array<CallerModel>();
+         for (var _i = 0; _i < data.length; _i++) {
+            var callerModel = new CallerModel();
+            callerModel.id = data[_i].id;
+            callerModel.idButton = data[_i].idButton;
+            callerModel.idPlace = data[_i].idPlace;
+            callerModel.isBill = data[_i].isBill;
+            callerModel.isService = data[_i].isService;
+            callerModel.owner = data[_i].owner;
+            callerModel.reCallBill = data[_i].reCallBill;
+            callerModel.reCallService = data[_i].reCallService;
+            callerModel.startCall = data[_i].startCall;
+            callerModel.endCall = data[_i].endCall;
+  
+            var time = (new Date().getTime() - new Date(data[_i].startCall).getTime())/1000;
+            var horas = Math.floor(time / 3600);
+            var minutos = Math.floor((time - (horas * 3600)) / 60);
+            var segundos = time - (horas * 3600) - (minutos * 60);
+            var m = Math.ceil(minutos) < 10 ? '0'+ Math.ceil(minutos).toString() : Math.ceil(minutos).toString();
+            var s = Math.ceil(segundos)  < 10 ? '0'+ Math.ceil(segundos).toString() : Math.ceil(segundos).toString();
+            callerModel.timer = m + ':' + s;
+            callerModel.status = time < 180 ? 1 :  time < 300 ? 2 : time < 420 ? 3 : 0;
+  
+            this.registerServices[_i] = callerModel;
+          }
+        });
+      }
     }
-
 }

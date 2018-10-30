@@ -69,7 +69,6 @@ export class QualificationComponent implements OnInit {
     this.sericeNotification.notificationPushUser(notificationPushRequest)
       .subscribe(
         (data) => {
-          const result = data;
         this.blocked = true;
         this.Success = true;
         this.startTimer();
@@ -105,7 +104,6 @@ export class QualificationComponent implements OnInit {
   }
 
   SaveAsNotificationAdmin(nameRecipiant, placeId) {
-alert('entramos a salvar la informacion');
     var namePlace = this.crossCuttingList.find(x=> x.key==placeId).value;
     alert(namePlace);
     this.messagingService.requestPermission(nameRecipiant, placeId, namePlace);

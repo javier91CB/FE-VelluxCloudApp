@@ -39,14 +39,12 @@ export class MessagingService {
   }
 
   requestPermission(userId, placeId, namePlace) {
-    alert('Proceso de suscribirse');
     this.angularFireMessaging.requestToken.subscribe(
       (token) => {
         alert(token);
         this.updateToken(userId, placeId, namePlace, token);
       },
       (err) => {
-        console.error('Unable to get permission to notify.', err);
         alert('error: '+err);
       }
     );

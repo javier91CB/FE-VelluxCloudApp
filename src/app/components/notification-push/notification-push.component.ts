@@ -48,7 +48,7 @@ export class NotificationPushComponent implements OnInit {
           var item = new NotificationPushEntity();
           item.id = data[i].id;
           item.module = data[i].module;
-          item.notificationDate =datePipe.transform( data[i].notificationDate, 'yyyy-MM-dd');
+          item.notificationDate =datePipe.transform( data[i].notificationDate, 'yyyy-MM-dd HH:mm');
           item.number = data[i].number;
           item.placeId = data[i].placeId;
           item.placeName = data[i].placeName;
