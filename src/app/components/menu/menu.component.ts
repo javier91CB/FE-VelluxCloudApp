@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { debug } from 'util';
 import { HelperUserInfo } from '../../utilities/tools/helperUserInfo';
@@ -9,6 +9,7 @@ import { PlaceRequest } from '../../model/Place/requestModel/placeRequest';
 import { PlaceResponse } from '../../model/Place/responseModel/placeResponse';
 import { PlaceService } from '../../services/place/place.service';
 import { DatePipe } from '@angular/common';
+import { AppModule } from 'src/app/app.module';
 
 @Component({
   selector: 'app-menu',
@@ -16,6 +17,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  
   showMoreSubmenu: boolean;
   showAdminSubmenu: boolean;
   showAdminClaim: boolean;
@@ -35,13 +37,8 @@ export class MenuComponent implements OnInit {
   constructor(public router: Router,
     private placeService:PlaceService) {
     }
-
+  
   ngOnInit() {
-    this.showMoreSubmenu = false;
-    this.showAdminSubmenu = false;
-    this.showAdminClaim = true;
-    this.hidenTitleAdmin = false;
-
     var _helperUserInfo = new HelperUserInfo();
     this.userInfoModel = new UserInfoModel();
     this.tokenModel = new TokenModel();
@@ -52,6 +49,7 @@ export class MenuComponent implements OnInit {
       this.placeId = this.tokenModel.userInfo.placeId;
       this.userId = this.tokenModel.userInfo.id;
       this.rolesToEdit = new RolModel();
+      this.showAdminClaim = this.userInfoModel.claims.indexOf('W') >= 0;
     }
     this.getAllPlace();
     this.Success = false;
@@ -113,6 +111,11 @@ export class MenuComponent implements OnInit {
 
   OnQuit() {
     localStorage.removeItem('access_token');
+    localStorage.clear();
+    sessionStorage.clear();
+    this.showAdminClaim = false;
+    this.showMoreSubmenu = false;
+    this.hidenTitleAdmin = false;
     this.router.navigate(['/login']);
   }
   

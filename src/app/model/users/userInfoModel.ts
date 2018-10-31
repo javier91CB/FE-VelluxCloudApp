@@ -1,5 +1,4 @@
 import { SchedulerModel } from "./schedulerModel";
-import { PermissionModel } from "./permissionModel";
 
 export class UserInfoModel {
     id: string;
@@ -7,7 +6,7 @@ export class UserInfoModel {
     nickName: string;
     firstName: string;
     lastName: string;
-    claims: Array<PermissionModel>;
+    claims: string;
     schedule: Array<SchedulerModel>;
     bornDate: string;
     position: string;

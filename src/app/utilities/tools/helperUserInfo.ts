@@ -26,7 +26,6 @@ export class HelperUserInfo  implements OnInit {
     }
 
     getDecodedAccessToken(token: string): any {
-        
         this.userInfo = new UserInfoModel();
         this.tokenInfo = new TokenModel();
         const helper = new JwtHelperService();

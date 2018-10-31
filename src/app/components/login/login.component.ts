@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../../services/login/login.service';
 import * as CryptoJS from 'crypto-js';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-login',
@@ -34,7 +35,8 @@ export class LoginComponent {
           localStorage.setItem('access_token', JSON.stringify(data));
           this.loading = false;
           this.router.navigate(['/home']);
-        },
+          window.location.reload();
+       },
         error => {
           console.log(error);
           this.loading = false;
