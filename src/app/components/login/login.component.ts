@@ -35,7 +35,6 @@ export class LoginComponent {
           localStorage.setItem('access_token', JSON.stringify(data));
           this.loading = false;
           this.router.navigate(['/home']);
-          window.location.reload();
        },
         error => {
           console.log(error);
