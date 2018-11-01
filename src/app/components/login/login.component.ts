@@ -35,7 +35,6 @@ export class LoginComponent {
           localStorage.setItem('access_token', JSON.stringify(data));
           this.loading = false;
           this.router.navigate(['/home']);
-          
        },
         error => {
           console.log(error);
