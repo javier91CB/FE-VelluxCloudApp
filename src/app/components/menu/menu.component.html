@@ -9,23 +9,23 @@
         </a>
     </li>
     <li>
-        <a routerLink="/profile" ng-click="" >
+        <a routerLink="/profile" (click)="toggleCloseMenu()" >
             <img routerLink="/profile" class="icon-profile" src ="../assets/icons/profile_men_menu.svg">
             <h6 class="label-menu">Perfil</h6>
         </a>
     </li>
     <li>
-        <a routerLink="/home">
+        <a routerLink="/home" (click)="toggleCloseMenu()">
             <div class="center">
-                <button routerLink="/home" class="btn-radius-circular"></button>
+                <button routerLink="/home" (click)="toggleCloseMenu()" class="btn-radius-circular"></button>
             </div>
             <h6 class="label-home">Inicio</h6>
         </a>
         
     </li>
     <li>
-        <a routerLink="/notifications">
-            <img class="icon-notification" routerLink="/notifications" class="icon-notification" src ="../assets/icons/notificationActive.svg">
+        <a routerLink="/notifications" (click)="toggleCloseMenu()">
+            <img class="icon-notification" routerLink="/notifications"  class="icon-notification" src ="../assets/icons/notificationActive.svg">
         </a>
     </li>
     <li *ngIf="showAdminClaim" (click)="activeMenuAdmin()" class="list-menu-admin">
@@ -52,15 +52,15 @@
          <ul class="_navbar-icon-menu-admin-ul">
                      <li class="_navbar-separator"><a>Cuentas</a>
                          <ul>  
-                                 <li><a routerLink="/users">&#9678; Usuarios</a></li>
-                                 <li><a routerLink="/roles">&#9678; Perfiles</a></li>
+                                 <li><a routerLink="/users" (click)="toggleCloseMenu()">&#9678; Usuarios</a></li>
+                                 <li><a routerLink="/roles" (click)="toggleCloseMenu()">&#9678; Perfiles</a></li>
                          </ul>
                      </li>
                          <li class="_navbar-separator"><a>Integración</a>
                          <ul>
-                             <li><a routerLink="/scheduler">&#9678; Asignaciones</a></li>
-                             <li><a routerLink="/buttons">&#9678; Botones</a></li>
-                             <li><a routerLink="/reports" >&#9678; Reportes</a></li>
+                             <li><a routerLink="/scheduler" (click)="toggleCloseMenu()">&#9678; Asignaciones</a></li>
+                             <li><a routerLink="/buttons" (click)="toggleCloseMenu()">&#9678; Botones</a></li>
+                             <li><a routerLink="/reports" (click)="toggleCloseMenu()">&#9678; Reportes</a></li>
                              <li><a class="custom-ref" target="_top" data-toggle="modal" data-target="#myModalCreatePlace" rel="noopener noreferrer" (click)="loadNewPlaceInfo()" >&#9678; Lugares</a></li>
                          </ul>
                      </li>

@@ -41,7 +41,6 @@ export class MessagingService {
   requestPermission(userId, placeId, namePlace) {
     this.angularFireMessaging.requestToken.subscribe(
       (token) => {
-        alert(token);
         this.updateToken(userId, placeId, namePlace, token);
       },
       (err) => {

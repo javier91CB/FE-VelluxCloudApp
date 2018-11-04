@@ -232,16 +232,18 @@ export class UsersComponent implements OnInit {
   }
 
   removeUser(userId){
-    this.userService.deleteUser(userId).subscribe(
-      (data) => {
-        this.Success = true;
-        this.getAllUser(this.placeId);
-        this.startTimer();
-      },
-      error => {
-        this.Fail = true;
-        this.startTimer();
-      });
+    if(confirm('¿Desea eliminar el usuario?')){
+      this.userService.deleteUser(userId).subscribe(
+        (data) => {
+          this.Success = true;
+          this.getAllUser(this.placeId);
+          this.startTimer();
+        },
+        error => {
+          this.Fail = true;
+          this.startTimer();
+        });
+    }
   }
 
   getAllUser(placeId){

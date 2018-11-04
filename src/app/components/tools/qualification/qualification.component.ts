@@ -105,7 +105,6 @@ export class QualificationComponent implements OnInit {
 
   SaveAsNotificationAdmin(nameRecipiant, placeId) {
     var namePlace = this.crossCuttingList.find(x=> x.key==placeId).value;
-    alert(namePlace);
     this.messagingService.requestPermission(nameRecipiant, placeId, namePlace);
     this.message = this.messagingService.currentMessage
   }

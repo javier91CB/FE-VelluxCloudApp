@@ -33,6 +33,7 @@ export class MenuComponent implements OnInit {
   placeToEdit: any;
   notificationCount: number;
   isActiveNotification: boolean;
+  globalMenu: boolean;
   
   constructor(public router: Router,
     private placeService:PlaceService) {
@@ -80,20 +81,24 @@ export class MenuComponent implements OnInit {
   }
   
   activeMenuMore() {
+    debugger;
     if (!this.showMoreSubmenu) {
       if (this.showAdminClaim && window.screen.width <= 566) {
         this.showAdminSubmenu = true;
         this.hidenTitleAdmin = true;
+        this.globalMenu = true;
       }
       if (this.showAdminClaim && window.screen.width >= 566) {
         this.showAdminSubmenu = false;
         this.hidenTitleAdmin = true;
+        this.globalMenu = true;
       }
         this.showMoreSubmenu = true;
     } else {
       this.showMoreSubmenu = false;
       this.showAdminSubmenu = false;
       this.hidenTitleAdmin = false;
+      this.globalMenu = false;
     }
   }
 
@@ -195,6 +200,11 @@ export class MenuComponent implements OnInit {
       },
       error => {
       });
+  }
+
+  toggleCloseMenu(){
+    debugger;
+    this.globalMenu = false;
   }
 
   showDetails(){
