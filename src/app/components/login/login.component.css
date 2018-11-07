@@ -8,8 +8,8 @@
     height: 100%;
     position: absolute;
     color: #fff;
-    /* background-image: url("../../../assets/images/login1.jpg"); */
-    background-image: url("../../../assets/images/login.jpg");
+    background-image: url("../../../assets/images/login1.jpg");
+    /* background-image: url("../../../assets/images/login.jpg"); */
     background-size: cover;
 }
 
