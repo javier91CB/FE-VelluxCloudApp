@@ -1,6 +1,39 @@
 <div class="container">
     <ul class="list-group">
         <li class="list-group-item ">
+            <div class="card-body">
+              <button class="accordion" (click)="showDetails()">Generar Reporte</button>
+              <div class="panel">
+                  <br>
+                  <form>
+                     <label>Fecha Inicial:</label>
+                     <input class="form-control" type="date" #StartDate ngModel name="StartDate" required/>
+                     <label>Fecha Final:</label>
+                     <input class="form-control" type="date" #EndDate ngModel name="EndDate" required/>
+                     <label>Lugar:</label>
+                     <select class="form-control col-md-3" #Place ngModel name="Place" [(ngModel)]="selectedOption" required>
+                           <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
+                           <div style="display: none;">{{c.value}}</div>
+                           </option>
+                     </select>
+                     <br/>
+                     <button class ="button button4 glyphicon glyphicon-save-file" (click) = "downloadReport(StartDate.value, EndDate.value, Place.value)"
+                       [style.color] = "'white'">Generar</button>
+                     <!-- <button class ="button button4 glyphicon glyphicon-save-file" (click) = "viewReport(StartDate.value, EndDate.value, Place.value)"
+                       [style.color] = "'white'">Ver reporte</button> -->
+                     <div class="alert alert-warning">
+                       <strong>Atencion!</strong> La funcionalidad de reportes se encuentra disponible en versión de escritorio únicamente.
+                     </div>
+                  </form>
+                  <div style="width: 50px; margin-left: auto; margin-right: auto;" *ngIf="loading" >
+                     <img src="../../../assets/loader/loading.gif" style="width: 40px;" />
+                 </div>
+              </div>
+              <br/>
+              </div>
+        </li>
+        <br>
+        <li class="list-group-item ">
               <div class="card-body">
     <table id="myTable" datatable class="row-border hover">
       <thead>
@@ -24,14 +57,6 @@
         </tr>
       </tbody>
     </table>
-    <!-- <div *ngIf="paginator" class="center">
-        <div class="pagination">
-            <a href="#">❮</a>
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">❯</a>
-        </div>
-    </div> -->
   </div>
   </li>
   </ul>

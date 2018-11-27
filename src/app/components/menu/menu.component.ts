@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { debug } from 'util';
 import { HelperUserInfo } from '../../utilities/tools/helperUserInfo';
@@ -17,7 +17,8 @@ import { AppModule } from 'src/app/app.module';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  
+  @Input() dataShared:boolean = false;
+
   showMoreSubmenu: boolean;
   showAdminSubmenu: boolean;
   showAdminClaim: boolean;

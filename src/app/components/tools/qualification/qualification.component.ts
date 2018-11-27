@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { NotificationInfo } from '../../../model/notification/notificationInfo';
 import { NotificationRequest } from '../../../model/notification/requestModel/notificationRequest';
 import { NotificationsService } from '../../../services/notification/notifications.service';
@@ -6,6 +6,7 @@ import { MessagingService } from 'src/app/services/shared/messaging.service';
 import { CrossCuttingList } from 'src/app/model/crosscuttingList';
 import { PlaceService } from 'src/app/services/place/place.service';
 import { NotificationPushRequest } from 'src/app/model/notification/requestModel/notificationPushRequest';
+import { MenuComponent } from '../../menu/menu.component';
 
 @Component({
   selector: 'app-qualification',
@@ -13,19 +14,24 @@ import { NotificationPushRequest } from 'src/app/model/notification/requestModel
   styleUrls: ['./qualification.component.css']
 })
 export class QualificationComponent implements OnInit {
-
+  @Output('dataShared') emitEvent:EventEmitter<boolean> = new EventEmitter<boolean>();
+  hideMenu:boolean = false;
   notification: NotificationInfo;
   Success:boolean;
   blocked:boolean;
   crossCuttingList: any;
   notificationInfo: NotificationInfo;
   selectedOptionPlace: any;
+  isAdminValidation: boolean;
+
   constructor(
     private sericeNotification: NotificationsService,
     private messagingService: MessagingService,
     private placeService: PlaceService) 
     {
        this.onload();
+       this.isAdminValidation = false;
+       this.hideMenu = false;
     }
   message;
   
@@ -37,6 +43,8 @@ export class QualificationComponent implements OnInit {
 
   SendQualification(estrellas) {
     const info = JSON.parse(localStorage.getItem('NotificationInfo'));
+    
+    if(info != null){
     this.notificationRequest = new NotificationRequest();
     this.notificationRequest.place = info['place'];
     this.notificationRequest.payDesk = info['modul'];
@@ -45,7 +53,6 @@ export class QualificationComponent implements OnInit {
     this.notificationRequest.namePlace = info['namePlace'];
     this.notificationRequest.dateEmail = '2015-03-25T12:00:00-06:00';
     this.notificationRequest.qualification = estrellas;
-    
     
     // this.sericeNotification.notificationUser(this.notificationRequest)
     // .subscribe(
@@ -76,6 +83,10 @@ export class QualificationComponent implements OnInit {
         error => {
           console.log(error);
         });
+    }
+    else{
+      alert('Porfavor configure los parametros de envio');
+    }
   }
 
   startTimer() {
@@ -144,6 +155,23 @@ export class QualificationComponent implements OnInit {
                 panel.style.display = "block";
             }
         });
+    }
+  }
+
+  validateAdmin(fieldValidtion){
+    if(fieldValidtion === '991155')
+    {
+      debugger;
+      this.isAdminValidation = true;
+    }
+  }
+
+  hidenMenu(val){
+    if(val){
+      document.getElementById('menuRouter').style.display = 'none';
+    }
+    else{
+      document.getElementById('menuRouter').style.display = 'block';
     }
   }
 }

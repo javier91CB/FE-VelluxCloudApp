@@ -1,4 +1,4 @@
-<div *ngIf="router.url !== '/login'" class="_navbar-icon-menu">
+<div *ngIf="router.url !== '/login' || !dataShared" class="_navbar-icon-menu" id="menuRouter">
   <ul class="_navbar-icon-menu-ul">
     <li>
         <a>

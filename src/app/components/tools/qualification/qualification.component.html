@@ -9,63 +9,35 @@
                 <table style="width: auto; margin: 0 auto;">
                     <tbody>
                       <tr style="padding-top: 5px;">
-                          <!-- class="success">-->
                         <td>
                             <input id="radio1" type="radio" #Estrellasc ngModel name="Estrellasc" value="5" disabled="blocked">
                             <img src="../../../../assets/images/4.PNG" (click)='SendQualification(Estrellasc.value)'>
                         </td>
-                        <!-- <td>
-                            <label style="font-size: 20px">Excelente</label>
-                        </td> -->
-                      </tr>
-                      <tr style="padding-top: 5px;">
-                          <!-- class="info"> -->
-                          <td>
-                             <input id="radio2" type="radio" #Estrellascu ngModel name="Estrellascu" value="4" disabled="blocked">
-                             <img src="../../../../assets/images/3.PNG" (click)='SendQualification(Estrellascu.value)'>
-                          </td>
-                          <!-- <td>
-                              <label style="font-size: 20px">Bueno</label>
-                          </td> -->
-                      </tr>
-                      <tr style="padding-top: 5px;">
-                          <!-- class="active"> -->
-                          <td>
+                        <td>
+                            <input id="radio2" type="radio" #Estrellascu ngModel name="Estrellascu" value="4" disabled="blocked">
+                            <img src="../../../../assets/images/3.PNG" (click)='SendQualification(Estrellascu.value)'>
+                        </td>
+                        <td>
                             <input id="radio3" type="radio" #Estrellast ngModel name="Estrellast" value="3" disabled="blocked">
                             <img src="../../../../assets/images/2.PNG" (click)='SendQualification(Estrellast.value)'>
-                          </td>
-                          <!-- <td>
-                              <label style="font-size: 20px">Regular</label>
-                          </td> -->
-                      </tr>
-                      <tr> 
-                      <!-- class="warning"> -->
-                          <td>
-                             <input id="radio4" type="radio" #Estrellasd ngModel name="Estrellasd" value="2" disabled="blocked">
-                             <img src="../../../../assets/images/1.PNG" (click)='SendQualification(Estrellasd.value)'>
-                          </td>
-                          <!-- <td>
-                              <label style="font-size: 20px">Malo</label>
-                          </td> -->
-                      </tr>
-                      <tr> 
-                          <!-- class="danger"> -->
-                          <td>
-                              <input id="radio5" type="radio" #Estrellasu ngModel name="Estrellasu" value="1">
-                              <img src="../../../../assets/images/0.PNG" (click)='SendQualification(Estrellasu.value)' disabled="blocked">
-                          </td>
-                          <!-- <td>
-                              <label style="font-size: 20px;">Pesimo</label>
-                          </td> -->
+                        </td>
+                        <td>
+                            <input id="radio4" type="radio" #Estrellasd ngModel name="Estrellasd" value="2" disabled="blocked">
+                            <img src="../../../../assets/images/1.PNG" (click)='SendQualification(Estrellasd.value)'>
+                        </td>
+                        <td>
+                            <input id="radio5" type="radio" #Estrellasu ngModel name="Estrellasu" value="1">
+                            <img src="../../../../assets/images/0.PNG" (click)='SendQualification(Estrellasu.value)' disabled="blocked">
+                        </td>
                       </tr>
                       <tr>
-                        <img src="../../../../assets/images/countries.PNG" style="width: 90px; margin: 0 auto;">
+                        <img src="../../../../assets/images/countries.PNG" style="width: 90px; margin-left: auto; margin-right: auto;">
                       </tr>
                     </tbody>
                   </table>
                   <hr>
                   <div class="center-block" style="width: 100%; margin-left: auto; margin-right: auto;">
-                    <button type="button" class="btn btn-default custom-ref" style="text-align:right;" data-toggle="modal" data-target="#myModal" (click)="onload()" rel="noopener noreferrer">
+                    <button type="button" class="btn btn-default custom-ref" style="text-align:right;" data-toggle="modal" data-target="#BlockModal" rel="noopener noreferrer">
                             <span class="glyphicon glyphicon-cog" style="color:cornflowerblue"></span>
                     </button>
                  </div>
@@ -76,7 +48,7 @@
   <br>
   </div>
 
-  <div class="modal fade" id="myModal" role="dialog">
+  <div *ngIf="isAdminValidation" class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
           <div class="modal-header">
@@ -96,10 +68,13 @@
                                     </option>
                             </select>
                             <br/>
+                            <input type="checkbox" (change)="hidenMenu($event.target.checked)"/>
+                            <label>Ocultar Menú</label>
+                            <br/>
                             <button type="button" class="btn btn-success" 
                              (click)="SaveAsNotificationAdmin(NameRecipiant.value, selectedOptionPlace)" 
                              data-dismiss="modal">Suscribir</button>
-                             <br>
+                             <br/>
                 </div>
                 <button class="accordion" (click)="showDetails()">Configuración de Modulo</button>
                 <div class="panel">
@@ -121,6 +96,31 @@
                 </div>
           </div>
           <div class="modal-footer">
+          </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="BlockModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" style="text-align:center;">Codigo de validacion</h4>
+          </div>
+          <div class="modal-body">
+            <table>
+                <tr>
+                  <td width="20px" height="20px">
+                    <input type="password" autocomplete="off" #fieldValid/>
+                  </td>
+                </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#myModal" 
+                (click) ="validateAdmin(fieldValid.value)">Ingresar</button>
           </div>
           </div>
         </div>

@@ -30,7 +30,8 @@ export class NotificationsService {
 
   notificationPushQualification(place): Observable<any> {
       console.log(this.API_URL);
-      return this.http.get(this.API_URL + '/NotificationPush/'+place,
+      var offset = new Date().getTimezoneOffset()/60;
+      return this.http.get(this.API_URL + '/NotificationPush/'+place+'/'+offset,
       {
         headers: new HttpHeaders()
         .set('Content-Type', 'application/json')
