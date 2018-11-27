@@ -23,6 +23,8 @@ export class QualificationComponent implements OnInit {
   notificationInfo: NotificationInfo;
   selectedOptionPlace: any;
   isAdminValidation: boolean;
+  isVertical: any;
+  isHorizontal: boolean;
 
   constructor(
     private sericeNotification: NotificationsService,
@@ -38,6 +40,28 @@ export class QualificationComponent implements OnInit {
   notificationRequest: NotificationRequest;
 
   ngOnInit() {
+
+    if(window.orientation == 90){
+      this.isHorizontal = true;
+      this.isVertical = false;      
+    }
+    else{
+      this.isVertical = true;
+      this.isHorizontal = false;
+    }
+
+    window.addEventListener("orientationchange", ()=> {
+      if (window.matchMedia("(orientation: portrait)").matches) {
+        this.isHorizontal = true;
+        this.isVertical = false;      
+      }
+    
+      if (window.matchMedia("(orientation: landscape)").matches) {
+        this.isVertical = true;
+        this.isHorizontal = false;
+      }
+    });
+
     this.getAllPlace();
   }
 
@@ -88,6 +112,7 @@ export class QualificationComponent implements OnInit {
       alert('Porfavor configure los parametros de envio');
     }
   }
+  
 
   startTimer() {
     setInterval(() => {
