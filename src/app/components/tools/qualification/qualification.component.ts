@@ -161,7 +161,6 @@ export class QualificationComponent implements OnInit {
   validateAdmin(fieldValidtion){
     if(fieldValidtion === '991155')
     {
-      debugger;
       this.isAdminValidation = true;
     }
   }

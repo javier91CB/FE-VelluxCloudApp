@@ -69,6 +69,7 @@ export class MenuComponent implements OnInit {
 
   startCheckNotification() {
     setInterval(() => {
+      this.showAdminClaim = this.userInfoModel.claims.indexOf('W') >= 0;
       var listPush = JSON.parse(localStorage.getItem("notificationPush"));
       if(listPush != null){
         this.isActiveNotification = true;
@@ -83,6 +84,7 @@ export class MenuComponent implements OnInit {
   
   activeMenuMore() {
     debugger;
+    this.showAdminClaim = this.userInfoModel.claims.indexOf('W') >= 0;
     if (!this.showMoreSubmenu) {
       if (this.showAdminClaim && window.screen.width <= 566) {
         this.showAdminSubmenu = true;
@@ -104,7 +106,8 @@ export class MenuComponent implements OnInit {
   }
 
   activeMenuAdmin() {
-    if (!this.showAdminSubmenu) {
+    var showAdminClaim = this.userInfoModel.claims.indexOf('W') >= 0;
+    if (!this.showAdminSubmenu && showAdminClaim) {
       this.showAdminSubmenu = true;
       if (window.screen.width >= 566) {
         this.showMoreSubmenu = false;
@@ -119,6 +122,7 @@ export class MenuComponent implements OnInit {
     localStorage.removeItem('access_token');
     localStorage.clear();
     sessionStorage.clear();
+    this.showAdminSubmenu = false;
     this.showAdminClaim = false;
     this.showMoreSubmenu = false;
     this.hidenTitleAdmin = false;

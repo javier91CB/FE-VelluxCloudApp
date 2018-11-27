@@ -1,4 +1,4 @@
-<div *ngIf="router.url !== '/login' || !dataShared" class="_navbar-icon-menu" id="menuRouter">
+<div *ngIf="router.url !== '/login'" class="_navbar-icon-menu" id="menuRouter">
   <ul class="_navbar-icon-menu-ul">
     <li>
         <a>
@@ -47,7 +47,7 @@
          >
 
          <div class="_navbar-icon-menu-admin-container"
-         [style.visibility]="(showAdminSubmenu == true) ? 'visible' : 'hidden' ">
+         [style.visibility]="(showAdminSubmenu === true) ? 'visible' : 'hidden' ">
          <button *ngIf="hidenTitleAdmin" class="_navbar-separator-button">Administración</button>
          <ul class="_navbar-icon-menu-admin-ul">
                      <li class="_navbar-separator"><a>Cuentas</a>

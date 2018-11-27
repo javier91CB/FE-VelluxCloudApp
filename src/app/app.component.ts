@@ -20,18 +20,5 @@ export class AppComponent implements OnInit  {
 
   ngOnInit() {
     this.messagingService.receiveMessage();
-    debugger;
-    // this.childOne.emitEvent
-    // .subscribe(
-    //   res =>
-    //   {
-    //   console.log("Atributo:" + res);
-    //   this.childTwo.dataShared = res;
-    //   }
-    // );
   }
-
-  // change():void{
-  //   this.childOne.hideMenuAdmin();
-  // }
 }
