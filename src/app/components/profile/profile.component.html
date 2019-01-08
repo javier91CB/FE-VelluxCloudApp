@@ -8,15 +8,19 @@
 								</div>
 								<div class="profile-usertitle">
 										<div class="profile-usertitle-name">
-											Jon Doe
+											{{userInfoModel.nickName}}
 										</div>
 										<div class="profile-usertitle-job">
-											Ayudante Ala Sur
+											{{userInfoModel.positionName}}
 										</div>
 								</div>
 								<div class="profile-userbuttons">
-										<button type="button" class="btn btn-success btn-sm">Llamar</button>
-										<button type="button" class="btn btn-warning btn-sm">Enviar Mensaje</button>
+										<button type="button" class="btn btn-success btn-sm custom-ref"
+										target="_top" data-toggle="modal" 
+										data-target="#myModalUpdate" rel="noopener noreferrer"
+										(click)="loadUserInfo()">
+											Editar información
+										</button>
 								</div>
 								<div class="profile-usermenu ">
 										<ul class="nav">
@@ -25,11 +29,6 @@
 														<i class="glyphicon glyphicon-home"></i>
 														Mi perfil </a>
 													</li>
-											<li>
-												<a href="#" target="_blank">
-												<i class="glyphicon glyphicon-ok"></i>
-												Tareas </a>
-											</li>
 										</ul>
 							   </div>
 					  </div>
@@ -40,14 +39,14 @@
 								<div align="center" >
 										<div class="profile-content center-block" align="left" >
 												<h4>
-														CineColombia Gran Estación
+														{{userInfoModel.placeName}}
 												</h4>
 												<small><i class="glyphicon glyphicon-map-marker">
-													</i><cite title="San Francisco, USA">&nbsp;&nbsp;Bogotá, Colombia </cite></small>
+													</i><cite title="San Francisco, USA">&nbsp;&nbsp;{{userInfoModel.city}}, {{userInfoModel.country}} </cite></small>
 												<p>
-														<i class="glyphicon glyphicon-envelope"></i> JonDoe@cinecolombia.com
+														<i class="glyphicon glyphicon-envelope"></i> {{userInfoModel.userName}}
 														<br />
-														<i class="glyphicon glyphicon-gift"></i> June 02, 1988</p>
+														<i class="glyphicon glyphicon-gift"></i> {{userInfoModel.bornDate}}</p>
 												<!-- Split button -->
 										</div>
 						</div>
@@ -80,3 +79,64 @@
 		</ul>
 </div>
 <br><br><br>
+<div class="modal fade" id="myModalUpdate" role="dialog">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title" style="text-align:center;">Editar Usuario</h4>
+	  </div>
+	  <div class="modal-body">
+		<label style="display:none;">ID:</label>
+		<input style="display:none;" class="form-control" #IdUser ngModel name="IdUser" [(ngModel)]="userToEdit.userId"/>
+		<label>Nombre:</label>
+		<input class="form-control" #Name ngModel name="Name" [(ngModel)]="userToEdit.firstName"/>
+		<label>Apellido:</label>
+		<input class="form-control" #Apellido ngModel name="Apellido" [(ngModel)]="userToEdit.lastName"/>
+		<label>Email:</label>
+		<input type="email" class="form-control" #Email ngModel name="Email" [(ngModel)]="userToEdit.userName"/>
+		<label>Fecha de Nacimento:</label>
+		<input class="form-control" type="date" #FechaNacimiento ngModel name="FechaNacimiento" [(ngModel)]="userToEdit.bornDate"/>
+		<label>Pais:</label>
+		<input class="form-control" type="text" #Pais ngModel name="Pais" [(ngModel)]="userToEdit.country"/>
+		<label>Ciudad:</label>
+		<input class="form-control" type="text" #Ciudad ngModel name="Ciudad" [(ngModel)]="userToEdit.city"/>
+		<label>Contraseña:</label>
+		<input type="password" class="form-control" #Psd ngModel name="Psd" />
+		<label>Repetir Contraseña:</label>
+		<input type="password" class="form-control" #RePsd ngModel name="RePsd" />
+		<div class="alert alert-danger" *ngIf="passwordNotMatches">
+		  Las contraseñas no son iguales.....
+		</div>
+		<label>Lugar:</label>
+		<select disabled="disabled" class="form-control" #Lugar ngModel name="Lugar" [(ngModel)]="selectedPlace" (change)="getAllPermissions($event.target.value)">
+		  <option *ngFor="let c of crossCuttingList" [ngValue]="c.key">
+			  <div style="display: none;">{{c.value}}</div>
+		  </option>
+		</select>
+		<label>Perfil:</label>
+		<select disabled="disabled" class="form-control" #Perfil ngModel name="Perfil" [(ngModel)]="selecRol">
+			<option *ngFor="let p of crossCuttingListPermissions" [ngValue]="p.key">
+				<div style="display: none;">{{p.value}}</div>
+			</option>
+		</select>
+		<label>Turno:</label>
+		<select disabled="disabled" class="form-control" #Schedule ngModel name="Schedule" [(ngModel)]="selecSchedule">
+			<option *ngFor="let p of crossCuttingListSchedule" [ngValue]="p.key">
+				<div style="display: none;">{{p.value}}</div>
+			</option>
+		</select>
+	  </div>
+	  <div class="modal-footer">
+				  <div class="col-md-1">
+		  <button type="button" class="btn btn-success" 
+		  (click)="editUser(Name.value,Apellido.value,Email.value,
+		  FechaNacimiento.value,Pais.value,Ciudad.value,Psd.value,
+		  RePsd.value,selecRol,selecSchedule,selectedPlace,IdUser.value)">Guardar</button>
+		  </div>
+		  <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
+		  <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>
+	  </div>
+	  </div>
+	</div>
+  </div>

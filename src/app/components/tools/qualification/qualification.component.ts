@@ -112,7 +112,6 @@ export class QualificationComponent implements OnInit {
       alert('Porfavor configure los parametros de envio');
     }
   }
-  
 
   startTimer() {
     setInterval(() => {

@@ -83,7 +83,6 @@ export class MenuComponent implements OnInit {
   }
   
   activeMenuMore() {
-    debugger;
     this.showAdminClaim = this.userInfoModel.claims.indexOf('W') >= 0;
     if (!this.showMoreSubmenu) {
       if (this.showAdminClaim && window.screen.width <= 566) {
@@ -208,7 +207,6 @@ export class MenuComponent implements OnInit {
   }
 
   toggleCloseMenu(){
-    debugger;
     this.globalMenu = false;
   }
 

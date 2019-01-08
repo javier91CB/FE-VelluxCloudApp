@@ -57,6 +57,18 @@ export class UserService {
 
   }
 
+  getUserById(userId: string){
+    this.response = this.http.get(
+      this.API_URL + '/GetUserById/' + userId, 
+      {
+      headers: new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      });
+
+    return this.response;
+
+  }
+
   getPhoto(userId: string){
     
     this.response = this.http.get(
