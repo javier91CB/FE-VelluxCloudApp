@@ -3,6 +3,8 @@ import { RegisterRequest } from '../../model/users/requestModel/registerRequest'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Security_Url } from '../../utilities/url/security_Url';
 
+import * as CryptoJS from 'crypto-js';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +12,7 @@ export class UserService {
 
   private API_URL = Security_Url.userUrl;
   response: any;
+  responseCipher: any;
   registerRequest: RegisterRequest;
 
   constructor(
@@ -79,5 +82,29 @@ export class UserService {
       });
 
     return this.response;
+  }
+
+  cipher(valueToCipher: string){
+    var key = CryptoJS.enc.Utf8.parse('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9eyJpc3MiOiJhdXRoMCJ9AbIJTDMFc7yUa5MhvcP03nJPyCPzZtQcGEpzWfOkEF');
+    var iv = CryptoJS.enc.Utf8.parse('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9eyJpc3MiOiJhdXRoMCJ9AbIJTDMFc7yUa5MhvcP03nJPyCPzZtQcGEpzWfOkEF');
+    return this.responseCipher = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(valueToCipher), key,
+        {
+            keySize: 128 / 8,
+            iv: iv,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.Pkcs7
+        });
+    
+  }
+  
+  decipher(encrypted: string | CryptoJS.WordArray){
+    var key = CryptoJS.enc.Utf8.parse('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9eyJpc3MiOiJhdXRoMCJ9AbIJTDMFc7yUa5MhvcP03nJPyCPzZtQcGEpzWfOkEF');
+    var iv = CryptoJS.enc.Utf8.parse('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9eyJpc3MiOiJhdXRoMCJ9AbIJTDMFc7yUa5MhvcP03nJPyCPzZtQcGEpzWfOkEF');
+    var decrypted = CryptoJS.AES.decrypt(encrypted, key, {
+      keySize: 128 / 8,
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+  });
   }
 }

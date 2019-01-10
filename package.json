@@ -55,6 +55,7 @@
     "qtip2": "^3.0.3",
     "rxjs": "^6.2.1",
     "sha.js": "^2.4.11",
+    "sha1": "^1.1.1",
     "sha256": "^0.2.0",
     "zone.js": "^0.8.26"
   },
@@ -69,6 +70,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/jquery": "^3.3.4",
     "@types/node": "^8.9.5",
+    "@types/sha1": "^1.1.1",
     "codelyzer": "~4.2.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",

@@ -7,9 +7,7 @@ import { TokenModel } from '../../model/token/tokenModel';
 import { PlaceService } from '../../services/place/place.service';
 import { CrossCuttingList } from '../../model/crosscuttingList';
 import { ProfileService } from '../../services/profiles/profile.service';
-import { ScheduleResponse } from 'src/app/model/schedule/response/scheduleResponse';
 import { SchedulerService } from 'src/app/services/scheduler/scheduler.service';
-import * as CryptoJS from 'crypto-js';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -19,7 +17,6 @@ import { DatePipe } from '@angular/common';
 })
 export class UsersComponent implements OnInit {
 
-  key: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9eyJpc3MiOiJhdXRoMCJ9AbIJTDMFc7yUa5MhvcP03nJPyCPzZtQcGEpzWfOkEF"
   arrayRegisterRequest:Array<RegisterRequest>;
   registerRequest:RegisterRequest;
   paginator: boolean;
@@ -157,7 +154,7 @@ export class UsersComponent implements OnInit {
     this.registerRequest.bornDate = FechaNacimiento;
     this.registerRequest.country = Pais;
     this.registerRequest.city = Ciudad;
-    this.registerRequest.password = Password;
+    this.registerRequest.password = this.userService.cipher(Password).toString();
     this.registerRequest.position = Perfil;
     this.registerRequest.idSchedule = Turno;
     this.registerRequest.nickName = Name + ' ' + Apellido;
@@ -182,6 +179,7 @@ export class UsersComponent implements OnInit {
       this.passwordNotMatches = true;
     }
   }
+
   loadUserInfo(register){
     var datePipe = new DatePipe('en-US');
     this.userToEdit = new RegisterRequest();
@@ -192,10 +190,12 @@ export class UsersComponent implements OnInit {
     this.selecSchedule = this.userToEdit.idSchedule;
     this.userToEdit.bornDate = datePipe.transform(this.userToEdit.bornDate, 'yyyy-MM-dd');
   }
+
   loadNewUserInfo(){
     this.userToEdit = new RegisterRequest();
     this.userToEdit.isActive = true;
   }
+
   editUser(IsActive,Name,Apellido,Email,
     FechaNacimiento,Pais,Ciudad,Password
     ,RePassword,Perfil,Turno,selectedOption,IdUser){
@@ -207,7 +207,7 @@ export class UsersComponent implements OnInit {
       this.registerRequest.bornDate = FechaNacimiento;
       this.registerRequest.country = Pais;
       this.registerRequest.city = Ciudad;
-      this.registerRequest.password = Password;
+      this.registerRequest.password = this.userService.cipher(Password).toString();
       this.registerRequest.position = Perfil;
       this.registerRequest.idSchedule = Turno;
       this.registerRequest.nickName = Name + ' ' + Apellido;
