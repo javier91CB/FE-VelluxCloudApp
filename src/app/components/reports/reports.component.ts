@@ -20,6 +20,7 @@ export class ReportsComponent implements OnInit {
   tokenModel: TokenModel;
   placeId: string;
   crossCuttingList: any[];
+  selectedOption:any;
   private endpoint = caller_Url.callerUrl;
 
   constructor(

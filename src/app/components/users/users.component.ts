@@ -37,6 +37,9 @@ export class UsersComponent implements OnInit {
   crossCuttingListSchedule: Array<CrossCuttingList>;
   isAct: boolean;
   arrayScheduleRequest: any[];
+  selectedOption: any;
+  selectedRol: any;
+  id: any;
 
   constructor(private userService: UserService, 
     private placeService: PlaceService,

@@ -20,6 +20,7 @@ export class NotificationPushComponent implements OnInit {
   tokenModel: any;
   placeId: any;
   userId: any;
+  selectedOption:any;
   notificationPush: Array<NotificationPushEntity>;
   crossCuttingList: any[];
   loading: boolean;

@@ -181,9 +181,8 @@
     <div class="modal-footer">
                 <div class="col-md-1">
         <button type="button" class="btn btn-success"
-        (click)="createSchedul(IsActive.value, NameShedule.value,Monday.value,Tuesday.value,
-        Wednesday.value, Thursday.value, Friday.value, Saturday.value, Sunday.value,
-        StrHour.value, EndHour.value, selectedOption)">Guardar</button>
+        (click)="createSchedul(IsActive.value, 
+        NameShedule.value, selectedOption)">Guardar</button>
         </div>
         <div class="alert alert-success" *ngIf="Success">Guardado con exito...</div>
         <div class="alert alert-danger" *ngIf="Fail">Ups.. Algo Fallo...</div>

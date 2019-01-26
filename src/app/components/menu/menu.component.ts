@@ -17,8 +17,6 @@ import { AppModule } from 'src/app/app.module';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  @Input() dataShared:boolean = false;
-
   showMoreSubmenu: boolean;
   showAdminSubmenu: boolean;
   showAdminClaim: boolean;
@@ -52,12 +50,12 @@ export class MenuComponent implements OnInit {
       this.userId = this.tokenModel.userInfo.id;
       this.rolesToEdit = new RolModel();
       this.showAdminClaim = this.userInfoModel.claims.indexOf('W') >= 0;
+      this.startCheckNotification();
     }
     this.getAllPlace();
     this.Success = false;
     this.Fail = false;
     this.isActiveNotification = false;
-    this.startCheckNotification();
   }
   
   startTimer() {
