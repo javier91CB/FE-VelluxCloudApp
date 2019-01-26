@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../../services/login/login.service';
 import * as CryptoJS from 'crypto-js';
 import { MenuComponent } from '../menu/menu.component';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent {
   token: string;
   isLoginError = false;
   constructor(
+    private userService: UserService,
     private loginService: LoginService,
     private router: Router,
     private route: ActivatedRoute) {
@@ -29,7 +31,8 @@ export class LoginComponent {
     if(userName != "" && password != "")
     {
       this.loading = true;
-      this.loginService.userAuthentication(userName, password)
+      var passCipher = this.userService.cipher(password).toString();
+      this.loginService.userAuthentication(userName, passCipher)
       .subscribe(
         (data) => {
           localStorage.setItem('access_token', JSON.stringify(data));
