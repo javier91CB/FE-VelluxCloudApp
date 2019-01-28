@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prodcc": "ng build -c prodcc",
+    "build:proddct": "ng build -c proddct",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
