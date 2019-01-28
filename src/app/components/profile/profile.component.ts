@@ -101,7 +101,7 @@ export class ProfileComponent implements OnInit {
       this.registerRequest.bornDate = FechaNacimiento;
       this.registerRequest.country = Pais;
       this.registerRequest.city = Ciudad;
-      this.registerRequest.password = Password;
+      this.registerRequest.password = this.userService.cipher(Password).toString();;
       this.registerRequest.position = Perfil;
       this.registerRequest.idSchedule = Turno;
       this.registerRequest.nickName = Name + ' ' + Apellido;
