@@ -93,7 +93,7 @@ export class ProfileComponent implements OnInit {
   editUser(Name,Apellido,Email,
     FechaNacimiento,Pais,Ciudad,Password
     ,RePassword,Perfil,Turno,selectedOption){
-      if(Password == RePassword){
+      if(Password.length > 0 && Password == RePassword){
       this.registerRequest = new RegisterRequest();
       this.registerRequest.firstName = Name; 
       this.registerRequest.lastName = Apellido;
