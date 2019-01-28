@@ -52,7 +52,7 @@ export class SchedulerComponent implements OnInit {
   arrayScheduleRequest : Array<ScheduleAuxModel>
   isAct: false;
   schedulerToEdit: ScheduleRequest;
-  schedulerToEditUpload: ScheduleResponse;
+  schedulerToEditUpload: ScheduleAuxModel;
   selectedOption: any;
 
   constructor(
@@ -73,7 +73,7 @@ export class SchedulerComponent implements OnInit {
     this.placeId = this.tokenModel.userInfo.placeId;
     this.userId = this.tokenModel.userInfo.id;
     this.rolesToEdit = new RolModel();
-    this.schedulerToEditUpload = new ScheduleResponse();
+    this.schedulerToEditUpload = new ScheduleAuxModel();
     this.getAllSchedule(this.placeId);
     this.getAllPlace()
     this.Success = false;
@@ -81,10 +81,12 @@ export class SchedulerComponent implements OnInit {
   }
 
   loadNewScheduleInfo(){
+    debugger;
     this.schedulerToEdit = new ScheduleResponse();
   }
 
   loadScheduleInfo(register){
+    debugger;
     this.schedulerToEditUpload = register;
     this.selectedOption = this.placeId;
   }

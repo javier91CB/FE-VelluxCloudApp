@@ -33,6 +33,10 @@ buttonNew: ButtonRequest;
 crossCuttingList: CrossCuttingList[];
 crossCuttingListSchedule: any[];
 crossCuttingListUsers: any[];
+selecOwner: any;
+selecSchedule: any;
+selectedOption: any;
+
 
   constructor(
     private buttonsService: ButtonsService,

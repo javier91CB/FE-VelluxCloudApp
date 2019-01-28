@@ -8,8 +8,8 @@ export const environment = {
     storageBucket: "ivory-ego-219700.appspot.com",
     messagingSenderId: "1037131669515"
   },
-  enableLogo: "false",
-  backgroudImage: "",
+  enableLogo: "true",
+  backgroudImage: "../../../assets/images/login.jpg",
   callerHubUrl : "https://vccallerccwebapi.azurewebsites.net/callerHub",
   callerUrl : "https://vccallerccwebapi.azurewebsites.net/api/Buttons",
   notificationUrl : "https://vcnotificationccwebapi.azurewebsites.net/api/SendGrid",

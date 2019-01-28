@@ -14,7 +14,6 @@ import { MenuComponent } from '../../menu/menu.component';
   styleUrls: ['./qualification.component.css']
 })
 export class QualificationComponent implements OnInit {
-  @Output('dataShared') emitEvent:EventEmitter<boolean> = new EventEmitter<boolean>();
   hideMenu:boolean = false;
   notification: NotificationInfo;
   Success:boolean;

@@ -1,5 +1,5 @@
 export class RegisterRequest {
-    userId: string;
+    id: string;
     userName: string;
     nickName: string;
     firstName: string;

@@ -4,6 +4,7 @@ import { LoginService } from '../../services/login/login.service';
 import * as CryptoJS from 'crypto-js';
 import { MenuComponent } from '../menu/menu.component';
 import { UserService } from 'src/app/services/user/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -18,12 +19,17 @@ export class LoginComponent {
   model: any = {};
   token: string;
   isLoginError = false;
+  enableLogo: boolean = false;
+  backgroundImage:string;
   constructor(
     private userService: UserService,
     private loginService: LoginService,
     private router: Router,
     private route: ActivatedRoute) {
       this.loading = false;
+      this.enableLogo = environment.enableLogo === "true";
+      debugger;
+      this.backgroundImage = environment.backgroudImage;
      }
 
   LoginOn(userName, password) {
