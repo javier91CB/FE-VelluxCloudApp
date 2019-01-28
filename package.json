@@ -7,6 +7,8 @@
     "build": "ng build",
     "build:prodcc": "ng build -c prodcc",
     "build:proddct": "ng build -c proddct",
+    "build:vm2200": "ng build -c vm2200",
+    "build:vm5000": "ng build -c vm5000",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
